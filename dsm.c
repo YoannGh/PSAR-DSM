@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	dsm_destroy(dsm);
 	return 0;
 }
-
+	
 void dsm_init(struct s_dsm *dsm, long nb_pages) 
 {
 	void *pages_addr;
@@ -56,3 +56,38 @@ void dsm_destroy(struct s_dsm *dsm)
 	free(dsm->pages);
 	free(dsm);
 }
+
+
+algo replication de pages:
+
+	Pb: la memoire du client n est pas forcement mappée à la même addr
+	que celle du serveur (mmap solution ?)
+
+	Taille de cache à initialiser pour les clients ?
+
+	SIGSEGV:
+		Demande au serveur la page (en lecture) correspondante
+		Si le serveur possède la dernière version:
+			Envoie au demandeur
+			Ajout à la liste des lecteurs
+		Sinon
+			Demande au possesseur
+			forward la page au demandeur
+		A la reception de la page (en lecture)
+			mprotect(PROT_READ)
+
+		Demande au serveur la page (en ecriture) correspondante
+		Si le serveur possède la dernière version:
+			Change le possesseur associé
+			Envoie d une invalidation aux lecteurs
+			Envoie la page au demandeur
+		Sinon
+			Demande la page au possesseur
+			Change le possesseur associé
+			Envoie d une invalidation aux lecteurs
+			Envoie la page au demandeur
+		A la reception de la page (en ecriture)
+			mprotect(PROT_READ | PROT_WRITE)
+
+	à la reception d une demande ou d une invalidation:
+		Ajuster les droits avec mprotect accordingly
