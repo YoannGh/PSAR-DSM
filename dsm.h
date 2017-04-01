@@ -9,8 +9,8 @@ struct s_pageframe
 
 struct s_dsm
 {
-	long nb_pages;
-	long pagesize;
+	unsigned long nb_pages;
+	unsigned long pagesize;
 	void* base_addr;
 	struct s_pageframe *pages;
 };

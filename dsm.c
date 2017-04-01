@@ -6,8 +6,15 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <string.h>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "dsm.h"
+
+//#define _GNU_SOURCE 1
 
 #define handle_error(msg) \
            do { perror(msg); exit(EXIT_FAILURE); } while (0)
@@ -17,14 +24,39 @@ int main(int argc, char *argv[])
 {
 	int nb_pages = 10;
 	struct s_dsm *dsm;
-	
+	void* mapping;
+	int fd_test;
+
 	dsm = (struct s_dsm *) malloc(sizeof(struct s_dsm));
 	dsm_init(dsm, 10);
 
 	for (int i = 0; i < nb_pages; ++i)
 	{
 		printf("Page[%d]: mapped at 0x%lx\n", i, (long) dsm->pages[i].base_addr);
+		if((long) dsm->pages[i].base_addr & dsm->pagesize) {
+			printf("Page[%d] not aligned on pagesize (%lu)\n", i, dsm->pagesize);
+		}
+
 	}
+
+	fd_test = open("dsm.map", O_CREAT);
+	mapping = mmap(dsm->pages[0].base_addr, dsm->pagesize, PROT_WRITE, MAP_FIXED, fd_test, 0);
+	if(mapping == MAP_FAILED) {
+		printf("%d\n", errno);
+		if(errno == EINVAL)
+			puts("lel");
+		handle_error("mmap");
+	}
+	printf("mmap at 0x%lx\n", (long) mapping);
+
+	char test[] = "Test?";
+	char y = '!';
+
+	memcpy(mapping, test, sizeof(test));
+	printf("after memcpy: %s\n", (char *) mapping);
+	memcpy(dsm->pages[0].base_addr+4, &y, 1);
+	printf("after memcpy (page): %s\n", (char *) dsm->pages[0].base_addr);
+	printf("after memcpy (mapping): %s\n", (char *) mapping);
 
 	dsm_destroy(dsm);
 	return 0;
@@ -33,6 +65,7 @@ int main(int argc, char *argv[])
 void dsm_init(struct s_dsm *dsm, long nb_pages) 
 {
 	void *pages_addr;
+
 	dsm->nb_pages = nb_pages;
 
 	dsm->pagesize = sysconf(_SC_PAGE_SIZE);
@@ -45,7 +78,7 @@ void dsm_init(struct s_dsm *dsm, long nb_pages)
 	pages_addr = dsm->base_addr;
 	for (int i = 0; i < dsm->nb_pages; ++i)
 	{
-		dsm->pages[i].access_rights = PROT_NONE;
+		dsm->pages[i].access_rights = PROT_READ | PROT_WRITE;
 		dsm->pages[i].base_addr = pages_addr;
 		pages_addr += dsm->pagesize;
 	}
@@ -57,7 +90,7 @@ void dsm_destroy(struct s_dsm *dsm)
 	free(dsm);
 }
 
-
+/*
 algo replication de pages:
 
 	Pb: la memoire du client n est pas forcement mappée à la même addr
@@ -91,3 +124,4 @@ algo replication de pages:
 
 	à la reception d une demande ou d une invalidation:
 		Ajuster les droits avec mprotect accordingly
+*/
