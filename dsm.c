@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <inttypes.h>
 
 #include "dsm.h"
 
@@ -25,7 +26,6 @@ int main(int argc, char *argv[])
 	int nb_pages = 10;
 	struct s_dsm *dsm;
 	void* mapping;
-	int fd_test;
 
 	dsm = (struct s_dsm *) malloc(sizeof(struct s_dsm));
 	dsm_init(dsm, 10);
@@ -33,17 +33,15 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < nb_pages; ++i)
 	{
 		printf("Page[%d]: mapped at 0x%lx\n", i, (long) dsm->pages[i].base_addr);
-		if((long) dsm->pages[i].base_addr & dsm->pagesize) {
+		if(((uintptr_t) dsm->pages[i].base_addr % dsm->pagesize) != 0) {
 			printf("Page[%d] not aligned on pagesize (%lu)\n", i, dsm->pagesize);
 		}
-
 	}
 
-	fd_test = open("dsm.map", O_CREAT);
-	mapping = mmap(dsm->pages[0].base_addr, dsm->pagesize, PROT_WRITE, MAP_FIXED, fd_test, 0);
+	mapping = mmap(dsm->pages[0].base_addr, dsm->pagesize, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0);
 	if(mapping == MAP_FAILED) {
 		printf("%d\n", errno);
-		if(errno == EINVAL)
+		if(errno == EACCES)
 			puts("lel");
 		handle_error("mmap");
 	}
@@ -52,11 +50,17 @@ int main(int argc, char *argv[])
 	char test[] = "Test?";
 	char y = '!';
 
-	memcpy(mapping, test, sizeof(test));
+	memcpy(mapping, &test, sizeof(test));
+	puts("here");
 	printf("after memcpy: %s\n", (char *) mapping);
 	memcpy(dsm->pages[0].base_addr+4, &y, 1);
 	printf("after memcpy (page): %s\n", (char *) dsm->pages[0].base_addr);
 	printf("after memcpy (mapping): %s\n", (char *) mapping);
+
+	puts("mprotect(PROT_NONE)");
+	mprotect(dsm->pages[0].base_addr, dsm->pagesize, PROT_NONE);
+	puts("Should SegFault here");
+	printf("%s\n", (char *) dsm->pages[0].base_addr);
 
 	dsm_destroy(dsm);
 	return 0;
@@ -69,14 +73,14 @@ void dsm_init(struct s_dsm *dsm, long nb_pages)
 	dsm->nb_pages = nb_pages;
 
 	dsm->pagesize = sysconf(_SC_PAGE_SIZE);
-	if (dsm->pagesize == -1)
+	if (dsm->pagesize <= 0)
 		handle_error("sysconf_pagesize");
 
 	dsm->base_addr = memalign(dsm->pagesize, dsm->nb_pages * dsm->pagesize);
 	dsm->pages = (struct s_pageframe *) calloc(dsm->nb_pages, sizeof(struct s_pageframe));
 
 	pages_addr = dsm->base_addr;
-	for (int i = 0; i < dsm->nb_pages; ++i)
+	for (unsigned int i = 0; i < dsm->nb_pages; ++i)
 	{
 		dsm->pages[i].access_rights = PROT_READ | PROT_WRITE;
 		dsm->pages[i].base_addr = pages_addr;
