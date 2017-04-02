@@ -30,7 +30,7 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 
 .PHONY: directories
 out_directories:
-	$(MKDIR_P) $(OBJDIR) $(BINDIR)
+	@$(MKDIR_P) $(OBJDIR) $(BINDIR)
 
 .PHONY: clean
 clean:
