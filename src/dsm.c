@@ -15,8 +15,6 @@
 
 #include "dsm.h"
 
-//#define _GNU_SOURCE 1
-
 #define handle_error(msg) \
            do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
@@ -62,6 +60,7 @@ int main(int argc, char *argv[])
 	puts("Should SegFault here");
 	printf("%s\n", (char *) dsm->pages[0].base_addr);
 
+	munmap(dsm->pages[0].base_addr, dsm->pagesize);
 	dsm_destroy(dsm);
 	return 0;
 }
