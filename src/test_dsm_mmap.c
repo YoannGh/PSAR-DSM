@@ -14,12 +14,9 @@
 #include <inttypes.h>
 
 #include "dsm.h"
+#include "util.h"
 
-#define handle_error(msg) \
-           do { perror(msg); exit(EXIT_FAILURE); } while (0)
-
-
-int main(int argc, char *argv[])
+int main(void)
 {
 	int nb_pages = 10;
 	struct s_dsm *dsm;

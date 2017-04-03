@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DSM_H
+#define DSM_H
 
 struct s_pageframe
 {
@@ -18,3 +19,5 @@ struct s_dsm
 void dsm_init(struct s_dsm *dsm, long nb_pages);
 
 void dsm_destroy(struct s_dsm *dsm);
+
+#endif
