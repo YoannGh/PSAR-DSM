@@ -17,14 +17,14 @@
  *
  * @return the server socket descriptor
  */
-int dsm_socket_bind_listen(uint32_t port, uint32_t backlog)
+int dsm_socket_bind_listen(int port, int backlog)
 {
 	struct sockaddr_in sin;
 	int sockfd;
 	int so_reuseaddr = 1;
 
-	if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-		handle_err("socket creation", DSM_EXIT);
+	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+		error("socket creation\n");
 	}
 
 	memset((char *)&sin, 0, sizeof(sin));
@@ -32,16 +32,16 @@ int dsm_socket_bind_listen(uint32_t port, uint32_t backlog)
 	sin.sin_port = htons(port);
 	sin.sin_family = AF_INET;
 
-	if(setsockopt(sockfd,SOL_SOCKET,SO_REUSEADDR, &so_reuseaddr, sizeof(so_reuseaddr)) < 0) {
-		handle_err("socket setsockopt", DSM_EXIT);
+	if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &so_reuseaddr, sizeof(so_reuseaddr)) < 0) {
+		error("socket setsockopt\n");
 	}
 
-	if(bind(sockfd, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
-		handle_err("socket bind", DSM_EXIT);
+	if (bind(sockfd, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
+		error("socket bind\n");
 	}
 
-	if(listen(sockfd, backlog) < 0) {
-		handle_err("socket listen", DSM_EXIT);
+	if (listen(sockfd, backlog) < 0) {
+		error("socket listen\n");
 	}
 
 	return sockfd;
@@ -55,7 +55,8 @@ int dsm_socket_bind_listen(uint32_t port, uint32_t backlog)
  *
  * @return the remote socket descriptor
  */
-int dsm_socket_connect(const char *host, uint32_t port) {
+int dsm_socket_connect(const char *host, int port)
+{
 	struct addrinfo hints;
 	struct addrinfo *result, *rp;
 	int sockfd;
@@ -64,36 +65,36 @@ int dsm_socket_connect(const char *host, uint32_t port) {
 	memset(&hints, 0, sizeof(struct addrinfo));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
-    hints.ai_flags = 0;
-    hints.ai_protocol = 0;
+	hints.ai_flags = 0;
+	hints.ai_protocol = 0;
 
-    snprintf(service, sizeof(service), "%d", port);
+	snprintf(service, sizeof(service), "%d", port);
 
-    if (getaddrinfo(host, service, &hints, &result) != 0) {
-        handle_err("socket getaddrinfo hostname", DSM_EXIT);
-    }
+	if (getaddrinfo(host, service, &hints, &result) != 0) {
+		error("socket getaddrinfo hostname\n");
+	}
 
-    for (rp = result; rp != NULL; rp = rp->ai_next) {
-        sockfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
-        if (sockfd == -1)
-            continue;
+	for (rp = result; rp != NULL; rp = rp->ai_next) {
+		sockfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
+		if (sockfd == -1)
+			continue;
 
-        if (connect(sockfd, rp->ai_addr, rp->ai_addrlen) != -1)
-            break;
+		if (connect(sockfd, rp->ai_addr, rp->ai_addrlen) != -1)
+			break;
 
-        close(sockfd);
-    }
+		close(sockfd);
+	}
 
-    if (rp == NULL) {
-        handle_err("Unable to resolve hostname", DSM_EXIT);
-    }
+	if (rp == NULL) {
+		error("Unable to resolve hostname\n");
+	}
 
-    freeaddrinfo(result);
+	freeaddrinfo(result);
 
-    return sockfd;
+	return sockfd;
 }
 
-int dsm_send_message(void) 
+int dsm_send_message(void)
 {
 	//TODO
 	return 0;

@@ -1,6 +1,6 @@
 CC       = gcc
 # compiling flags here
-CFLAGS   = -Wall -Wextra -std=c99 -D_GNU_SOURCE
+CFLAGS   = -Wall -Wextra -std=c99 -D_GNU_SOURCE -DDEBUG
 
 LINKER   = gcc
 # linking flags here
@@ -28,7 +28,7 @@ MKDIR_P   = mkdir -p
 
 all: out_directories tests
 
-$(BINDIR)/$(BIN_NAME): $(OBJDIR)/util.o $(OBJDIR)/$(BIN_NAME).o
+$(BINDIR)/$(BIN_NAME): $(OBJDIR)/$(BIN_NAME).o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
@@ -37,13 +37,13 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 .PHONY: tests
 tests: $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME)
 
-$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/util.o $(OBJDIR)/test_dsm_mmap.o
+$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/test_dsm_mmap.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
-$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/util.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/test_dsm_socket_serv.o
+$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/dsm_socket.o $(OBJDIR)/test_dsm_socket_serv.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
-$(TESTDIR)/$(TEST3_NAME): $(OBJDIR)/util.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/test_dsm_socket_client.o
+$(TESTDIR)/$(TEST3_NAME): $(OBJDIR)/dsm_socket.o $(OBJDIR)/test_dsm_socket_client.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
 .PHONY: out_directories

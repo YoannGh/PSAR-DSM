@@ -1,4 +1,3 @@
-
 #include <sys/mman.h>
 #include <unistd.h>
 #include <signal.h>
@@ -28,17 +27,17 @@ int main(void)
 	for (int i = 0; i < nb_pages; ++i)
 	{
 		printf("Page[%d]: mapped at 0x%lx\n", i, (long) dsm->pages[i].base_addr);
-		if(((uintptr_t) dsm->pages[i].base_addr % dsm->pagesize) != 0) {
+		if (((uintptr_t) dsm->pages[i].base_addr % dsm->pagesize) != 0) {
 			printf("Page[%d] not aligned on pagesize (%lu)\n", i, dsm->pagesize);
 		}
 	}
 
-	mapping = mmap(dsm->pages[0].base_addr, dsm->pagesize, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0);
-	if(mapping == MAP_FAILED) {
+	mapping = mmap(dsm->pages[0].base_addr, dsm->pagesize, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_FIXED | MAP_ANONYMOUS, -1, 0);
+	if (mapping == MAP_FAILED) {
 		printf("%d\n", errno);
-		if(errno == EACCES)
+		if (errno == EACCES)
 			puts("lel");
-		handle_error("mmap");
+		error("mmap");
 	}
 	printf("mmap at 0x%lx\n", (long) mapping);
 
@@ -48,7 +47,7 @@ int main(void)
 	memcpy(mapping, &test, sizeof(test));
 	puts("here");
 	printf("after memcpy: %s\n", (char *) mapping);
-	memcpy(dsm->pages[0].base_addr+4, &y, 1);
+	memcpy(dsm->pages[0].base_addr + 4, &y, 1);
 	printf("after memcpy (page): %s\n", (char *) dsm->pages[0].base_addr);
 	printf("after memcpy (mapping): %s\n", (char *) mapping);
 
@@ -61,8 +60,8 @@ int main(void)
 	dsm_destroy(dsm);
 	return 0;
 }
-	
-void dsm_init(struct s_dsm *dsm, long nb_pages) 
+
+void dsm_init(struct s_dsm *dsm, long nb_pages)
 {
 	void *pages_addr;
 
@@ -70,7 +69,7 @@ void dsm_init(struct s_dsm *dsm, long nb_pages)
 
 	dsm->pagesize = sysconf(_SC_PAGE_SIZE);
 	if (dsm->pagesize <= 0)
-		handle_error("sysconf_pagesize");
+		error("sysconf_pagesize");
 
 	dsm->base_addr = memalign(dsm->pagesize, dsm->nb_pages * dsm->pagesize);
 	dsm->pages = (struct s_pageframe *) calloc(dsm->nb_pages, sizeof(struct s_pageframe));

@@ -5,12 +5,11 @@
 
 int main(void)
 {
-	
-	if(dsm_socket_connect("127.0.0.1", 5555) > 0) {
+
+	if (dsm_socket_connect("127.0.0.1", 5555) > 0) {
 		puts("Connected!");
 	} else {
-		handle_err("error connect", DSM_EXIT);
+		error("error connect\n");
 	}
-
 	return 0;
 }

@@ -1,12 +1,29 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#define DSM_EXIT 	1
-#define DSM_NOEXIT 	0
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
-#define handle_error(msg) \
-           do { perror(msg); exit(EXIT_FAILURE); } while (0)
+#ifdef DEBUG
+	#define VARDEBUG 1
+#else
+	#define VARDEBUG 0
+#endif
 
-void handle_err(char *user_msg, int should_exit);
+/*#define handle_error(msg) \
+           do { perror(msg); exit(EXIT_FAILURE); } while (0)*/
+
+#define debug_print(condition, stream, ...) \
+        do { if (condition) fprintf(stream, "%s:%d:%s(): ", __FILE__, \
+                                __LINE__, __func__); \
+                            fprintf(stream, __VA_ARGS__); } while (0)
+
+#define debug(...) debug_print(VARDEBUG, stdout, __VA_ARGS__)
+
+#define log(...) debug_print(1, stdout, __VA_ARGS__)
+
+#define error(...) \
+        do { debug_print(1, stderr, __VA_ARGS__); perror("\t"); exit(EXIT_FAILURE); } while (0)
 
 #endif
