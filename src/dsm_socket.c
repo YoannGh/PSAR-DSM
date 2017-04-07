@@ -6,6 +6,8 @@
 #include <string.h>
 
 #include "dsm_socket.h"
+#include "dsm.h"
+#include "dsm_protocol.h"
 #include "util.h"
 
 /**
@@ -94,16 +96,106 @@ int dsm_socket_connect(const char *host, int port)
 	return sockfd;
 }
 
-int dsm_send_message(void)
+int dsm_send(int sockfd, void *buffer, int size)
 {
-	//TODO
+	ssize_t bytessent;
+	
+	bytessent = send(sockfd, buffer, size, 0);
+	if(bytessent < 0) {
+		error("dsm_send\n");
+	} else if(bytessent == 0) {
+		debug("dsm_send 0 byte, node disconnected?\n");
+		return -1;
+	}
+
 	return 0;
 }
 
-int dsm_receive_message(void)
+int dsm_receive(int sockfd, void **buffer)
 {
-	//TODO
+	ssize_t bytesrecv;
+
+	bytesrecv = recv(sockfd, *buffer, BUFFER_LEN, 0);
+	if(bytesrecv < 0) {
+		error("dsm_receive\n");
+	} else if(bytesrecv == 0) {
+		debug("dsm_receive 0 byte, node disconnected?\n");
+		return -1;
+	}
+
 	return 0;
+}
+
+static int msg_listener_start(dsm_t *dsm)
+{
+	int sock;
+	fd_set active_fd_set, read_fd_set;
+	int i;
+	struct sockaddr_in clientname;
+	socklen_t fromlen;
+	dsm_message_t *msg;
+
+	/* Create the socket and set it up to accept connections. */
+	if (dsm->is_master) {
+		sock = dsm_socket_bind_listen(dsm->master.port, MAX_NODES);
+	} else {
+		sock = dsm_socket_connect(dsm->master.host, dsm->master.port);
+		dsm->master.sockfd = sock;
+	}
+
+	/* Initialize the set of active sockets. */
+	FD_ZERO (&active_fd_set);
+	FD_SET (sock, &active_fd_set);
+
+	while (1)
+	{
+		/* Block until input arrives on one or more active sockets. */
+		read_fd_set = active_fd_set;
+		if (select (FD_SETSIZE, &read_fd_set, NULL, NULL, NULL) < 0) {
+			error("select\n");
+		}
+
+		/* Service all the sockets with input pending. */
+		for (i = 0; i < FD_SETSIZE; ++i) {
+			if (FD_ISSET (i, &read_fd_set)) {
+				if (dsm->is_master && i == sock) {
+					/* Connection request on original socket. */
+					int new;
+					fromlen = sizeof (clientname);
+					new = accept(sock, (struct sockaddr *) &clientname, &fromlen);
+					if (new < 0) {
+						error("accept\n");
+					}
+					log("Master: connect from host %s, port %hu\n",
+					    inet_ntoa (clientname.sin_addr),
+					    ntohs (clientname.sin_port));
+					FD_SET (new, &active_fd_set);
+				}
+				else {
+					msg = malloc(sizeof(dsm_message_t));
+					if(dsm_receive_msg(i, msg) < 0) {
+						dsm_socket_close(i);
+						free(msg);
+						FD_CLR (i, &active_fd_set);
+					} else {
+						/* Messages must be free'd by their handlers */
+						msg->from_sockfd = i;
+						dsm_dispatch_message(msg);
+					}
+				}
+			}
+		}
+	}
+}
+
+void* dsm_daemon_msg_listener(void *arg)
+{
+	dsm_t *dsm = (dsm_t *) arg;
+	if(msg_listener_start(dsm) < 0) {
+		error("thread msg_listener\n");
+	}
+	
+	return NULL;
 }
 
 /**
