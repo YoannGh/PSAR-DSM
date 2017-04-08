@@ -99,7 +99,15 @@ int dsm_socket_connect(const char *host, int port)
 int dsm_send(int sockfd, void *buffer, int size)
 {
 	ssize_t bytessent;
+	uint32_t msg_size;
 	
+	msg_size = htonl((uint32_t) size);
+
+	bytessent = send(sockfd, &msg_size, sizeof(uint32_t), 0);
+	if(bytessent != sizeof(uint32_t)) {
+		error("Send msg size\n");
+	}
+
 	bytessent = send(sockfd, buffer, size, 0);
 	if(bytessent < 0) {
 		error("dsm_send\n");
@@ -111,11 +119,21 @@ int dsm_send(int sockfd, void *buffer, int size)
 	return 0;
 }
 
-int dsm_receive(int sockfd, void **buffer, int size)
+int dsm_receive(int sockfd, void **buffer)
 {
 	ssize_t bytesrecv;
+	uint32_t msg_size;
 
-	bytesrecv = recv(sockfd, *buffer, size, 0);
+	bytesrecv = recv(sockfd, &msg_size, sizeof(uint32_t), 0);
+	if(bytesrecv != sizeof(uint32_t)) {
+		error("Recv msg size\n");
+	}
+	msg_size = ntohl(msg_size);
+	if(msg_size > BUFFER_LEN) {
+		error("Malformed message too big, could cause buffer overflow\n");
+	}
+
+	bytesrecv = recv(sockfd, *buffer, msg_size, 0);
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {

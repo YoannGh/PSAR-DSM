@@ -52,13 +52,10 @@ void dsm_dispatch_message(dsm_message_t *msg)
 int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 {
 	binn *obj;
-	void *buffer;
-	//char buffer[BUFFER_LEN];
-	//void* ptr = (void *) &buffer;
+	char buffer[BUFFER_LEN];
+	void* ptr = (void *) &buffer;
 
-	buffer = malloc(BUFFER_LEN*sizeof(char));
-
-	if(dsm_receive(nodefd, &buffer, BUFFER_LEN) < 0) {
+	if(dsm_receive(nodefd, &ptr) < 0) {
 		error("dsm_recv_msg\n");
 	}
 
@@ -73,7 +70,6 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 	}
 
 	binn_free(obj);
-	free(buffer);
 
 	return 0;
 }
