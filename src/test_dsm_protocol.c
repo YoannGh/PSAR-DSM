@@ -41,7 +41,9 @@ void start_node()
 	dsm_message_t echo;
 	echo.type = ECHO;
 	dsm_send_msg(dsm->master.sockfd, &echo);
-	debug("ECHO Sent\n");
+	debug("ECHO 1 Sent\n");
+	dsm_send_msg(dsm->master.sockfd, &echo);
+	debug("ECHO 2 Sent\n");
 }
 
 int main(void)

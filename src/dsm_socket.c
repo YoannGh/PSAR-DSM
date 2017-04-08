@@ -111,11 +111,11 @@ int dsm_send(int sockfd, void *buffer, int size)
 	return 0;
 }
 
-int dsm_receive(int sockfd, void **buffer)
+int dsm_receive(int sockfd, void **buffer, int size)
 {
 	ssize_t bytesrecv;
 
-	bytesrecv = recv(sockfd, *buffer, BUFFER_LEN, 0);
+	bytesrecv = recv(sockfd, *buffer, size, 0);
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {
