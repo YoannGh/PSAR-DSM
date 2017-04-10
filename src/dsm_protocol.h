@@ -1,3 +1,6 @@
+#ifndef DSM_PROTOCOL_H
+#define DSM_PROTOCOL_H
+
 #define DSM_MSG_KEY_TYPE "type"
 
 typedef enum dsm_msg_type_enum {
@@ -21,3 +24,5 @@ void dsm_dispatch_message(dsm_message_t *msg);
 int dsm_receive_msg(int nodefd, dsm_message_t *msg);
 
 int dsm_send_msg(int nodefd, dsm_message_t *msg);
+
+#endif

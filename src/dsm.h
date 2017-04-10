@@ -1,32 +1,26 @@
 #ifndef DSM_H
 #define DSM_H
 
+#include "dsm_memory.h"
+
 typedef struct dsm_master_s
 {
 	char* host;
 	int port;
+	/* Following fields are used by non master nodes only */
 	int sockfd;
 } dsm_master_t;
 
-typedef struct dsm_pageframe_s
-{
-	int access_rights;
-	void *base_addr;
-	int fd_update_owner;
-} dsm_page_t;
-
 typedef struct dsm_s
 {
-	unsigned long nb_pages;
-	unsigned long pagesize;
-	void* base_addr;
-	dsm_page_t *pages;
-	dsm_master_t master;
-	int is_master;
+	dsm_memory_t *mem;
+	pthread_t listener_daemon;
+	unsigned short is_master;
+	dsm_master_t *master;
 } dsm_t;
 
-void dsm_init(dsm_t *dsm, long nb_pages);
+void *InitMaster(int port, size_t page_count);
 
-void dsm_destroy(dsm_t *dsm);
+void *InitSlave(char *HostMaster, int port);
 
 #endif

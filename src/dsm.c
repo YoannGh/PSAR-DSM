@@ -1,35 +1,66 @@
-#include <sys/mman.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <unistd.h>
+#include <string.h>
+#include <pthread.h>
 
 #include "dsm.h"
-#include "util.h"
+#include "dsm_memory.h"
+#include "dsm_socket.h"
 
-void dsm_init(dsm_t *dsm, long nb_pages)
+static void dsm_master_init(dsm_t *dsm, char *host_master, int port_master, size_t page_count)
 {
-	void *pages_addr;
+	long pagesize;
 
-	dsm->nb_pages = nb_pages;
+	if(page_count <= 0) {
+		error("page_count must be greater than 0\n");
+	}
 
-	dsm->pagesize = sysconf(_SC_PAGE_SIZE);
-	if (dsm->pagesize <= 0)
-		error("sysconf_pagesize");
+	pagesize = sysconf(_SC_PAGE_SIZE);
+ 	if (pagesize == -1) {
+		error("sysconf invalid PAGE_SIZE\n");
+ 	}
 
-	dsm->base_addr = memalign(dsm->pagesize, dsm->nb_pages * dsm->pagesize);
-	dsm->pages = (dsm_page_t *) calloc(dsm->nb_pages, sizeof(dsm_page_t));
+	dsm->mem = (dsm_mem_t *) malloc(sizeof(dsm_mem_t));
+	if (dsm->mem == NULL) {
+		error("Could not allocate memory (malloc)\n");
+	}
 
-	pages_addr = dsm->base_addr;
-	for (unsigned int i = 0; i < dsm->nb_pages; ++i)
-	{
-		dsm->pages[i].access_rights = PROT_READ | PROT_WRITE;
-		dsm->pages[i].base_addr = pages_addr;
-		pages_addr += dsm->pagesize;
+	dsm->master = (dsm_master_t *) malloc(sizeof(dsm_master_t));
+	if (dsm->master == NULL) {
+		error("Could not allocate memory (malloc)\n");
+	}
+
+	dsm->master->host = malloc(strlen(host_master)+1);
+	if (dsm->master->host == NULL) {
+		error("Could not allocate memory (malloc)\n");
+	}
+
+	dsm->is_master = 1;
+	dsm_memory_init(dsm->mem, pagesize, page_count, dsm->is_master);
+	memcpy(dsm->master->host, host_master, strlen(host_master));
+	dsm->master->host[strlen(host_master)] = '\0';
+	dsm->master->port = port_master;
+
+	if (pthread_create(&dsm->listener_daemon, NULL, &dsm_daemon_msg_listener, (void *) dsm) != 0) {
+    	error("pthread_create listener_daemon\n");
 	}
 }
 
-void dsm_destroy(dsm_t *dsm)
+static void dsm_init(dsm_t *dsm, char *)
+
+static  void dsm_master_destroy(dsm_t *dsm) 
 {
-	free(dsm->pages);
-	free(dsm);
+
+}
+
+void *InitMaster(int port, size_t page_count) 
+{
+	dsm_t *dsm;
+
+	dsm = (dsm_t *) malloc(sizeof(dsm_t));
+}
+
+void *InitSlave(char *HostMaster, int port)
+{
+	return NULL;
 }
