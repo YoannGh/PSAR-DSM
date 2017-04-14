@@ -2,11 +2,12 @@
 #include <sys/mman.h>
 
 #include "dsm_memory.h"
+#include "dsm_util.h"
 
 void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
                     unsigned short is_master)
 {
-	int i;
+	unsigned int i;
 	int prot;
 
 	dsm_mem->pagesize = pagesize;
@@ -45,7 +46,7 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 
 void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i < dsm_mem->page_count; i++) {
 		free(dsm_mem->pages[i].nodes_reading);

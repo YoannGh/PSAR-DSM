@@ -15,10 +15,8 @@ TESTDIR	 = test
 
 BIN_NAME = dsm
 
-TEST1_NAME = test_dsm_mmap
-TEST2_NAME = test_dsm_socket_serv
-TEST3_NAME = test_dsm_socket_client
-TEST4_NAME = test_dsm_protocol
+TEST1_NAME = test_dsm_init_master
+TEST2_NAME = test_dsm_init_slave
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(INCDIR)/*.h)
@@ -36,18 +34,12 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 .PHONY: tests
-tests: $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME) $(TESTDIR)/$(TEST4_NAME)
+tests: $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME)
 
-$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_mmap.o
+$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_master.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
-$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/test_dsm_socket_serv.o
-	$(LINKER) $(LFLAGS) -o $@ $^
-
-$(TESTDIR)/$(TEST3_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/test_dsm_socket_client.o
-	$(LINKER) $(LFLAGS) -o $@ $^
-
-$(TESTDIR)/$(TEST4_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/test_dsm_protocol.o
+$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_slave.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
 .PHONY: out_directories
@@ -65,6 +57,4 @@ remove: clean
 	@$(RMDIR)	$(BINDIR)
 	@$(RM)		$(TESTDIR)/$(TEST1_NAME)
 	@$(RM)		$(TESTDIR)/$(TEST2_NAME)
-	@$(RM) 		$(TESTDIR)/$(TEST3_NAME)
-	@$(RM) 		$(TESTDIR)/$(TEST4_NAME)
 	@$(RMDIR)	$(TESTDIR)

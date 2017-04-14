@@ -8,7 +8,7 @@
 #include "dsm_socket.h"
 #include "dsm.h"
 #include "dsm_protocol.h"
-#include "util.h"
+#include "dsm_util.h"
 
 /**
  * Binds and listens on `port` on all interfaces on the local machine
@@ -153,13 +153,8 @@ static int msg_listener_start(dsm_t *dsm)
 	socklen_t fromlen;
 	dsm_message_t *msg;
 
-	/* Create the socket and set it up to accept connections. */
-	if (dsm->is_master) {
-		sock = dsm_socket_bind_listen(dsm->master.port, MAX_NODES);
-	} else {
-		sock = dsm_socket_connect(dsm->master.host, dsm->master.port);
-		dsm->master.sockfd = sock;
-	}
+	/* Retrieve the already initualized socket */
+	sock = dsm->master->sockfd;
 
 	/* Initialize the set of active sockets. */
 	FD_ZERO (&active_fd_set);

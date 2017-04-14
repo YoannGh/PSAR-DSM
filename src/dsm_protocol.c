@@ -1,6 +1,6 @@
 #include "dsm_protocol.h"
 #include "dsm_socket.h"
-#include "util.h"
+#include "dsm_util.h"
 #include "binn.h"
 
 void dsm_dispatch_message(dsm_message_t *msg)
@@ -64,6 +64,15 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 	msg->type = binn_object_int32(obj, DSM_MSG_KEY_TYPE);
 
 	switch (msg->type) {
+		case CONNECT:
+			msg->args.connect_args.bitness = binn_object_int32(obj, DSM_MSG_KEY_BITNESS);
+			msg->args.connect_args.pagesize = binn_object_int32(obj, DSM_MSG_KEY_PAGESIZE);
+			break;
+		case CONNECT_ACK:
+			msg->args.connect_ack_args.bitness_ok = binn_object_int16(obj, DSM_MSG_KEY_BITNESS);
+			msg->args.connect_ack_args.pagesize_ok = binn_object_int16(obj, DSM_MSG_KEY_PAGESIZE);
+			msg->args.connect_ack_args.page_count = binn_object_int32(obj, DSM_MSG_KEY_PAGECOUNT);
+			break;
 		default:
         	debug("TODO: msg args deserialization\n");
 			break;
@@ -80,6 +89,21 @@ int dsm_send_msg(int nodefd, dsm_message_t *msg)
 	
 	obj = binn_object();
 	binn_object_set_int32(obj, DSM_MSG_KEY_TYPE, msg->type);
+
+	switch (msg->type) {
+		case CONNECT:
+			binn_object_set_int32(obj, DSM_MSG_KEY_BITNESS, msg->args.connect_args.bitness);
+			binn_object_set_int32(obj, DSM_MSG_KEY_PAGESIZE, msg->args.connect_args.pagesize);
+			break;
+		case CONNECT_ACK:
+			binn_object_set_int16(obj, DSM_MSG_KEY_BITNESS, msg->args.connect_ack_args.bitness_ok);
+			binn_object_set_int16(obj, DSM_MSG_KEY_PAGESIZE, msg->args.connect_ack_args.pagesize_ok);
+			binn_object_set_int32(obj, DSM_MSG_KEY_PAGECOUNT, msg->args.connect_ack_args.page_count);
+			break;
+		default:
+        	debug("TODO: msg args serialization\n");
+			break;
+	}
 
 	if(dsm_send(nodefd, binn_ptr(obj), binn_size(obj)) < 0) {
 		log("Could not send to node %d message type: %d\n", nodefd, msg->type);

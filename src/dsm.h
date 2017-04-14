@@ -2,14 +2,7 @@
 #define DSM_H
 
 #include "dsm_memory.h"
-
-typedef struct dsm_master_s
-{
-	char* host;
-	int port;
-	/* Following fields are used by non master nodes only */
-	int sockfd;
-} dsm_master_t;
+#include "dsm_master.h"
 
 typedef struct dsm_s
 {
@@ -22,5 +15,7 @@ typedef struct dsm_s
 void *InitMaster(int port, size_t page_count);
 
 void *InitSlave(char *HostMaster, int port);
+
+void QuitDSM(void);
 
 #endif

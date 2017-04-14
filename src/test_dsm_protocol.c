@@ -4,7 +4,7 @@
 #include "dsm.h"
 #include "dsm_socket.h"
 #include "dsm_protocol.h"
-#include "util.h"
+#include "dsm_util.h"
 
 void start_master() 
 {

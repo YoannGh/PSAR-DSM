@@ -1,7 +1,6 @@
 #ifndef DSM_SOCKET_H
 #define DSM_SOCKET_H
 
-#define MAX_NODES 512
 #define BUFFER_LEN 256
 
 int dsm_socket_bind_listen(int port, int backlog);

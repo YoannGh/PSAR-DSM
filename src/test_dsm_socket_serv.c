@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #include "dsm_socket.h"
-#include "util.h"
+#include "dsm_util.h"
 
 int main(void)
 {

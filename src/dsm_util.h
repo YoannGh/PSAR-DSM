@@ -1,5 +1,5 @@
-#ifndef UTIL_H
-#define UTIL_H
+#ifndef DSM_UTIL_H
+#define DSM_UTIL_H
 
 #include <stdlib.h>
 #include <stdio.h>
