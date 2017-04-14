@@ -27,6 +27,6 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 
 void dsm_memory_destroy(dsm_memory_t *dsm_mem);
 
-int dsm_add_reader(dsm_memory_t *dsm_mem, int page_idx, int node_fd);
+int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd);
 
 #endif

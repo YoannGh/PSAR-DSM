@@ -1,6 +1,8 @@
 #ifndef DSM_H
 #define DSM_H
 
+#include <pthread.h>
+
 #include "dsm_memory.h"
 #include "dsm_master.h"
 

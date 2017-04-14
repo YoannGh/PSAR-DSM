@@ -9,7 +9,7 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 	char* host_local = "0.0.0.0";
 	size_t len;
 		
-	if(host_master == NULL || is_master == 0) {
+	if(host_master == NULL || is_master == 1) {
 		len = strlen(host_local);
 		master->host = malloc(len + 1);
 
@@ -17,7 +17,7 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 			error("Could not allocate memory (malloc)\n");
 		}
 
-		memcpy(master->host, host_master, len);
+		memcpy(master->host, host_local, len);
 		master->host[len] = '\0';
 
 	} else {

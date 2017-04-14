@@ -68,15 +68,15 @@ static void check_readers_capacity(dsm_page_t *dsm_page)
 	}
 }
 
-int dsm_add_reader(dsm_memory_t *dsm_mem, int page_idx, int node_fd)
+int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
 {
-	if(page_idx > (dsm_mem->page_count - 1) || page_idx < 0) {
+	if(page_idx > (dsm_mem->page_count - 1)) {
 		log("Wrong page index\n");
 		return -1;
 	}
 	check_readers_capacity(&dsm_mem->pages[page_idx]);
 
-	dsm_mem->pages[page_idx].nodes_reading[dsm_mem->pages[page_idx].readers_count++];
+	dsm_mem->pages[page_idx].nodes_reading[dsm_mem->pages[page_idx].readers_count++] = node_fd;
 
 	return 0;
 }
