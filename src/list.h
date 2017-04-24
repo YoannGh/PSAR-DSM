@@ -7,12 +7,14 @@ typedef int (*equalsFunction)(void *, void *);
 // a function used to free a node
 typedef void (*freeFunction)(void *);
  
-typedef struct listNode_s {
+typedef struct listNode_s 
+{
 	void *data;
 	struct listNode_s *next;
 } listNode_t;
  
-typedef struct list_s {
+typedef struct list_s 
+{
 	int length;
 	int elementSize;
 	listNode_t *head;

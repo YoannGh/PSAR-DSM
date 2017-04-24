@@ -146,7 +146,7 @@ int dsm_receive(int sockfd, void **buffer)
 
 static int msg_listener_start(dsm_t *dsm)
 {
-	int sock;
+	int sock, server_sockfd;
 	fd_set active_fd_set, read_fd_set;
 	int i;
 	struct sockaddr_in clientname;
@@ -159,6 +159,10 @@ static int msg_listener_start(dsm_t *dsm)
 	/* Initialize the set of active sockets. */
 	FD_ZERO (&active_fd_set);
 	FD_SET (sock, &active_fd_set);
+	if(dsm->is_master) {
+		server_sockfd = dsm->master->server_sockfd;
+		FD_SET (server_sockfd, &active_fd_set);
+	}
 
 	while (1)
 	{
@@ -171,11 +175,11 @@ static int msg_listener_start(dsm_t *dsm)
 		/* Service all the sockets with input pending. */
 		for (i = 0; i < FD_SETSIZE; ++i) {
 			if (FD_ISSET (i, &read_fd_set)) {
-				if (dsm->is_master && i == sock) {
+				if (dsm->is_master && i == server_sockfd) {
 					/* Connection request on original socket. */
 					int new;
 					fromlen = sizeof (clientname);
-					new = accept(sock, (struct sockaddr *) &clientname, &fromlen);
+					new = accept(server_sockfd, (struct sockaddr *) &clientname, &fromlen);
 					if (new < 0) {
 						error("accept\n");
 					}

@@ -32,7 +32,7 @@ typedef struct msg_connect_ack_args_s {
 
 typedef struct msg_lockpage_args_s {
 	unsigned long page_id;
-	unsigned short right_access;
+	unsigned short access_rights;
 } msg_lockpage_args_t;
 
 typedef struct msg_invalidate_args_s {
@@ -45,6 +45,7 @@ typedef struct msg_invalidate_ack_args_s {
 
 typedef struct msg_givepage_args_s {
 	unsigned long page_id;
+	unsigned short access_rights;
 	void* data;
 } msg_givepage_args_t;
 
@@ -58,7 +59,7 @@ typedef struct dsm_message_s {
 		msg_invalidate_args_t invalidate_args;
 		msg_invalidate_ack_args_t invalidate_ack_args;
 		msg_givepage_args_t givepage_args;
-	} args;
+	};
 	/* union all msg_args */
 } dsm_message_t;
 

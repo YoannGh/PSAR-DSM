@@ -7,8 +7,9 @@ typedef struct dsm_master_s
 {
 	char* host;
 	int port;
-	/* Following fields are used by non master nodes only */
 	int sockfd;
+	/* Following field is used by master node only */
+	int server_sockfd;
 } dsm_master_t;
 
 int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, unsigned short is_master);

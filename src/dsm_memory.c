@@ -1,26 +1,24 @@
 #include <stdlib.h>
 #include <sys/mman.h>
+#include <pthread.h>
 
 #include "dsm_memory.h"
+#include "dsm.h"
 #include "dsm_util.h"
+
+extern dsm_t *dsm_g;
 
 int slave_equals(void *slave1, void *slave2)
 {
 	int fd_slave1 = *(int *)slave1;
 	int fd_slave2  = *(int *)slave2;
 
-	if(fd_slave1 == fd_slave2)
-		return 1;
-	else
-		return 0;
+	return (fd_slave1 == fd_slave2);
 }
 
 int request_equals(void* slave1, void* slave2)
 {
-	if(slave1 == slave2)
-		return 1;
-	else
-		return 0;
+	return (slave1 == slave2);
 }
 
 void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
@@ -49,8 +47,13 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 	}
 
 	for (i = 0; i < page_count; i++) {
+		dsm_mem->pages[i].page_id = i;
 		dsm_mem->pages[i].protection = prot;
+		pthread_mutex_init(&dsm_mem->pages[i].mutex_page, NULL);
+		pthread_cond_init(&dsm_mem->pages[i].cond_uptodate, NULL);
+		dsm_mem->pages[i].uptodate = 0;
 		if (is_master) {
+			dsm_mem->pages[i].uptodate = 1;
 			dsm_mem->pages[i].requests_queue = (list_t *) malloc(sizeof(list_t));
 			if (dsm_mem->pages[i].requests_queue == NULL) {
 				error("Could not allocate memory (malloc)\n");
@@ -77,7 +80,20 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 	for (i = 0; i < dsm_mem->page_count; i++) {
 		list_destroy(dsm_mem->pages[i].requests_queue);
 		list_destroy(dsm_mem->pages[i].current_readers_queue);
+		free(dsm_mem->pages[i].requests_queue);
+		free(dsm_mem->pages[i].current_readers_queue);
 	}
 	
 	free(dsm_mem->pages);
+	munmap(dsm_mem->base_addr, dsm_mem->page_count*dsm_mem->pagesize);
+}
+
+dsm_page_t* get_page_from_id(unsigned int page_id)
+{
+	if(page_id > (dsm_g->mem->page_count - 1)) {
+		log("Wrong page_id: %d\n", page_id);
+		return NULL;
+	} else {
+		return &dsm_g->mem->pages[page_id];
+	}
 }
