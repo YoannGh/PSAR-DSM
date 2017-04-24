@@ -20,31 +20,31 @@ typedef enum dsm_msg_type_enum {
 } dsm_msg_type;
 
 typedef struct msg_connect_args_s {
-	long bitness;
-	long pagesize;
+	unsigned long bitness;
+	unsigned long pagesize;
 } msg_connect_args_t;
 
 typedef struct msg_connect_ack_args_s {
 	unsigned short bitness_ok;
 	unsigned short pagesize_ok;
-	long page_count;
+	unsigned long page_count;
 } msg_connect_ack_args_t;
 
 typedef struct msg_lockpage_args_s {
-	long page_id;
+	unsigned long page_id;
 	unsigned short right_access;
 } msg_lockpage_args_t;
 
 typedef struct msg_invalidate_args_s {
-	long page_id;
+	unsigned long page_id;
 } msg_invalidate_args_t;
 
 typedef struct msg_invalidate_ack_args_s {
-	long page_id;
+	unsigned long page_id;
 } msg_invalidate_ack_args_t;
 
 typedef struct msg_givepage_args_s {
-	long page_id;
+	unsigned long page_id;
 	void* data;
 } msg_givepage_args_t;
 

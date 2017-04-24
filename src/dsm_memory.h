@@ -1,6 +1,8 @@
 #ifndef DSM_MEMORY_H
 #define DSM_MEMORY_H
 
+#include "list.h"
+
 #define READERS_INITIAL_CAPACITY 4
 #define MASTER_NODE -8
 

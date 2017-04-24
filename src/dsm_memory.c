@@ -3,12 +3,11 @@
 
 #include "dsm_memory.h"
 #include "dsm_util.h"
-#include "list.h"
 
-int slave_equals(void* slave1, void* slave2)
+int slave_equals(void *slave1, void *slave2)
 {
-	int fd_slave1 = (int) *slave1;
-	int fd_slave2  = (int) *slave2;
+	int fd_slave1 = *(int *)slave1;
+	int fd_slave2  = *(int *)slave2;
 
 	if(fd_slave1 == fd_slave2)
 		return 1;
@@ -18,7 +17,7 @@ int slave_equals(void* slave1, void* slave2)
 
 int request_equals(void* slave1, void* slave2)
 {
-	if(elem1 == elem2)
+	if(slave1 == slave2)
 		return 1;
 	else
 		return 0;
@@ -62,7 +61,7 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 				error("Could not allocate memory (malloc)\n");
 			}
 
-			list_init(dsm_mem->pages[i].requests_queue, sizeof(dsm_request_page_t), request_equals, NULL);
+			list_init(dsm_mem->pages[i].requests_queue, sizeof(dsm_page_request_t), request_equals, NULL);
 			list_init(dsm_mem->pages[i].current_readers_queue, sizeof(int), slave_equals, NULL);
 
 			dsm_mem->pages[i].write_owner = MASTER_NODE;
@@ -76,34 +75,9 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 	unsigned int i;
 
 	for (i = 0; i < dsm_mem->page_count; i++) {
-		free(dsm_mem->pages[i].nodes_reading);
+		list_destroy(dsm_mem->pages[i].requests_queue);
+		list_destroy(dsm_mem->pages[i].current_readers_queue);
 	}
 	
 	free(dsm_mem->pages);
-}
-
-/* FUNCTIONS USED BY MASTER NODE ONLY */
-
-static void check_readers_capacity(dsm_page_t *dsm_page)
-{
-	if(dsm_page->readers_count >= dsm_page->readers_capacity) {
-		dsm_page->readers_capacity *= 2;
-		dsm_page->nodes_reading = (int *) realloc(dsm_page->nodes_reading, sizeof(int)*dsm_page->readers_capacity);
-		if (dsm_page->nodes_reading == NULL) {
-			error("Could not allocate memory (realloc)\n");
-		}
-	}
-}
-
-int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
-{
-	if(page_idx > (dsm_mem->page_count - 1)) {
-		log("Wrong page index\n");
-		return -1;
-	}
-	check_readers_capacity(&dsm_mem->pages[page_idx]);
-
-	dsm_mem->pages[page_idx].nodes_reading[dsm_mem->pages[page_idx].readers_count++] = node_fd;
-
-	return 0;
 }

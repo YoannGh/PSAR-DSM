@@ -9,14 +9,14 @@ typedef void (*freeFunction)(void *);
  
 typedef struct listNode_s {
 	void *data;
-	struct listNode *next;
+	struct listNode_s *next;
 } listNode_t;
  
 typedef struct list_s {
 	int length;
 	int elementSize;
-	listNode *head;
-	listNode *tail;
+	listNode_t *head;
+	listNode_t *tail;
 	equalsFunction equalsFn;
 	freeFunction freeFn;
 } list_t;

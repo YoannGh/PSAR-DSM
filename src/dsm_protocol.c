@@ -78,7 +78,7 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 			break;
 		case GIVEPAGE:
 			msg->args.givepage_args.page_id = binn_object_int32(obj, DSM_MSG_KEY_PAGEID);
-			msg->args.givepage_args.page_id = binn_object_str(obj, DSM_MSG_KEY_DATA);
+			msg->args.givepage_args.data = binn_object_str(obj, DSM_MSG_KEY_DATA);
 			break;
 		case TERMINATE:
 			break;
