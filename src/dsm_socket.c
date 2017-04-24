@@ -194,6 +194,7 @@ static int msg_listener_start(dsm_t *dsm)
 						/* Messages must be free'd by their handlers */
 						msg->from_sockfd = i;
 						dsm_dispatch_message(msg);
+						free(msg);
 					}
 				}
 			}

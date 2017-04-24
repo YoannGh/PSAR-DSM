@@ -3,6 +3,26 @@
 
 #include "dsm_memory.h"
 #include "dsm_util.h"
+#include "list.h"
+
+int slave_equals(void* slave1, void* slave2)
+{
+	int fd_slave1 = (int) *slave1;
+	int fd_slave2  = (int) *slave2;
+
+	if(fd_slave1 == fd_slave2)
+		return 1;
+	else
+		return 0;
+}
+
+int request_equals(void* slave1, void* slave2)
+{
+	if(elem1 == elem2)
+		return 1;
+	else
+		return 0;
+}
 
 void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
                     unsigned short is_master)
@@ -32,14 +52,21 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 	for (i = 0; i < page_count; i++) {
 		dsm_mem->pages[i].protection = prot;
 		if (is_master) {
-			dsm_mem->pages[i].write_owner = MASTER_NODE;
-			dsm_mem->pages[i].readers_count = 1;
-			dsm_mem->pages[i].readers_capacity = READERS_INITIAL_CAPACITY;
-			dsm_mem->pages[i].nodes_reading = (int *) calloc(READERS_INITIAL_CAPACITY, sizeof(int));
-			if (dsm_mem->pages[i].nodes_reading == NULL) {
-				error("Could not allocate memory (realloc)\n");
+			dsm_mem->pages[i].requests_queue = (list_t *) malloc(sizeof(list_t));
+			if (dsm_mem->pages[i].requests_queue == NULL) {
+				error("Could not allocate memory (malloc)\n");
 			}
-			dsm_mem->pages[i].nodes_reading[0] = MASTER_NODE;
+
+			dsm_mem->pages[i].current_readers_queue = (list_t *) malloc(sizeof(list_t));
+			if (dsm_mem->pages[i].current_readers_queue == NULL) {
+				error("Could not allocate memory (malloc)\n");
+			}
+
+			list_init(dsm_mem->pages[i].requests_queue, sizeof(dsm_request_page_t), request_equals, NULL);
+			list_init(dsm_mem->pages[i].current_readers_queue, sizeof(int), slave_equals, NULL);
+
+			dsm_mem->pages[i].write_owner = MASTER_NODE;
+			dsm_mem->pages[i].invalidate_sent = 0;
 		}
 	}
 }

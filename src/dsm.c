@@ -10,7 +10,7 @@
 #include "dsm_socket.h"
 #include "dsm_util.h"
 
-static dsm_t *dsm_g;
+dsm_t *dsm_g;
 
 static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 {

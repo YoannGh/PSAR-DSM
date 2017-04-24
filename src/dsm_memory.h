@@ -4,14 +4,23 @@
 #define READERS_INITIAL_CAPACITY 4
 #define MASTER_NODE -8
 
+typedef struct dsm_page_request_s
+{
+	int sockfd;
+	int rights;
+} dsm_page_request_t;
+
 typedef struct dsm_page_s
 {
 	int protection;
+	pthread_mutex_t mutex_page;
+	pthread_cond_t cond_not_uptodate;
+	unsigned short uptodate;
 	/* Following fields are used by master node only */
 	int write_owner;
-	int readers_count;
-	int readers_capacity;
-	int *nodes_reading;
+	list_t *requests_queue;
+	list_t *current_readers_queue;
+	unsigned short invalidate_sent;
 } dsm_page_t;
 
 typedef struct dsm_memory_s
