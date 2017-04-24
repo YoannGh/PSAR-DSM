@@ -16,8 +16,8 @@ typedef struct dsm_page_s
 	pthread_mutex_t mutex_page;
 	pthread_cond_t cond_not_uptodate;
 	unsigned short uptodate;
-	/* Following fields are used by master node only */
 	int write_owner;
+	/* Following fields are used by master node only */
 	list_t *requests_queue;
 	list_t *current_readers_queue;
 	unsigned short invalidate_sent;
