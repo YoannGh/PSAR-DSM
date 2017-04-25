@@ -6,12 +6,12 @@
 
 
 #include "dsm.h"
+#include "dsm_core.h"
 #include "dsm_memory.h"
 #include "dsm_master.h"
 #include "dsm_protocol.h"
 #include "dsm_socket.h"
 #include "dsm_util.h"
-#include "dsm_core.h"
 
 dsm_t *dsm_g;
 
@@ -59,6 +59,10 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 	}
 
 	dsm->master->sockfd = dsm_socket_connect(dsm->master->host, dsm->master->port);
+
+	for(unsigned int i = 0; i < page_count; i++) {
+		dsm->mem->pages[i].write_owner = dsm->master->sockfd;
+	}
 }
 
 /**
@@ -203,62 +207,50 @@ void *InitSlave(char *HostMaster, int port)
 	return dsm_g->mem->base_addr;
 }
 
-<<<<<<< HEAD
+void lock_read(void *addr)
+{
+	dsm_page_t *page;
+	page = get_page_from_addr(addr);
+	lock_page(page, PROT_READ);
+}
+
+void lock_write(void *addr)
+{
+	dsm_page_t *page;	
+	page = get_page_from_addr(addr);
+	lock_page(page, PROT_READ|PROT_WRITE);
+}
+
+
+void unlock_read(void *addr)
+{
+	dsm_page_t *page;
+	page = get_page_from_addr(addr);
+
+	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
+		error("unlock mutex_page");
+	}
+}
+
+
+void unlock_write(void *addr)
+{
+	dsm_page_t *page;	
+	page = get_page_from_addr(addr);
+	dsm_page_request_t req;
+	req.rights = PROT_READ|PROT_WRITE;
+	req.sockfd = dsm_g->master->sockfd;
+	satisfy_request(page, &req);
+
+	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
+		error("unlock mutex_page");
+	}
+}
+
 /**
 * \fn void QuitDSM(void)
 * \brief destroy and free the main dsm_t structure
 **/
-=======
-void lock_page(dsm_page_t *page, int rights)
-{
-	dsm_message_t msg_lockpage;
-	msg_lockpage.type = LOCKPAGE;
-
-	msg_lockpage_args_t la = {
-		.page_id = page->page_id,
-		.access_rights = rights 
-	};
-
-	msg_lockpage.lockpage_args = la;
-
-	if (dsm_send_msg(dsm_g->master->sockfd, &msg_lockpage) < 0) {
-		error("Send LOCK\n");
-	}
-
-	while( pthread_cond_wait(&page->cond_uptodate, &page->mutex_page) != 0 );
-}
-
-void lock_read(void *adr)
-{
-	dsm_page_t *page;	
-	page = get_page_from_addr(adr);
-	lock_page(page, PROT_READ);
-}
-
-void lock_write(void *adr)
-{
-	dsm_page_t *page;	
-	page = get_page_from_addr(adr);
-	lock_page(page, PROT_WRITE);
-}
-
-/*
-void unlock_read(void *adr)
-{
-
-}
-*/
-
-void unlock_write(void *adr)
-{
-	dsm_page_t *page;	
-	page = get_page_from_addr(adr);
-	dsm_page_request_t req;
-	req.rights = PROT_WRITE;
-	req.sockfd = dsm_g->master->sockfd;
-	satisfy_request(page, &req);
-}
->>>>>>> algo
 
 void QuitDSM(void)
 {

@@ -1,19 +1,22 @@
 CC       = gcc
-# compiling flags here
-CFLAGS   = -Wall -Wextra -std=c99 -D_GNU_SOURCE -DDEBUG
-
 LINKER   = gcc
-# linking flags here
-LFLAGS   = -lpthread
+AR       = ar
 
 # change these to proper directories where each file should be
 SRCDIR   = src
 INCDIR   = src
 OBJDIR   = obj
-BINDIR   = bin
+LIBDIR   = lib
 TESTDIR	 = test
 
-BIN_NAME = dsm
+LIB_NAME = dsm-psar
+
+# compiling flags here
+CFLAGS   = -Wall -Wextra -Wno-unused-parameter -std=c99 -fPIC -D_GNU_SOURCE -DDEBUG
+# linking flags here
+LFLAGS   = -I$(INCDIR) -L$(LIBDIR) -lpthread
+ARFLAGS  = -cvq
+SOFLAGS  = -shared -Wl,-soname,$(LIB_NAME).so
 
 TEST1_NAME = test_dsm_init_master
 TEST2_NAME = test_dsm_init_slave
@@ -25,26 +28,38 @@ RM        = rm -f
 RMDIR     = rmdir
 MKDIR_P   = mkdir -p
 
-all: out_directories tests
-
-$(BINDIR)/$(BIN_NAME): $(OBJDIR)/$(BIN_NAME).o
-	$(LINKER) $(LFLAGS) -o $@ $^
+all: out_directories lib tests
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
+.PHONY: lib
+lib: out_directories libstatic libdynamic
+
+.PHONY: libstatic
+libstatic: out_directories $(LIBDIR)/lib$(LIB_NAME).a
+
+.PHONY: libdynamic
+libdynamic: out_directories $(LIBDIR)/lib$(LIB_NAME).so
+
+$(LIBDIR)/lib$(LIB_NAME).a: $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
+	$(AR) $(ARFLAGS) $@ $^
+
+$(LIBDIR)/lib$(LIB_NAME).so: $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
+	$(LINKER) $(SOFLAGS) -o $@ $^
+
 .PHONY: tests
-tests: $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME)
+tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME)
 
-$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_master.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
-	$(LINKER) $(LFLAGS) -o $@ $^
+$(TESTDIR)/$(TEST1_NAME): $(SRCDIR)/test_dsm_init_master.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
-$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_slave.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
-	$(LINKER) $(LFLAGS) -o $@ $^
+$(TESTDIR)/$(TEST2_NAME): $(SRCDIR)/test_dsm_init_slave.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 .PHONY: out_directories
 out_directories:
-	@$(MKDIR_P) $(OBJDIR) $(TESTDIR) $(BINDIR)
+	@$(MKDIR_P) $(OBJDIR) $(TESTDIR) $(LIBDIR)
 
 .PHONY: clean
 clean:
@@ -53,8 +68,9 @@ clean:
 
 .PHONY: remove
 remove: clean
-	@$(RM)		$(BINDIR)/$(BIN_NAME)
-	@$(RMDIR)	$(BINDIR)
+	@$(RM)		$(LIBDIR)/lib$(LIB_NAME).a
+	@$(RM)		$(LIBDIR)/lib$(LIB_NAME).so
+	@$(RMDIR)	$(LIBDIR)
 	@$(RM)		$(TESTDIR)/$(TEST1_NAME)
 	@$(RM)		$(TESTDIR)/$(TEST2_NAME)
 	@$(RMDIR)	$(TESTDIR)

@@ -2156,8 +2156,6 @@ BINN_PRIVATE BOOL copy_int_value(void *psource, void *pdest, int source_type, in
 /*************************************************************************************/
 
 BINN_PRIVATE BOOL copy_float_value(void *psource, void *pdest, int source_type, int dest_type) {
-	int var = dest_type;
-	var++;
 
   switch (source_type) {
   case BINN_FLOAT32:

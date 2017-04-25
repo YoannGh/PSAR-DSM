@@ -56,14 +56,20 @@ int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 int handle_invalidate_msg(int from, msg_invalidate_args_t *args)
 {
 	dsm_page_t *page;
+	void* page_base_addr;
 
 	page = get_page_from_id(args->page_id);
+	page_base_addr = dsm_g->mem->base_addr + (args->page_id * dsm_g->mem->pagesize);
 
 	if (pthread_mutex_lock(&page->mutex_page) < 0) {
 		error("lock mutex_page");
 	}
 
 	page->uptodate = 0;
+	if(mprotect(page_base_addr, dsm_g->mem->pagesize, PROT_NONE) < 0) {
+		error("error mprotect\n");
+	}
+	page->protection = PROT_NONE;
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
 		error("unlock mutex_page");
@@ -97,14 +103,25 @@ int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
 int handle_givepage_msg(int from, msg_givepage_args_t *args)
 {
 	dsm_page_t *page;
+	void* page_base_addr; 
 
 	page = get_page_from_id(args->page_id);
-
-	memcpy(dsm_g->mem->base_addr + (args->page_id * dsm_g->mem->pagesize), args->data, dsm_g->mem->pagesize);
-	page->protection = args->access_rights;
+	page_base_addr = dsm_g->mem->base_addr + (args->page_id * dsm_g->mem->pagesize);
 
 	if (pthread_mutex_lock(&page->mutex_page) < 0) {
 		error("lock mutex_page");
+	}
+
+	if(mprotect(page_base_addr, dsm_g->mem->pagesize, PROT_READ|PROT_WRITE) < 0) {
+		error("error mprotect\n");
+	}
+
+	memcpy(page_base_addr, args->data, dsm_g->mem->pagesize);
+	page->protection = args->access_rights;
+	page->write_owner = dsm_g->master->sockfd;
+
+	if(mprotect(page_base_addr, dsm_g->mem->pagesize, args->access_rights) < 0) {
+		error("error mprotect\n");
 	}
 
 	page->uptodate = 1;
@@ -115,6 +132,37 @@ int handle_givepage_msg(int from, msg_givepage_args_t *args)
 	}
 
 	return 0;
+}
+
+void lock_page(dsm_page_t *page, int rights)
+{
+
+	if (pthread_mutex_lock(&page->mutex_page) < 0) {
+		error("lock mutex_page");
+	}
+
+	if(!page->uptodate) {
+
+		dsm_message_t msg_lockpage;
+		msg_lockpage.type = LOCKPAGE;
+
+		msg_lockpage_args_t la = {
+			.page_id = page->page_id,
+			.access_rights = rights 
+		};
+
+		msg_lockpage.lockpage_args = la;
+
+		if (dsm_send_msg(dsm_g->master->sockfd, &msg_lockpage) < 0) {
+			error("Send LOCKPAGE\n");
+		}
+
+		while(!page->uptodate) {
+			if(pthread_cond_wait(&page->cond_uptodate, &page->mutex_page) < 0) {
+				error("error pthread_cond_wait\n");
+			}
+		}
+	}
 }
 
 int handle_terminate_msg(int from)
@@ -135,6 +183,20 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 	givepage_msg.givepage_args = ca;
 
 	return dsm_send_msg(req->sockfd, &givepage_msg);
+}
+
+static int send_invalidate(dsm_page_t *page, int to) 
+{
+	dsm_message_t msg_invalidate;
+	msg_invalidate.type = INVALIDATE;
+
+	msg_invalidate_args_t ia = {
+		.page_id = page->page_id,
+	};
+
+	msg_invalidate.invalidate_args = ia;
+
+	return dsm_send_msg(to, &msg_invalidate);
 }
 
 static void process_list_requests(dsm_page_t *page)
@@ -162,13 +224,14 @@ static void process_list_requests(dsm_page_t *page)
 		//Case it's a writer, if there is some readers we must ask them to invalidate
 		//their pages, and wait for all of them to realease their lock (ack they know the
 		//file is dirty)
-		else if (req->rights == PROT_WRITE)
+		else if (req->rights & PROT_WRITE)
 		{
 			if (!page->invalidate_sent)
 			{
+				send_invalidate(page, req->sockfd);
 				page->invalidate_sent = 1;
 			}
-			else if (page->current_readers_queue->head == NULL)
+			else if (page->current_readers_queue->length == 0)
 			{
 				page->invalidate_sent = 0;
 				page->write_owner = req->sockfd;

@@ -16,6 +16,8 @@ int handle_givepage_msg(int from, msg_givepage_args_t *args);
 
 int handle_terminate_msg(int from);
 
+void lock_page(dsm_page_t *page, int rights);
+
 int satisfy_request(dsm_page_t *page, dsm_page_request_t *req);
 
 #endif

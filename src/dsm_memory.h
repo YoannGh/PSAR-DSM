@@ -5,9 +5,6 @@
 
 #include "list.h"
 
-#define MASTER_NODE -8
-
-
 /**
  * \struct dsm_page_request_s
  * \brief structure representing a request for a page access
@@ -54,8 +51,6 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 	unsigned short is_master);
 
 void dsm_memory_destroy(dsm_memory_t *dsm_mem);
-
-//int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd);
 
 dsm_page_t* get_page_from_id(unsigned int page_id);
 

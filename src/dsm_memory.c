@@ -6,8 +6,6 @@
 #include "dsm.h"
 #include "dsm_util.h"
 
-
-
 extern dsm_t *dsm_g;
 
 int slave_equals(void *slave1, void *slave2)
@@ -78,7 +76,6 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 			list_init(dsm_mem->pages[i].requests_queue, sizeof(dsm_page_request_t), request_equals, NULL);
 			list_init(dsm_mem->pages[i].current_readers_queue, sizeof(int), slave_equals, NULL);
 
-			dsm_mem->pages[i].write_owner = MASTER_NODE;
 			dsm_mem->pages[i].invalidate_sent = 0;
 		}
 	}
@@ -107,13 +104,6 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 
 /* FUNCTIONS USED BY MASTER NODE ONLY */
 
-/**
-* \fn static void check_readers_capacity(dsm_page_t *dsm_page)
-* \brief check capacity of readers array and double its size if full
-* \param dsm_page the page to test capacity
-**/
-
-static void check_readers_capacity(dsm_page_t *dsm_page)
 dsm_page_t* get_page_from_id(unsigned int page_id)
 {
 	if(page_id > (dsm_g->mem->page_count - 1)) {
@@ -124,17 +114,14 @@ dsm_page_t* get_page_from_id(unsigned int page_id)
 	}
 }
 
-/**
-* \fn int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
-* \brief add a new reader to one page
-* \param dsm_mem the structure of memory where is the page
-* \param page_idx the index of the page to add the reader
-* \param node_fd the descriptor of the reader
-**/
-int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
 dsm_page_t* get_page_from_addr(void *addr)
 {
-	int diff = addr-(void*)(dsm_g->mem);
-	int page_id = (diff / dsm_g->mem->pagesize) + (diff%dsm_g->mem->pagesize) ? 0:1;
-	return &dsm_g->mem->pages[page_id];
+	unsigned int page_id = ((addr - dsm_g->mem->base_addr) / dsm_g->mem->pagesize);
+
+	if(page_id > (dsm_g->mem->page_count - 1)) {
+		log("Wrong page_id: %d\n", page_id);
+		return NULL;
+	} else {
+		return get_page_from_id(page_id);
+	}
 }

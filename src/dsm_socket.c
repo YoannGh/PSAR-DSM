@@ -140,9 +140,15 @@ int dsm_receive(int sockfd, void **buffer)
 	uint32_t msg_size;
 
 	bytesrecv = recv(sockfd, &msg_size, sizeof(uint32_t), 0);
-	if(bytesrecv != sizeof(uint32_t)) {
+	if(bytesrecv < 0) {
+		error("dsm_receive\n");
+	} else if(bytesrecv == 0) {
+		debug("dsm_receive 0 byte, node disconnected?\n");
+		return -1;
+	} else if(bytesrecv != sizeof(uint32_t)) {
 		error("Recv msg size\n");
 	}
+
 	msg_size = ntohl(msg_size);
 	if(msg_size > BUFFER_LEN) {
 		error("Malformed message too big, could cause buffer overflow\n");
