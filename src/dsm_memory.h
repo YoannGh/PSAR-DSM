@@ -4,9 +4,11 @@
 #define READERS_INITIAL_CAPACITY 4
 #define MASTER_NODE -8
 
+/
+
 typedef struct dsm_page_s
 {
-	int protection;
+	int protection; 
 	/* Following fields are used by master node only */
 	int write_owner;
 	int readers_count;

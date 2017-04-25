@@ -6,6 +6,10 @@
 #define DSM_MSG_KEY_PAGESIZE "pagesize"
 #define DSM_MSG_KEY_PAGECOUNT "pagecount"
 
+/**
+ * \enum dsm_msg_type_enum
+ * \brief enumeration of different messages type.
+ **/
 
 typedef enum dsm_msg_type_enum {
 	CONNECT,
@@ -19,24 +23,40 @@ typedef enum dsm_msg_type_enum {
 	ECHO_REPLY,
 } dsm_msg_type;
 
+
+/**
+ * \struct msg_connect_args_s
+ * \brief structure containing connect message arguments
+ **/
+
 typedef struct msg_connect_args_s {
-	long bitness;
-	long pagesize;
+	long bitness; /*!< 32 or 64 bit s architecture*/
+	long pagesize;/*!< the size of the page for the architecture*/
 } msg_connect_args_t;
 
+/**
+ * \struct msg_connect_ack_args_s
+ * \brief structure containing connect acks message arguments
+ **/
+
 typedef struct msg_connect_ack_args_s {
-	unsigned short bitness_ok;
-	unsigned short pagesize_ok;
-	long page_count;
+	unsigned short bitness_ok; /*!< flag, true if architecture match*/
+	unsigned short pagesize_ok;/*!<flage, true if page size match*/
+	long page_count; /*!< number of page on node*/
 } msg_connect_ack_args_t;
 
+/**
+ * \struct dsm_message_s
+ * \brief structure containing message data
+ **/
+
 typedef struct dsm_message_s {
-	int from_sockfd;
-	dsm_msg_type type;
+	int from_sockfd; /*!< src socket descriptor */
+	dsm_msg_type type; /*!< type of message sent */
 	union {
 		msg_connect_args_t connect_args;
 		msg_connect_ack_args_t connect_ack_args;
-	} args;
+	} args; /*!< union containing specific message type argument */
 	/* union all msg_args */
 } dsm_message_t;
 

@@ -1,0 +1,1963 @@
+\begin{theindex}
+
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/binn.\+c}, 
+		\hyperpage{17}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/binn.\+h}, 
+		\hyperpage{38}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm.\+c}, 
+		\hyperpage{79}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm.\+h}, 
+		\hyperpage{80}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+master.\+c}, 
+		\hyperpage{81}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+master.\+h}, 
+		\hyperpage{83}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+memory.\+c}, 
+		\hyperpage{84}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+memory.\+h}, 
+		\hyperpage{86}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+c}, 
+		\hyperpage{87}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+h}, 
+		\hyperpage{88}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+socket.\+c}, 
+		\hyperpage{91}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+socket.\+h}, 
+		\hyperpage{93}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+util.\+h}, 
+		\hyperpage{96}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/test\+\_\+dsm\+\_\+init\+\_\+master.\+c}, 
+		\hyperpage{97}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/test\+\_\+dsm\+\_\+init\+\_\+slave.\+c}, 
+		\hyperpage{97}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/test\+\_\+dsm\+\_\+protocol.\+c}, 
+		\hyperpage{98}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/test\+\_\+dsm\+\_\+socket\+\_\+client.\+c}, 
+		\hyperpage{98}
+  \item {/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/test\+\_\+dsm\+\_\+socket\+\_\+serv.\+c}, 
+		\hyperpage{99}
+
+  \indexspace
+
+  \item {A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {A\+P\+I\+E\+N\+T\+RY}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {Add\+Value}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {Advance\+Data\+Pos}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {alloc\+\_\+size}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {allocated}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {args}
+    \subitem {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+  \item {atoi64}
+    \subitem {binn.\+c}, \hyperpage{22}
+
+  \indexspace
+
+  \item {B\+A\+R\+R\+I\+ER}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {B\+I\+N\+N\+\_\+\+B\+L\+OB}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {B\+I\+N\+N\+\_\+\+B\+MP}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {B\+I\+N\+N\+\_\+\+B\+O\+OL}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {B\+I\+N\+N\+\_\+\+C\+SS}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {B\+I\+N\+N\+\_\+\+C\+U\+R\+R\+E\+N\+C\+Y\+S\+TR}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+C\+U\+R\+R\+E\+N\+CY}
+    \subitem {binn.\+h}, \hyperpage{45}
+  \item {B\+I\+N\+N\+\_\+\+D\+A\+T\+E\+T\+I\+ME}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+D\+A\+TE}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+D\+E\+C\+I\+M\+AL}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+S\+TR}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+D\+O\+U\+B\+LE}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+L\+SE}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+I\+NN}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+L\+OB}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+O\+OL}
+    \subitem {binn.\+h}, \hyperpage{46}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+F\+L\+O\+AT}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+I\+NT}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+N\+O\+NE}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+N\+U\+LL}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+S\+T\+R\+I\+NG}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+L\+O\+A\+T32}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+L\+O\+A\+T64}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+F\+L\+O\+AT}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+G\+IF}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+H\+T\+ML}
+    \subitem {binn.\+h}, \hyperpage{47}
+  \item {B\+I\+N\+N\+\_\+\+I\+N\+T16}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+I\+N\+T32}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+I\+N\+T64}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+I\+N\+T8}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+J\+A\+V\+A\+S\+C\+R\+I\+PT}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+J\+P\+EG}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+J\+S\+ON}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+L\+I\+ST}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {B\+I\+N\+N\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+A\+SK}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {B\+I\+N\+N\+\_\+\+M\+AP}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {B\+I\+N\+N\+\_\+\+N\+U\+LL}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {B\+I\+N\+N\+\_\+\+O\+B\+J\+E\+CT}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {B\+I\+N\+N\+\_\+\+P\+NG}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {B\+I\+N\+N\+\_\+\+S\+C\+H\+AR}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {B\+I\+N\+N\+\_\+\+S\+I\+G\+N\+E\+D\+\_\+\+I\+NT}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+I\+N\+G\+L\+E\+\_\+\+S\+TR}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+I\+N\+G\+LE}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+A\+T\+IC}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+B\+L\+OB}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+B\+Y\+TE}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+ER}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+D\+W\+O\+RD}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+H\+A\+S\+\_\+\+M\+O\+RE}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+A\+S\+K16}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+A\+SK}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+AX}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+IN}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+N\+O\+B\+Y\+T\+ES}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+Q\+W\+O\+RD}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+S\+T\+R\+I\+NG}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+I\+R\+T\+U\+AL}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+W\+O\+RD}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+R\+I\+NG}
+    \subitem {binn.\+h}, \hyperpage{52}
+  \item {B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {B\+I\+N\+N\+\_\+\+T\+I\+ME}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+T\+R\+UE}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K16}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+SK}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+C\+H\+AR}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+I\+N\+T16}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+I\+N\+T32}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+I\+N\+T64}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+I\+N\+T8}
+    \subitem {binn.\+h}, \hyperpage{53}
+  \item {B\+I\+N\+N\+\_\+\+U\+N\+S\+I\+G\+N\+E\+D\+\_\+\+I\+NT}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {B\+I\+N\+N\+\_\+\+X\+ML}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {B\+O\+OL}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{94}
+  \item {base\+\_\+addr}
+    \subitem {dsm\+\_\+memory\+\_\+s}, \hyperpage{11}
+  \item {binn}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn.\+c}
+    \subitem {Add\+Value}, \hyperpage{22}
+    \subitem {Advance\+Data\+Pos}, \hyperpage{22}
+    \subitem {atoi64}, \hyperpage{22}
+    \subitem {B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}, \hyperpage{21}
+    \subitem {B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}, \hyperpage{21}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}, \hyperpage{21}
+    \subitem {binn\+\_\+add\+\_\+value}, \hyperpage{22}
+    \subitem {binn\+\_\+alloc\+\_\+item}, \hyperpage{22}
+    \subitem {binn\+\_\+buf\+\_\+count}, \hyperpage{22}
+    \subitem {binn\+\_\+buf\+\_\+size}, \hyperpage{22}
+    \subitem {binn\+\_\+buf\+\_\+type}, \hyperpage{23}
+    \subitem {binn\+\_\+count}, \hyperpage{23}
+    \subitem {binn\+\_\+create}, \hyperpage{23}
+    \subitem {binn\+\_\+create\+\_\+list}, \hyperpage{23}
+    \subitem {binn\+\_\+create\+\_\+map}, \hyperpage{23}
+    \subitem {binn\+\_\+create\+\_\+object}, \hyperpage{23}
+    \subitem {binn\+\_\+create\+\_\+type}, \hyperpage{23}
+    \subitem {binn\+\_\+free}, \hyperpage{23}
+    \subitem {binn\+\_\+get\+\_\+bool}, \hyperpage{23}
+    \subitem {binn\+\_\+get\+\_\+double}, \hyperpage{23}
+    \subitem {binn\+\_\+get\+\_\+int32}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+int64}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+ptr\+\_\+type}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+read\+\_\+storage}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+str}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+type\+\_\+info}, \hyperpage{24}
+    \subitem {binn\+\_\+get\+\_\+write\+\_\+storage}, \hyperpage{24}
+    \subitem {binn\+\_\+is\+\_\+container}, \hyperpage{24}
+    \subitem {binn\+\_\+is\+\_\+struct}, \hyperpage{24}
+    \subitem {binn\+\_\+is\+\_\+valid}, \hyperpage{24}
+    \subitem {binn\+\_\+iter\+\_\+init}, \hyperpage{25}
+    \subitem {binn\+\_\+list}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+add}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+new}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+raw}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+blob}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+bool}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+double}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+float}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+get}, \hyperpage{25}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+value}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+int16}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+int32}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+int64}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+int8}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+list}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+map}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+next}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+next\+\_\+value}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+null}, \hyperpage{26}
+    \subitem {binn\+\_\+list\+\_\+object}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+read}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+read\+\_\+next}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+str}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+uint16}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+uint32}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+uint64}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+uint8}, \hyperpage{27}
+    \subitem {binn\+\_\+list\+\_\+value}, \hyperpage{27}
+    \subitem {binn\+\_\+load}, \hyperpage{27}
+    \subitem {binn\+\_\+malloc}, \hyperpage{28}
+    \subitem {binn\+\_\+map}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+blob}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+bool}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+double}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+float}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+get}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+pair}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+value}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+int16}, \hyperpage{28}
+    \subitem {binn\+\_\+map\+\_\+int32}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+int64}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+int8}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+list}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+map}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+next}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+next\+\_\+value}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+null}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+object}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+pair}, \hyperpage{29}
+    \subitem {binn\+\_\+map\+\_\+read}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+read\+\_\+next}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+read\+\_\+pair}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+set}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+new}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+raw}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+str}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+uint16}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+uint32}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+uint64}, \hyperpage{30}
+    \subitem {binn\+\_\+map\+\_\+uint8}, \hyperpage{31}
+    \subitem {binn\+\_\+map\+\_\+value}, \hyperpage{31}
+    \subitem {binn\+\_\+memdup}, \hyperpage{31}
+    \subitem {binn\+\_\+new}, \hyperpage{31}
+    \subitem {binn\+\_\+object}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+blob}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+bool}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+double}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+float}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+get}, \hyperpage{31}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+pair}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+value}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+int16}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+int32}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+int64}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+int8}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+list}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+map}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+next}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+next\+\_\+value}, \hyperpage{32}
+    \subitem {binn\+\_\+object\+\_\+null}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+object}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+pair}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+read}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+read\+\_\+next}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+read\+\_\+pair}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+set}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+new}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+raw}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+str}, \hyperpage{33}
+    \subitem {binn\+\_\+object\+\_\+uint16}, \hyperpage{34}
+    \subitem {binn\+\_\+object\+\_\+uint32}, \hyperpage{34}
+    \subitem {binn\+\_\+object\+\_\+uint64}, \hyperpage{34}
+    \subitem {binn\+\_\+object\+\_\+uint8}, \hyperpage{34}
+    \subitem {binn\+\_\+object\+\_\+value}, \hyperpage{34}
+    \subitem {binn\+\_\+open}, \hyperpage{34}
+    \subitem {binn\+\_\+ptr}, \hyperpage{34}
+    \subitem {binn\+\_\+read\+\_\+next\+\_\+pair}, \hyperpage{34}
+    \subitem {binn\+\_\+read\+\_\+pair}, \hyperpage{34}
+    \subitem {binn\+\_\+release}, \hyperpage{34}
+    \subitem {binn\+\_\+save\+\_\+header}, \hyperpage{35}
+    \subitem {binn\+\_\+set\+\_\+alloc\+\_\+functions}, \hyperpage{35}
+    \subitem {binn\+\_\+set\+\_\+blob}, \hyperpage{35}
+    \subitem {binn\+\_\+set\+\_\+string}, \hyperpage{35}
+    \subitem {binn\+\_\+size}, \hyperpage{35}
+    \subitem {binn\+\_\+type}, \hyperpage{35}
+    \subitem {binn\+\_\+value}, \hyperpage{35}
+    \subitem {C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}, \hyperpage{21}
+    \subitem {Calc\+Allocation}, \hyperpage{35}
+    \subitem {check\+\_\+alloc\+\_\+functions}, \hyperpage{35}
+    \subitem {Check\+Allocation}, \hyperpage{35}
+    \subitem {compress\+\_\+int}, \hyperpage{36}
+    \subitem {copy\+\_\+float\+\_\+value}, \hyperpage{36}
+    \subitem {copy\+\_\+int\+\_\+value}, \hyperpage{36}
+    \subitem {copy\+\_\+raw\+\_\+value}, \hyperpage{36}
+    \subitem {copy\+\_\+value}, \hyperpage{36}
+    \subitem {free\+\_\+fn}, \hyperpage{38}
+    \subitem {frombe16}, \hyperpage{21}
+    \subitem {frombe32}, \hyperpage{21}
+    \subitem {frombe64}, \hyperpage{21}
+    \subitem {get\+\_\+storage\+\_\+size}, \hyperpage{36}
+    \subitem {Get\+Value}, \hyperpage{36}
+    \subitem {Get\+Write\+Converted\+Data}, \hyperpage{36}
+    \subitem {int\+\_\+type}, \hyperpage{36}
+    \subitem {is\+\_\+bool\+\_\+str}, \hyperpage{37}
+    \subitem {is\+\_\+float}, \hyperpage{37}
+    \subitem {is\+\_\+integer}, \hyperpage{37}
+    \subitem {Is\+Valid\+Binn\+Header}, \hyperpage{37}
+    \subitem {local\+\_\+value}, \hyperpage{38}
+    \subitem {M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}, 
+		\hyperpage{21}
+    \subitem {M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}, 
+		\hyperpage{21}
+    \subitem {malloc\+\_\+fn}, \hyperpage{38}
+    \subitem {realloc\+\_\+fn}, \hyperpage{38}
+    \subitem {round}, \hyperpage{21}
+    \subitem {Search\+For\+ID}, \hyperpage{37}
+    \subitem {Search\+For\+Key}, \hyperpage{37}
+    \subitem {store\+\_\+value}, \hyperpage{37}
+    \subitem {stricmp}, \hyperpage{21}
+    \subitem {strlen2}, \hyperpage{37}
+    \subitem {strnicmp}, \hyperpage{22}
+    \subitem {tobe16}, \hyperpage{37}
+    \subitem {tobe32}, \hyperpage{37}
+    \subitem {tobe64}, \hyperpage{38}
+    \subitem {type\+\_\+family}, \hyperpage{38}
+    \subitem {U\+N\+U\+S\+ED}, \hyperpage{22}
+    \subitem {zero\+\_\+value}, \hyperpage{38}
+  \item {binn.\+h}
+    \subitem {A\+L\+W\+A\+Y\+S\+\_\+\+I\+N\+L\+I\+NE}, \hyperpage{45}
+    \subitem {A\+P\+I\+E\+N\+T\+RY}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+B\+L\+OB}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+B\+MP}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+B\+O\+OL}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+C\+SS}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+C\+U\+R\+R\+E\+N\+C\+Y\+S\+TR}, 
+		\hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+C\+U\+R\+R\+E\+N\+CY}, \hyperpage{45}
+    \subitem {B\+I\+N\+N\+\_\+\+D\+A\+T\+E\+T\+I\+ME}, \hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+D\+A\+TE}, \hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+D\+E\+C\+I\+M\+AL}, \hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+S\+TR}, 
+		\hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+D\+O\+U\+B\+LE}, \hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+L\+SE}, \hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+I\+NN}, 
+		\hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+L\+OB}, 
+		\hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+B\+O\+OL}, 
+		\hyperpage{46}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+F\+L\+O\+AT}, 
+		\hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+I\+NT}, 
+		\hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+N\+O\+NE}, 
+		\hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+N\+U\+LL}, 
+		\hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+A\+M\+I\+L\+Y\+\_\+\+S\+T\+R\+I\+NG}, 
+		\hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+L\+O\+A\+T32}, \hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+L\+O\+A\+T64}, \hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+F\+L\+O\+AT}, \hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+G\+IF}, \hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+H\+T\+ML}, \hyperpage{47}
+    \subitem {B\+I\+N\+N\+\_\+\+I\+N\+T16}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+I\+N\+T32}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+I\+N\+T64}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+I\+N\+T8}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+J\+A\+V\+A\+S\+C\+R\+I\+PT}, 
+		\hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+J\+P\+EG}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+J\+S\+ON}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+L\+I\+ST}, \hyperpage{48}
+    \subitem {B\+I\+N\+N\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+A\+SK}, 
+		\hyperpage{49}
+    \subitem {B\+I\+N\+N\+\_\+\+M\+AP}, \hyperpage{49}
+    \subitem {B\+I\+N\+N\+\_\+\+N\+U\+LL}, \hyperpage{49}
+    \subitem {B\+I\+N\+N\+\_\+\+O\+B\+J\+E\+CT}, \hyperpage{49}
+    \subitem {B\+I\+N\+N\+\_\+\+P\+NG}, \hyperpage{49}
+    \subitem {B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE}, \hyperpage{50}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+C\+H\+AR}, \hyperpage{50}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+I\+G\+N\+E\+D\+\_\+\+I\+NT}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+I\+N\+G\+L\+E\+\_\+\+S\+TR}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+I\+N\+G\+LE}, \hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+A\+T\+IC}, \hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+B\+L\+OB}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+B\+Y\+TE}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+ER}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+D\+W\+O\+RD}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+H\+A\+S\+\_\+\+M\+O\+RE}, 
+		\hyperpage{51}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+A\+S\+K16}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+A\+SK}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+AX}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+M\+IN}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+N\+O\+B\+Y\+T\+ES}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+Q\+W\+O\+RD}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+S\+T\+R\+I\+NG}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+I\+R\+T\+U\+AL}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+W\+O\+RD}, 
+		\hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+S\+T\+R\+I\+NG}, \hyperpage{52}
+    \subitem {B\+I\+N\+N\+\_\+\+T\+I\+ME}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+T\+R\+A\+N\+S\+I\+E\+NT}, 
+		\hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+T\+R\+UE}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K16}, 
+		\hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+SK}, 
+		\hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+C\+H\+AR}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+I\+N\+T16}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+I\+N\+T32}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+I\+N\+T64}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+I\+N\+T8}, \hyperpage{53}
+    \subitem {B\+I\+N\+N\+\_\+\+U\+N\+S\+I\+G\+N\+E\+D\+\_\+\+I\+NT}, 
+		\hyperpage{54}
+    \subitem {B\+I\+N\+N\+\_\+\+X\+ML}, \hyperpage{54}
+    \subitem {B\+O\+OL}, \hyperpage{55}
+    \subitem {binn}, \hyperpage{55}
+    \subitem {binn\+\_\+blob}, \hyperpage{55}
+    \subitem {binn\+\_\+bool}, \hyperpage{55}
+    \subitem {binn\+\_\+count}, \hyperpage{55}
+    \subitem {binn\+\_\+create}, \hyperpage{55}
+    \subitem {binn\+\_\+create\+\_\+list}, \hyperpage{56}
+    \subitem {binn\+\_\+create\+\_\+map}, \hyperpage{56}
+    \subitem {binn\+\_\+create\+\_\+object}, \hyperpage{56}
+    \subitem {binn\+\_\+create\+\_\+type}, \hyperpage{56}
+    \subitem {binn\+\_\+double}, \hyperpage{56}
+    \subitem {binn\+\_\+float}, \hyperpage{56}
+    \subitem {binn\+\_\+free}, \hyperpage{56}
+    \subitem {binn\+\_\+get\+\_\+bool}, \hyperpage{56}
+    \subitem {binn\+\_\+get\+\_\+double}, \hyperpage{56}
+    \subitem {binn\+\_\+get\+\_\+int32}, \hyperpage{56}
+    \subitem {binn\+\_\+get\+\_\+int64}, \hyperpage{57}
+    \subitem {binn\+\_\+get\+\_\+read\+\_\+storage}, \hyperpage{57}
+    \subitem {binn\+\_\+get\+\_\+str}, \hyperpage{57}
+    \subitem {binn\+\_\+get\+\_\+type\+\_\+info}, \hyperpage{57}
+    \subitem {binn\+\_\+get\+\_\+write\+\_\+storage}, \hyperpage{57}
+    \subitem {binn\+\_\+int16}, \hyperpage{57}
+    \subitem {binn\+\_\+int32}, \hyperpage{57}
+    \subitem {binn\+\_\+int64}, \hyperpage{57}
+    \subitem {binn\+\_\+int8}, \hyperpage{57}
+    \subitem {binn\+\_\+is\+\_\+container}, \hyperpage{57}
+    \subitem {binn\+\_\+is\+\_\+struct}, \hyperpage{58}
+    \subitem {binn\+\_\+is\+\_\+valid}, \hyperpage{58}
+    \subitem {binn\+\_\+is\+\_\+writable}, \hyperpage{48}
+    \subitem {binn\+\_\+iter}, \hyperpage{55}
+    \subitem {binn\+\_\+iter\+\_\+init}, \hyperpage{58}
+    \subitem {binn\+\_\+list}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+blob}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+bool}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+double}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+float}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+int16}, \hyperpage{58}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+int32}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+int64}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+int8}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+list}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+map}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+new}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+null}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+object}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+str}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+uint16}, \hyperpage{59}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+uint32}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+uint64}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+uint8}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+add\+\_\+value}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+blob}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+bool}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+double}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+float}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+foreach}, \hyperpage{48}
+    \subitem {binn\+\_\+list\+\_\+get}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+blob}, \hyperpage{60}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+bool}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+double}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+float}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+int16}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+int32}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+int64}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+int8}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+list}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+map}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+object}, \hyperpage{61}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+str}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+uint16}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+uint32}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+uint64}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+uint8}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+get\+\_\+value}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+int16}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+int32}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+int64}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+int8}, \hyperpage{62}
+    \subitem {binn\+\_\+list\+\_\+list}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+map}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+next}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+next\+\_\+value}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+null}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+object}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+read}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+read\+\_\+next}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+str}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+uint16}, \hyperpage{63}
+    \subitem {binn\+\_\+list\+\_\+uint32}, \hyperpage{64}
+    \subitem {binn\+\_\+list\+\_\+uint64}, \hyperpage{64}
+    \subitem {binn\+\_\+list\+\_\+uint8}, \hyperpage{64}
+    \subitem {binn\+\_\+list\+\_\+value}, \hyperpage{64}
+    \subitem {binn\+\_\+load}, \hyperpage{64}
+    \subitem {binn\+\_\+map}, \hyperpage{64}
+    \subitem {binn\+\_\+map\+\_\+blob}, \hyperpage{64}
+    \subitem {binn\+\_\+map\+\_\+bool}, \hyperpage{64}
+    \subitem {binn\+\_\+map\+\_\+double}, \hyperpage{64}
+    \subitem {binn\+\_\+map\+\_\+float}, \hyperpage{64}
+    \subitem {binn\+\_\+map\+\_\+foreach}, \hyperpage{49}
+    \subitem {binn\+\_\+map\+\_\+get}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+blob}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+bool}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+double}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+float}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+int16}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+int32}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+int64}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+int8}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+list}, \hyperpage{65}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+map}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+object}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+pair}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+str}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+uint16}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+uint32}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+uint64}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+uint8}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+get\+\_\+value}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+int16}, \hyperpage{66}
+    \subitem {binn\+\_\+map\+\_\+int32}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+int64}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+int8}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+list}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+map}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+next}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+next\+\_\+value}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+null}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+object}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+pair}, \hyperpage{67}
+    \subitem {binn\+\_\+map\+\_\+read}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+read\+\_\+next}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+read\+\_\+pair}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+blob}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+bool}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+double}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+float}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+int16}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+int32}, \hyperpage{68}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+int64}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+int8}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+list}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+map}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+new}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+null}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+object}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+str}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+uint16}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+uint32}, \hyperpage{69}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+uint64}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+uint8}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+set\+\_\+value}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+str}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+uint16}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+uint32}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+uint64}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+uint8}, \hyperpage{70}
+    \subitem {binn\+\_\+map\+\_\+value}, \hyperpage{70}
+    \subitem {binn\+\_\+mem\+\_\+free}, \hyperpage{55}
+    \subitem {binn\+\_\+new}, \hyperpage{70}
+    \subitem {binn\+\_\+null}, \hyperpage{71}
+    \subitem {binn\+\_\+object}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+blob}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+bool}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+double}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+float}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+foreach}, \hyperpage{49}
+    \subitem {binn\+\_\+object\+\_\+get}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+blob}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+bool}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+double}, \hyperpage{71}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+float}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+int16}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+int32}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+int64}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+int8}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+list}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+map}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+object}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+pair}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+str}, \hyperpage{72}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+uint16}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+uint32}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+uint64}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+uint8}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+get\+\_\+value}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+int16}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+int32}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+int64}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+int8}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+list}, \hyperpage{73}
+    \subitem {binn\+\_\+object\+\_\+map}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+next}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+next\+\_\+value}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+null}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+object}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+pair}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+read}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+read\+\_\+next}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+read\+\_\+pair}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+set}, \hyperpage{74}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+blob}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+bool}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+double}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+float}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+int16}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+int32}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+int64}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+int8}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+list}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+map}, \hyperpage{75}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+new}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+null}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+object}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+str}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+uint16}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+uint32}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+uint64}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+uint8}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+set\+\_\+value}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+str}, \hyperpage{76}
+    \subitem {binn\+\_\+object\+\_\+uint16}, \hyperpage{77}
+    \subitem {binn\+\_\+object\+\_\+uint32}, \hyperpage{77}
+    \subitem {binn\+\_\+object\+\_\+uint64}, \hyperpage{77}
+    \subitem {binn\+\_\+object\+\_\+uint8}, \hyperpage{77}
+    \subitem {binn\+\_\+object\+\_\+value}, \hyperpage{77}
+    \subitem {binn\+\_\+open}, \hyperpage{77}
+    \subitem {binn\+\_\+ptr}, \hyperpage{77}
+    \subitem {binn\+\_\+release}, \hyperpage{77}
+    \subitem {binn\+\_\+set\+\_\+alloc\+\_\+functions}, \hyperpage{77}
+    \subitem {binn\+\_\+set\+\_\+blob}, \hyperpage{77}
+    \subitem {binn\+\_\+set\+\_\+bool}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+double}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+float}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+int}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+int64}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+null}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+string}, \hyperpage{78}
+    \subitem {binn\+\_\+set\+\_\+uint}, \hyperpage{50}
+    \subitem {binn\+\_\+set\+\_\+uint64}, \hyperpage{51}
+    \subitem {binn\+\_\+size}, \hyperpage{78}
+    \subitem {binn\+\_\+string}, \hyperpage{78}
+    \subitem {binn\+\_\+type}, \hyperpage{78}
+    \subitem {binn\+\_\+uint16}, \hyperpage{78}
+    \subitem {binn\+\_\+uint32}, \hyperpage{78}
+    \subitem {binn\+\_\+uint64}, \hyperpage{78}
+    \subitem {binn\+\_\+uint8}, \hyperpage{78}
+    \subitem {binn\+\_\+value}, \hyperpage{78}
+    \subitem {F\+A\+L\+SE}, \hyperpage{54}
+    \subitem {I\+N\+L\+I\+NE}, \hyperpage{54}
+    \subitem {I\+N\+T64\+\_\+\+F\+O\+R\+M\+AT}, \hyperpage{54}
+    \subitem {I\+N\+T64\+\_\+\+H\+E\+X\+\_\+\+F\+O\+R\+M\+AT}, 
+		\hyperpage{54}
+    \subitem {I\+N\+V\+A\+L\+I\+D\+\_\+\+B\+I\+NN}, \hyperpage{54}
+    \subitem {int64}, \hyperpage{55}
+    \subitem {N\+U\+LL}, \hyperpage{54}
+    \subitem {T\+R\+UE}, \hyperpage{54}
+    \subitem {U\+I\+N\+T64\+\_\+\+F\+O\+R\+M\+AT}, \hyperpage{54}
+    \subitem {uint64}, \hyperpage{55}
+  \item {binn\+\_\+add\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {binn\+\_\+alloc\+\_\+item}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {binn\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+buf\+\_\+count}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {binn\+\_\+buf\+\_\+size}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {binn\+\_\+buf\+\_\+type}
+    \subitem {binn.\+c}, \hyperpage{23}
+  \item {binn\+\_\+count}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+create}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+create\+\_\+list}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+create\+\_\+map}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+create\+\_\+object}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+create\+\_\+type}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+free}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+get\+\_\+bool}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+get\+\_\+double}
+    \subitem {binn.\+c}, \hyperpage{23}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+get\+\_\+int32}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{56}
+  \item {binn\+\_\+get\+\_\+int64}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+get\+\_\+ptr\+\_\+type}
+    \subitem {binn.\+c}, \hyperpage{24}
+  \item {binn\+\_\+get\+\_\+read\+\_\+storage}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+get\+\_\+str}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+get\+\_\+type\+\_\+info}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+get\+\_\+write\+\_\+storage}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+is\+\_\+container}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{57}
+  \item {binn\+\_\+is\+\_\+struct}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+is\+\_\+valid}
+    \subitem {binn.\+c}, \hyperpage{24}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+is\+\_\+writable}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {binn\+\_\+iter}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+iter\+\_\+init}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+iter\+\_\+struct}, \hyperpage{5}
+    \subitem {count}, \hyperpage{5}
+    \subitem {current}, \hyperpage{5}
+    \subitem {plimit}, \hyperpage{5}
+    \subitem {pnext}, \hyperpage{5}
+    \subitem {type}, \hyperpage{6}
+  \item {binn\+\_\+list}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{58}
+  \item {binn\+\_\+list\+\_\+add\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+new}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+null}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+raw}
+    \subitem {binn.\+c}, \hyperpage{25}
+  \item {binn\+\_\+list\+\_\+add\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{59}
+  \item {binn\+\_\+list\+\_\+add\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+add\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+add\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+add\+\_\+value}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+blob}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+bool}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+double}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+float}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+foreach}
+    \subitem {binn.\+h}, \hyperpage{48}
+  \item {binn\+\_\+list\+\_\+get}
+    \subitem {binn.\+c}, \hyperpage{25}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+get\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{60}
+  \item {binn\+\_\+list\+\_\+get\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{61}
+  \item {binn\+\_\+list\+\_\+get\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+get\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+get\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+get\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+get\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+get\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+int16}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+int32}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+int64}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+int8}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{62}
+  \item {binn\+\_\+list\+\_\+list}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+map}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+next\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+null}
+    \subitem {binn.\+c}, \hyperpage{26}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+object}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+read}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+read\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+str}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+uint16}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{63}
+  \item {binn\+\_\+list\+\_\+uint32}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+list\+\_\+uint64}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+list\+\_\+uint8}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+list\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+load}
+    \subitem {binn.\+c}, \hyperpage{27}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+malloc}
+    \subitem {binn.\+c}, \hyperpage{28}
+  \item {binn\+\_\+map}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+map\+\_\+blob}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+map\+\_\+bool}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+map\+\_\+double}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+map\+\_\+float}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{64}
+  \item {binn\+\_\+map\+\_\+foreach}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {binn\+\_\+map\+\_\+get}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{65}
+  \item {binn\+\_\+map\+\_\+get\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+get\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+int16}
+    \subitem {binn.\+c}, \hyperpage{28}
+    \subitem {binn.\+h}, \hyperpage{66}
+  \item {binn\+\_\+map\+\_\+int32}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+int64}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+int8}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+list}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+map}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+next\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+null}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+object}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{29}
+    \subitem {binn.\+h}, \hyperpage{67}
+  \item {binn\+\_\+map\+\_\+read}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+read\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+read\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{68}
+  \item {binn\+\_\+map\+\_\+set\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+new}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+null}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+raw}
+    \subitem {binn.\+c}, \hyperpage{30}
+  \item {binn\+\_\+map\+\_\+set\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{69}
+  \item {binn\+\_\+map\+\_\+set\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+set\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+set\+\_\+value}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+str}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+uint16}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+uint32}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+uint64}
+    \subitem {binn.\+c}, \hyperpage{30}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+uint8}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+map\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+mem\+\_\+free}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {binn\+\_\+memdup}
+    \subitem {binn.\+c}, \hyperpage{31}
+  \item {binn\+\_\+new}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{70}
+  \item {binn\+\_\+null}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+blob}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+bool}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+double}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+float}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+foreach}
+    \subitem {binn.\+h}, \hyperpage{49}
+  \item {binn\+\_\+object\+\_\+get}
+    \subitem {binn.\+c}, \hyperpage{31}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+get\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+get\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+get\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{71}
+  \item {binn\+\_\+object\+\_\+get\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{72}
+  \item {binn\+\_\+object\+\_\+get\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+get\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+get\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+get\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+get\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+int16}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+int32}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+int64}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+int8}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+list}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{73}
+  \item {binn\+\_\+object\+\_\+map}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+next\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{32}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+null}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+object}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+read}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+read\+\_\+next}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+read\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+set}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{74}
+  \item {binn\+\_\+object\+\_\+set\+\_\+blob}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+int16}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+int32}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+int8}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+list}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+map}
+    \subitem {binn.\+h}, \hyperpage{75}
+  \item {binn\+\_\+object\+\_\+set\+\_\+new}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+null}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+object}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+raw}
+    \subitem {binn.\+c}, \hyperpage{33}
+  \item {binn\+\_\+object\+\_\+set\+\_\+str}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+set\+\_\+value}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+str}
+    \subitem {binn.\+c}, \hyperpage{33}
+    \subitem {binn.\+h}, \hyperpage{76}
+  \item {binn\+\_\+object\+\_\+uint16}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+object\+\_\+uint32}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+object\+\_\+uint64}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+object\+\_\+uint8}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+object\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+open}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+ptr}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+read\+\_\+next\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{34}
+  \item {binn\+\_\+read\+\_\+pair}
+    \subitem {binn.\+c}, \hyperpage{34}
+  \item {binn\+\_\+release}
+    \subitem {binn.\+c}, \hyperpage{34}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+save\+\_\+header}
+    \subitem {binn.\+c}, \hyperpage{35}
+  \item {binn\+\_\+set\+\_\+alloc\+\_\+functions}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+set\+\_\+blob}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{77}
+  \item {binn\+\_\+set\+\_\+bool}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+double}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+float}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+int}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+int64}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+null}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+string}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+set\+\_\+uint}
+    \subitem {binn.\+h}, \hyperpage{50}
+  \item {binn\+\_\+set\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{51}
+  \item {binn\+\_\+size}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+string}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+struct}, \hyperpage{6}
+    \subitem {alloc\+\_\+size}, \hyperpage{7}
+    \subitem {allocated}, \hyperpage{7}
+    \subitem {count}, \hyperpage{7}
+    \subitem {dirty}, \hyperpage{7}
+    \subitem {disable\+\_\+int\+\_\+compression}, \hyperpage{7}
+    \subitem {freefn}, \hyperpage{7}
+    \subitem {header}, \hyperpage{7}
+    \subitem {pbuf}, \hyperpage{7}
+    \subitem {pre\+\_\+allocated}, \hyperpage{7}
+    \subitem {ptr}, \hyperpage{8}
+    \subitem {size}, \hyperpage{8}
+    \subitem {type}, \hyperpage{8}
+    \subitem {used\+\_\+size}, \hyperpage{8}
+    \subitem {vbool}, \hyperpage{8}
+    \subitem {vchar}, \hyperpage{8}
+    \subitem {vdouble}, \hyperpage{8}
+    \subitem {vfloat}, \hyperpage{8}
+    \subitem {vint}, \hyperpage{8}
+    \subitem {vint16}, \hyperpage{8}
+    \subitem {vint32}, \hyperpage{9}
+    \subitem {vint64}, \hyperpage{9}
+    \subitem {vint8}, \hyperpage{9}
+    \subitem {vshort}, \hyperpage{9}
+    \subitem {vuchar}, \hyperpage{9}
+    \subitem {vuint}, \hyperpage{9}
+    \subitem {vuint16}, \hyperpage{9}
+    \subitem {vuint32}, \hyperpage{9}
+    \subitem {vuint64}, \hyperpage{9}
+    \subitem {vuint8}, \hyperpage{9}
+    \subitem {vushort}, \hyperpage{10}
+    \subitem {writable}, \hyperpage{10}
+  \item {binn\+\_\+type}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+uint16}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+uint32}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+uint64}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+uint8}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {binn\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{35}
+    \subitem {binn.\+h}, \hyperpage{78}
+  \item {bitness}
+    \subitem {msg\+\_\+connect\+\_\+args\+\_\+s}, \hyperpage{15}
+  \item {bitness\+\_\+ok}
+    \subitem {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}, 
+		\hyperpage{15}
+
+  \indexspace
+
+  \item {C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {C\+O\+N\+N\+E\+CT}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {Calc\+Allocation}
+    \subitem {binn.\+c}, \hyperpage{35}
+  \item {check\+\_\+alloc\+\_\+functions}
+    \subitem {binn.\+c}, \hyperpage{35}
+  \item {Check\+Allocation}
+    \subitem {binn.\+c}, \hyperpage{35}
+  \item {compress\+\_\+int}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {connect\+\_\+ack\+\_\+args}
+    \subitem {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+  \item {connect\+\_\+args}
+    \subitem {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+  \item {copy\+\_\+float\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {copy\+\_\+int\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {copy\+\_\+raw\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {copy\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {count}
+    \subitem {binn\+\_\+iter\+\_\+struct}, \hyperpage{5}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {current}
+    \subitem {binn\+\_\+iter\+\_\+struct}, \hyperpage{5}
+
+  \indexspace
+
+  \item {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{89}
+  \item {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{89}
+  \item {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{89}
+  \item {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{89}
+  \item {debug}
+    \subitem {dsm\+\_\+util.\+h}, \hyperpage{96}
+  \item {debug\+\_\+print}
+    \subitem {dsm\+\_\+util.\+h}, \hyperpage{96}
+  \item {dirty}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {disable\+\_\+int\+\_\+compression}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {dsm.\+c}
+    \subitem {Init\+Master}, \hyperpage{79}
+    \subitem {Init\+Slave}, \hyperpage{79}
+    \subitem {Quit\+D\+SM}, \hyperpage{80}
+  \item {dsm.\+h}
+    \subitem {dsm\+\_\+t}, \hyperpage{80}
+    \subitem {Init\+Master}, \hyperpage{80}
+    \subitem {Init\+Slave}, \hyperpage{81}
+    \subitem {Quit\+D\+SM}, \hyperpage{81}
+  \item {dsm\+\_\+add\+\_\+reader}
+    \subitem {dsm\+\_\+memory.\+c}, \hyperpage{85}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{86}
+  \item {dsm\+\_\+daemon\+\_\+msg\+\_\+listener}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{91}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{94}
+  \item {dsm\+\_\+dispatch\+\_\+message}
+    \subitem {dsm\+\_\+protocol.\+c}, \hyperpage{88}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {dsm\+\_\+master.\+c}
+    \subitem {dsm\+\_\+master\+\_\+destroy}, \hyperpage{82}
+    \subitem {dsm\+\_\+master\+\_\+init}, \hyperpage{83}
+  \item {dsm\+\_\+master.\+h}
+    \subitem {dsm\+\_\+master\+\_\+destroy}, \hyperpage{84}
+    \subitem {dsm\+\_\+master\+\_\+init}, \hyperpage{84}
+    \subitem {dsm\+\_\+master\+\_\+t}, \hyperpage{84}
+    \subitem {M\+A\+X\+\_\+\+N\+O\+D\+ES}, \hyperpage{84}
+  \item {dsm\+\_\+master\+\_\+destroy}
+    \subitem {dsm\+\_\+master.\+c}, \hyperpage{82}
+    \subitem {dsm\+\_\+master.\+h}, \hyperpage{84}
+  \item {dsm\+\_\+master\+\_\+init}
+    \subitem {dsm\+\_\+master.\+c}, \hyperpage{83}
+    \subitem {dsm\+\_\+master.\+h}, \hyperpage{84}
+  \item {dsm\+\_\+master\+\_\+s}, \hyperpage{10}
+    \subitem {host}, \hyperpage{10}
+    \subitem {port}, \hyperpage{10}
+    \subitem {sockfd}, \hyperpage{10}
+  \item {dsm\+\_\+master\+\_\+t}
+    \subitem {dsm\+\_\+master.\+h}, \hyperpage{84}
+  \item {dsm\+\_\+memory.\+c}
+    \subitem {dsm\+\_\+add\+\_\+reader}, \hyperpage{85}
+    \subitem {dsm\+\_\+memory\+\_\+destroy}, \hyperpage{85}
+    \subitem {dsm\+\_\+memory\+\_\+init}, \hyperpage{85}
+  \item {dsm\+\_\+memory.\+h}
+    \subitem {dsm\+\_\+add\+\_\+reader}, \hyperpage{86}
+    \subitem {dsm\+\_\+memory\+\_\+destroy}, \hyperpage{87}
+    \subitem {dsm\+\_\+memory\+\_\+init}, \hyperpage{87}
+    \subitem {dsm\+\_\+memory\+\_\+t}, \hyperpage{86}
+    \subitem {dsm\+\_\+page\+\_\+t}, \hyperpage{86}
+    \subitem {M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}, \hyperpage{86}
+    \subitem {R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}, 
+		\hyperpage{86}
+  \item {dsm\+\_\+memory\+\_\+destroy}
+    \subitem {dsm\+\_\+memory.\+c}, \hyperpage{85}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{87}
+  \item {dsm\+\_\+memory\+\_\+init}
+    \subitem {dsm\+\_\+memory.\+c}, \hyperpage{85}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{87}
+  \item {dsm\+\_\+memory\+\_\+s}, \hyperpage{11}
+    \subitem {base\+\_\+addr}, \hyperpage{11}
+    \subitem {page\+\_\+count}, \hyperpage{11}
+    \subitem {pages}, \hyperpage{11}
+    \subitem {pagesize}, \hyperpage{11}
+  \item {dsm\+\_\+memory\+\_\+t}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{86}
+  \item {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+    \subitem {args}, \hyperpage{12}
+    \subitem {connect\+\_\+ack\+\_\+args}, \hyperpage{12}
+    \subitem {connect\+\_\+args}, \hyperpage{12}
+    \subitem {from\+\_\+sockfd}, \hyperpage{12}
+    \subitem {type}, \hyperpage{12}
+  \item {dsm\+\_\+message\+\_\+t}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {dsm\+\_\+msg\+\_\+type}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {dsm\+\_\+msg\+\_\+type\+\_\+enum}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+    \subitem {nodes\+\_\+reading}, \hyperpage{13}
+    \subitem {protection}, \hyperpage{13}
+    \subitem {readers\+\_\+capacity}, \hyperpage{13}
+    \subitem {readers\+\_\+count}, \hyperpage{13}
+    \subitem {write\+\_\+owner}, \hyperpage{13}
+  \item {dsm\+\_\+page\+\_\+t}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{86}
+  \item {dsm\+\_\+protocol.\+c}
+    \subitem {dsm\+\_\+dispatch\+\_\+message}, \hyperpage{88}
+    \subitem {dsm\+\_\+receive\+\_\+msg}, \hyperpage{88}
+    \subitem {dsm\+\_\+send\+\_\+msg}, \hyperpage{88}
+  \item {dsm\+\_\+protocol.\+h}
+    \subitem {B\+A\+R\+R\+I\+ER}, \hyperpage{90}
+    \subitem {C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK}, \hyperpage{90}
+    \subitem {C\+O\+N\+N\+E\+CT}, \hyperpage{90}
+    \subitem {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}, 
+		\hyperpage{89}
+    \subitem {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}, 
+		\hyperpage{89}
+    \subitem {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}, 
+		\hyperpage{89}
+    \subitem {D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}, 
+		\hyperpage{89}
+    \subitem {dsm\+\_\+dispatch\+\_\+message}, \hyperpage{90}
+    \subitem {dsm\+\_\+message\+\_\+t}, \hyperpage{90}
+    \subitem {dsm\+\_\+msg\+\_\+type}, \hyperpage{90}
+    \subitem {dsm\+\_\+msg\+\_\+type\+\_\+enum}, \hyperpage{90}
+    \subitem {dsm\+\_\+receive\+\_\+msg}, \hyperpage{90}
+    \subitem {dsm\+\_\+send\+\_\+msg}, \hyperpage{91}
+    \subitem {E\+C\+H\+O\+\_\+\+R\+E\+P\+LY}, \hyperpage{90}
+    \subitem {E\+C\+HO}, \hyperpage{90}
+    \subitem {E\+R\+R\+OR}, \hyperpage{90}
+    \subitem {G\+E\+T\+P\+A\+GE}, \hyperpage{90}
+    \subitem {I\+N\+V\+A\+L\+I\+D\+A\+TE}, \hyperpage{90}
+    \subitem {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}, 
+		\hyperpage{90}
+    \subitem {msg\+\_\+connect\+\_\+args\+\_\+t}, \hyperpage{90}
+    \subitem {T\+E\+R\+M\+I\+N\+A\+TE}, \hyperpage{90}
+  \item {dsm\+\_\+receive}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{91}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{94}
+  \item {dsm\+\_\+receive\+\_\+msg}
+    \subitem {dsm\+\_\+protocol.\+c}, \hyperpage{88}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {dsm\+\_\+s}, \hyperpage{14}
+    \subitem {is\+\_\+master}, \hyperpage{14}
+    \subitem {listener\+\_\+daemon}, \hyperpage{14}
+    \subitem {master}, \hyperpage{14}
+    \subitem {mem}, \hyperpage{14}
+  \item {dsm\+\_\+send}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{94}
+  \item {dsm\+\_\+send\+\_\+msg}
+    \subitem {dsm\+\_\+protocol.\+c}, \hyperpage{88}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{91}
+  \item {dsm\+\_\+socket.\+c}
+    \subitem {dsm\+\_\+daemon\+\_\+msg\+\_\+listener}, \hyperpage{91}
+    \subitem {dsm\+\_\+receive}, \hyperpage{91}
+    \subitem {dsm\+\_\+send}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket\+\_\+bind\+\_\+listen}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket\+\_\+close}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket\+\_\+connect}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket\+\_\+shutdown}, \hyperpage{93}
+  \item {dsm\+\_\+socket.\+h}
+    \subitem {B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}, \hyperpage{94}
+    \subitem {dsm\+\_\+daemon\+\_\+msg\+\_\+listener}, \hyperpage{94}
+    \subitem {dsm\+\_\+receive}, \hyperpage{94}
+    \subitem {dsm\+\_\+send}, \hyperpage{94}
+    \subitem {dsm\+\_\+socket\+\_\+bind\+\_\+listen}, \hyperpage{94}
+    \subitem {dsm\+\_\+socket\+\_\+close}, \hyperpage{95}
+    \subitem {dsm\+\_\+socket\+\_\+connect}, \hyperpage{95}
+    \subitem {dsm\+\_\+socket\+\_\+shutdown}, \hyperpage{95}
+  \item {dsm\+\_\+socket\+\_\+bind\+\_\+listen}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{94}
+  \item {dsm\+\_\+socket\+\_\+close}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{95}
+  \item {dsm\+\_\+socket\+\_\+connect}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{92}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{95}
+  \item {dsm\+\_\+socket\+\_\+shutdown}
+    \subitem {dsm\+\_\+socket.\+c}, \hyperpage{93}
+    \subitem {dsm\+\_\+socket.\+h}, \hyperpage{95}
+  \item {dsm\+\_\+t}
+    \subitem {dsm.\+h}, \hyperpage{80}
+  \item {dsm\+\_\+util.\+h}
+    \subitem {debug}, \hyperpage{96}
+    \subitem {debug\+\_\+print}, \hyperpage{96}
+    \subitem {error}, \hyperpage{96}
+    \subitem {log}, \hyperpage{96}
+    \subitem {V\+A\+R\+D\+E\+B\+UG}, \hyperpage{96}
+
+  \indexspace
+
+  \item {E\+C\+H\+O\+\_\+\+R\+E\+P\+LY}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {E\+C\+HO}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {E\+R\+R\+OR}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {error}
+    \subitem {dsm\+\_\+util.\+h}, \hyperpage{96}
+
+  \indexspace
+
+  \item {F\+A\+L\+SE}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {free\+\_\+fn}
+    \subitem {binn.\+c}, \hyperpage{38}
+  \item {freefn}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {from\+\_\+sockfd}
+    \subitem {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+  \item {frombe16}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {frombe32}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {frombe64}
+    \subitem {binn.\+c}, \hyperpage{21}
+
+  \indexspace
+
+  \item {G\+E\+T\+P\+A\+GE}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {get\+\_\+storage\+\_\+size}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {Get\+Value}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {Get\+Write\+Converted\+Data}
+    \subitem {binn.\+c}, \hyperpage{36}
+
+  \indexspace
+
+  \item {header}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {host}
+    \subitem {dsm\+\_\+master\+\_\+s}, \hyperpage{10}
+
+  \indexspace
+
+  \item {I\+N\+L\+I\+NE}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {I\+N\+T64\+\_\+\+F\+O\+R\+M\+AT}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {I\+N\+T64\+\_\+\+H\+E\+X\+\_\+\+F\+O\+R\+M\+AT}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {I\+N\+V\+A\+L\+I\+D\+\_\+\+B\+I\+NN}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {I\+N\+V\+A\+L\+I\+D\+A\+TE}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {Init\+Master}
+    \subitem {dsm.\+c}, \hyperpage{79}
+    \subitem {dsm.\+h}, \hyperpage{80}
+  \item {Init\+Slave}
+    \subitem {dsm.\+c}, \hyperpage{79}
+    \subitem {dsm.\+h}, \hyperpage{81}
+  \item {int64}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {int\+\_\+type}
+    \subitem {binn.\+c}, \hyperpage{36}
+  \item {is\+\_\+bool\+\_\+str}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {is\+\_\+float}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {is\+\_\+integer}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {is\+\_\+master}
+    \subitem {dsm\+\_\+s}, \hyperpage{14}
+  \item {Is\+Valid\+Binn\+Header}
+    \subitem {binn.\+c}, \hyperpage{37}
+
+  \indexspace
+
+  \item {listener\+\_\+daemon}
+    \subitem {dsm\+\_\+s}, \hyperpage{14}
+  \item {local\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{38}
+  \item {log}
+    \subitem {dsm\+\_\+util.\+h}, \hyperpage{96}
+
+  \indexspace
+
+  \item {M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{86}
+  \item {M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {M\+A\+X\+\_\+\+N\+O\+D\+ES}
+    \subitem {dsm\+\_\+master.\+h}, \hyperpage{84}
+  \item {M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {main}
+    \subitem {test\+\_\+dsm\+\_\+init\+\_\+master.\+c}, \hyperpage{97}
+    \subitem {test\+\_\+dsm\+\_\+init\+\_\+slave.\+c}, \hyperpage{97}
+    \subitem {test\+\_\+dsm\+\_\+protocol.\+c}, \hyperpage{98}
+    \subitem {test\+\_\+dsm\+\_\+socket\+\_\+client.\+c}, 
+		\hyperpage{98}
+    \subitem {test\+\_\+dsm\+\_\+socket\+\_\+serv.\+c}, \hyperpage{99}
+  \item {malloc\+\_\+fn}
+    \subitem {binn.\+c}, \hyperpage{38}
+  \item {master}
+    \subitem {dsm\+\_\+s}, \hyperpage{14}
+  \item {mem}
+    \subitem {dsm\+\_\+s}, \hyperpage{14}
+  \item {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}, \hyperpage{14}
+    \subitem {bitness\+\_\+ok}, \hyperpage{15}
+    \subitem {page\+\_\+count}, \hyperpage{15}
+    \subitem {pagesize\+\_\+ok}, \hyperpage{15}
+  \item {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {msg\+\_\+connect\+\_\+args\+\_\+s}, \hyperpage{15}
+    \subitem {bitness}, \hyperpage{15}
+    \subitem {pagesize}, \hyperpage{15}
+  \item {msg\+\_\+connect\+\_\+args\+\_\+t}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+
+  \indexspace
+
+  \item {N\+U\+LL}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {nodes\+\_\+reading}
+    \subitem {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+
+  \indexspace
+
+  \item {page\+\_\+count}
+    \subitem {dsm\+\_\+memory\+\_\+s}, \hyperpage{11}
+    \subitem {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}, 
+		\hyperpage{15}
+  \item {pages}
+    \subitem {dsm\+\_\+memory\+\_\+s}, \hyperpage{11}
+  \item {pagesize}
+    \subitem {dsm\+\_\+memory\+\_\+s}, \hyperpage{11}
+    \subitem {msg\+\_\+connect\+\_\+args\+\_\+s}, \hyperpage{15}
+  \item {pagesize\+\_\+ok}
+    \subitem {msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}, 
+		\hyperpage{15}
+  \item {pbuf}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {plimit}
+    \subitem {binn\+\_\+iter\+\_\+struct}, \hyperpage{5}
+  \item {pnext}
+    \subitem {binn\+\_\+iter\+\_\+struct}, \hyperpage{5}
+  \item {port}
+    \subitem {dsm\+\_\+master\+\_\+s}, \hyperpage{10}
+  \item {pre\+\_\+allocated}
+    \subitem {binn\+\_\+struct}, \hyperpage{7}
+  \item {protection}
+    \subitem {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+  \item {ptr}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+
+  \indexspace
+
+  \item {Quit\+D\+SM}
+    \subitem {dsm.\+c}, \hyperpage{80}
+    \subitem {dsm.\+h}, \hyperpage{81}
+
+  \indexspace
+
+  \item {R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}
+    \subitem {dsm\+\_\+memory.\+h}, \hyperpage{86}
+  \item {readers\+\_\+capacity}
+    \subitem {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+  \item {readers\+\_\+count}
+    \subitem {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+  \item {realloc\+\_\+fn}
+    \subitem {binn.\+c}, \hyperpage{38}
+  \item {round}
+    \subitem {binn.\+c}, \hyperpage{21}
+
+  \indexspace
+
+  \item {Search\+For\+ID}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {Search\+For\+Key}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {size}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {sockfd}
+    \subitem {dsm\+\_\+master\+\_\+s}, \hyperpage{10}
+  \item {start\+\_\+master}
+    \subitem {test\+\_\+dsm\+\_\+protocol.\+c}, \hyperpage{98}
+  \item {start\+\_\+node}
+    \subitem {test\+\_\+dsm\+\_\+protocol.\+c}, \hyperpage{98}
+  \item {store\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {stricmp}
+    \subitem {binn.\+c}, \hyperpage{21}
+  \item {strlen2}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {strnicmp}
+    \subitem {binn.\+c}, \hyperpage{22}
+
+  \indexspace
+
+  \item {T\+E\+R\+M\+I\+N\+A\+TE}
+    \subitem {dsm\+\_\+protocol.\+h}, \hyperpage{90}
+  \item {T\+R\+UE}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {test\+\_\+dsm\+\_\+init\+\_\+master.\+c}
+    \subitem {main}, \hyperpage{97}
+  \item {test\+\_\+dsm\+\_\+init\+\_\+slave.\+c}
+    \subitem {main}, \hyperpage{97}
+  \item {test\+\_\+dsm\+\_\+protocol.\+c}
+    \subitem {main}, \hyperpage{98}
+    \subitem {start\+\_\+master}, \hyperpage{98}
+    \subitem {start\+\_\+node}, \hyperpage{98}
+  \item {test\+\_\+dsm\+\_\+socket\+\_\+client.\+c}
+    \subitem {main}, \hyperpage{98}
+  \item {test\+\_\+dsm\+\_\+socket\+\_\+serv.\+c}
+    \subitem {main}, \hyperpage{99}
+  \item {tobe16}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {tobe32}
+    \subitem {binn.\+c}, \hyperpage{37}
+  \item {tobe64}
+    \subitem {binn.\+c}, \hyperpage{38}
+  \item {type}
+    \subitem {binn\+\_\+iter\+\_\+struct}, \hyperpage{6}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+    \subitem {dsm\+\_\+message\+\_\+s}, \hyperpage{12}
+  \item {type\+\_\+family}
+    \subitem {binn.\+c}, \hyperpage{38}
+
+  \indexspace
+
+  \item {U\+I\+N\+T64\+\_\+\+F\+O\+R\+M\+AT}
+    \subitem {binn.\+h}, \hyperpage{54}
+  \item {U\+N\+U\+S\+ED}
+    \subitem {binn.\+c}, \hyperpage{22}
+  \item {uint64}
+    \subitem {binn.\+h}, \hyperpage{55}
+  \item {used\+\_\+size}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+
+  \indexspace
+
+  \item {V\+A\+R\+D\+E\+B\+UG}
+    \subitem {dsm\+\_\+util.\+h}, \hyperpage{96}
+  \item {vbool}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vchar}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vdouble}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vfloat}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vint}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vint16}
+    \subitem {binn\+\_\+struct}, \hyperpage{8}
+  \item {vint32}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vint64}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vint8}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vshort}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuchar}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuint}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuint16}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuint32}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuint64}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vuint8}
+    \subitem {binn\+\_\+struct}, \hyperpage{9}
+  \item {vushort}
+    \subitem {binn\+\_\+struct}, \hyperpage{10}
+
+  \indexspace
+
+  \item {writable}
+    \subitem {binn\+\_\+struct}, \hyperpage{10}
+  \item {write\+\_\+owner}
+    \subitem {dsm\+\_\+page\+\_\+s}, \hyperpage{13}
+
+  \indexspace
+
+  \item {zero\+\_\+value}
+    \subitem {binn.\+c}, \hyperpage{38}
+
+\end{theindex}
