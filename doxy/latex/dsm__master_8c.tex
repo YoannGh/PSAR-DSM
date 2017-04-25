@@ -1,0 +1,68 @@
+\hypertarget{dsm__master_8c}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+master.c File Reference}
+\label{dsm__master_8c}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+master.\+c@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+master.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+master.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+socket.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+util.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{dsm__master_8c_aa01a74c7d5c23ffa8ed90ed226115f83}{dsm\+\_\+master\+\_\+init} (\hyperlink{dsm__master_8h_a526b8591ca42ce91c533a931cff83473}{dsm\+\_\+master\+\_\+t} $\ast$master, char $\ast$host\+\_\+master, int port\+\_\+master, unsigned short is\+\_\+master)
+\begin{DoxyCompactList}\small\item\em Initialisation of substructure dedicated to master. \end{DoxyCompactList}\item 
+void \hyperlink{dsm__master_8c_a4d0caf08297bf9f7a005416fffc7c5ab}{dsm\+\_\+master\+\_\+destroy} (\hyperlink{dsm__master_8h_a526b8591ca42ce91c533a931cff83473}{dsm\+\_\+master\+\_\+t} $\ast$master)
+\begin{DoxyCompactList}\small\item\em destroy socket used by the structure and free memory \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dsm\+\_\+master.\+c@{dsm\+\_\+master.\+c}!dsm\+\_\+master\+\_\+destroy@{dsm\+\_\+master\+\_\+destroy}}
+\index{dsm\+\_\+master\+\_\+destroy@{dsm\+\_\+master\+\_\+destroy}!dsm\+\_\+master.\+c@{dsm\+\_\+master.\+c}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+master\+\_\+destroy(dsm\+\_\+master\+\_\+t $\ast$master)}{dsm_master_destroy(dsm_master_t *master)}}]{\setlength{\rightskip}{0pt plus 5cm}void dsm\+\_\+master\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+master\+\_\+t} $\ast$}]{master}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__master_8c_a4d0caf08297bf9f7a005416fffc7c5ab}{}\label{dsm__master_8c_a4d0caf08297bf9f7a005416fffc7c5ab}
+
+
+destroy socket used by the structure and free memory 
+
+
+\begin{DoxyParams}{Parameters}
+{\em master} & the structure that will be destroyed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file dsm\+\_\+master.\+c.
+
+\index{dsm\+\_\+master.\+c@{dsm\+\_\+master.\+c}!dsm\+\_\+master\+\_\+init@{dsm\+\_\+master\+\_\+init}}
+\index{dsm\+\_\+master\+\_\+init@{dsm\+\_\+master\+\_\+init}!dsm\+\_\+master.\+c@{dsm\+\_\+master.\+c}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+master\+\_\+init(dsm\+\_\+master\+\_\+t $\ast$master, char $\ast$host\+\_\+master, int port\+\_\+master, unsigned short is\+\_\+master)}{dsm_master_init(dsm_master_t *master, char *host_master, int port_master, unsigned short is_master)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+master\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+master\+\_\+t} $\ast$}]{master, }
+\item[{char $\ast$}]{host\+\_\+master, }
+\item[{int}]{port\+\_\+master, }
+\item[{unsigned short}]{is\+\_\+master}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__master_8c_aa01a74c7d5c23ffa8ed90ed226115f83}{}\label{dsm__master_8c_aa01a74c7d5c23ffa8ed90ed226115f83}
+
+
+Initialisation of substructure dedicated to master. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em master} & the structure that will be initialised \\
+\hline
+{\em host\+\_\+master} & the address of the master \\
+\hline
+{\em port\+\_\+master} & the port of the master \\
+\hline
+{\em is\+\_\+master} & a flag to know if the structure is a master or if is only related to the master \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the socket descriptor 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file dsm\+\_\+master.\+c.
+

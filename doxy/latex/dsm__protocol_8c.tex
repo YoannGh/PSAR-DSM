@@ -1,0 +1,79 @@
+\hypertarget{dsm__protocol_8c}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.c File Reference}
+\label{dsm__protocol_8c}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+c@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+c}}
+{\ttfamily \#include \char`\"{}dsm\+\_\+protocol.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+socket.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}binn.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dsm__protocol_8c_a8fec54c12c1b0799b9073698948c9bfd}{dsm\+\_\+dispatch\+\_\+message} (\hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em function to sort messages by type and call good treatment \end{DoxyCompactList}\item 
+int \hyperlink{dsm__protocol_8c_a55c6cdbd0632d23fd9b4fbcc059719c1}{dsm\+\_\+receive\+\_\+msg} (int nodefd, \hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em treatment to get message from data received \end{DoxyCompactList}\item 
+int \hyperlink{dsm__protocol_8c_ae8eee3662200ec63a4dc9e70c0c6bcb4}{dsm\+\_\+send\+\_\+msg} (int nodefd, \hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}!dsm\+\_\+dispatch\+\_\+message@{dsm\+\_\+dispatch\+\_\+message}}
+\index{dsm\+\_\+dispatch\+\_\+message@{dsm\+\_\+dispatch\+\_\+message}!dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+dispatch\+\_\+message(dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_dispatch_message(dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}void dsm\+\_\+dispatch\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8c_a8fec54c12c1b0799b9073698948c9bfd}{}\label{dsm__protocol_8c_a8fec54c12c1b0799b9073698948c9bfd}
+
+
+function to sort messages by type and call good treatment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & the message to sort \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 12 of file dsm\+\_\+protocol.\+c.
+
+\index{dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}!dsm\+\_\+receive\+\_\+msg@{dsm\+\_\+receive\+\_\+msg}}
+\index{dsm\+\_\+receive\+\_\+msg@{dsm\+\_\+receive\+\_\+msg}!dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+receive\+\_\+msg(int nodefd, dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_receive_msg(int nodefd, dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+receive\+\_\+msg (
+\begin{DoxyParamCaption}
+\item[{int}]{nodefd, }
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8c_a55c6cdbd0632d23fd9b4fbcc059719c1}{}\label{dsm__protocol_8c_a55c6cdbd0632d23fd9b4fbcc059719c1}
+
+
+treatment to get message from data received 
+
+treatment to send data from message structure
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodefd} & message sender descriptor \\
+\hline
+{\em msg} & the final message received\\
+\hline
+{\em nodefd} & message destination descriptor \\
+\hline
+{\em msg} & the message to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 65 of file dsm\+\_\+protocol.\+c.
+
+\index{dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}!dsm\+\_\+send\+\_\+msg@{dsm\+\_\+send\+\_\+msg}}
+\index{dsm\+\_\+send\+\_\+msg@{dsm\+\_\+send\+\_\+msg}!dsm\+\_\+protocol.\+c@{dsm\+\_\+protocol.\+c}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+send\+\_\+msg(int nodefd, dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_send_msg(int nodefd, dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+send\+\_\+msg (
+\begin{DoxyParamCaption}
+\item[{int}]{nodefd, }
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8c_ae8eee3662200ec63a4dc9e70c0c6bcb4}{}\label{dsm__protocol_8c_ae8eee3662200ec63a4dc9e70c0c6bcb4}
+
+
+Definition at line 106 of file dsm\+\_\+protocol.\+c.
+

@@ -1,0 +1,91 @@
+\hypertarget{dsm_8c}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm.c File Reference}
+\label{dsm_8c}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm.\+c@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}dsm.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+memory.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+master.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+protocol.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+socket.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dsm\+\_\+util.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{dsm_8c_a7e626d6c7d4e424886701849aeac1f56}{Init\+Master} (int port, size\+\_\+t page\+\_\+count)
+\begin{DoxyCompactList}\small\item\em allocate memory for a Master and call init on it \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{dsm_8c_a048c7a53ad0a1f13a9928c3248a40339}{Init\+Slave} (char $\ast$Host\+Master, int port)
+\begin{DoxyCompactList}\small\item\em allocate memory for a Slave and call init on it \end{DoxyCompactList}\item 
+void \hyperlink{dsm_8c_a37b304049c80f8c044368bb2175bf2a5}{Quit\+D\+SM} (void)
+\begin{DoxyCompactList}\small\item\em destroy and free the main dsm\+\_\+t structure \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dsm.\+c@{dsm.\+c}!Init\+Master@{Init\+Master}}
+\index{Init\+Master@{Init\+Master}!dsm.\+c@{dsm.\+c}}
+\subsubsection[{\texorpdfstring{Init\+Master(int port, size\+\_\+t page\+\_\+count)}{InitMaster(int port, size_t page_count)}}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Init\+Master (
+\begin{DoxyParamCaption}
+\item[{int}]{port, }
+\item[{size\+\_\+t}]{page\+\_\+count}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm_8c_a7e626d6c7d4e424886701849aeac1f56}{}\label{dsm_8c_a7e626d6c7d4e424886701849aeac1f56}
+
+
+allocate memory for a Master and call init on it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+master} & the port of the master \\
+\hline
+{\em page\+\_\+count} & number of page to be allocated in local memory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the base address of memory 
+\end{DoxyReturn}
+
+
+Definition at line 162 of file dsm.\+c.
+
+\index{dsm.\+c@{dsm.\+c}!Init\+Slave@{Init\+Slave}}
+\index{Init\+Slave@{Init\+Slave}!dsm.\+c@{dsm.\+c}}
+\subsubsection[{\texorpdfstring{Init\+Slave(char $\ast$\+Host\+Master, int port)}{InitSlave(char *HostMaster, int port)}}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Init\+Slave (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{Host\+Master, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm_8c_a048c7a53ad0a1f13a9928c3248a40339}{}\label{dsm_8c_a048c7a53ad0a1f13a9928c3248a40339}
+
+
+allocate memory for a Slave and call init on it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host\+\_\+master} & the inet address of master \\
+\hline
+{\em port\+\_\+master} & the port of the master \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the base address of memory 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file dsm.\+c.
+
+\index{dsm.\+c@{dsm.\+c}!Quit\+D\+SM@{Quit\+D\+SM}}
+\index{Quit\+D\+SM@{Quit\+D\+SM}!dsm.\+c@{dsm.\+c}}
+\subsubsection[{\texorpdfstring{Quit\+D\+S\+M(void)}{QuitDSM(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void Quit\+D\+SM (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm_8c_a37b304049c80f8c044368bb2175bf2a5}{}\label{dsm_8c_a37b304049c80f8c044368bb2175bf2a5}
+
+
+destroy and free the main dsm\+\_\+t structure 
+
+
+
+Definition at line 205 of file dsm.\+c.
+

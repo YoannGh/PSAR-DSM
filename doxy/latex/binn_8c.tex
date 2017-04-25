@@ -1,0 +1,2481 @@
+\hypertarget{binn_8c}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/binn.c File Reference}
+\label{binn_8c}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/binn.\+c@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/binn.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$memory.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}binn.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$endian.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{binn_8c_a86d500a34c624c2cae56bc25a31b12f3}{U\+N\+U\+S\+ED}(x)~(void)(x)
+\item 
+\#define \hyperlink{binn_8c_abf58effd46f6c2c5dca025fb36c3bc08}{round}(dbl)~dbl $>$= 0.\+0 ? (int)(dbl + 0.\+5) \+: ((dbl -\/ (double)(int)dbl) $<$= -\/0.\+5 ? (int)dbl \+: (int)(dbl -\/ 0.\+5))
+\item 
+\#define \hyperlink{binn_8c_a2d75c8453258803228e4b4188454b2e3}{B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}~0x1\+F22\+B11F
+\item 
+\#define \hyperlink{binn_8c_a553a0f9904f5add5d006f6611b05bea6}{M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}~9
+\item 
+\#define \hyperlink{binn_8c_a15355a84c34158c099881f1db345f275}{M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}~3
+\item 
+\#define \hyperlink{binn_8c_aea3cfda4f3a9f978ec759f206cf186fe}{C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}~256
+\item 
+\#define \hyperlink{binn_8c_a2cb01438f81db68226c0d1dc2d2f400f}{B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}~1
+\item 
+\#define \hyperlink{binn_8c_a75c88db31818bf4796687672bdf8f2fa}{B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}~2
+\item 
+\#define \hyperlink{binn_8c_ac05ebd4c815f0aaf2117e343fb26e005}{frombe16}~\hyperlink{binn_8c_a4a2ee7cf9d4ac2f98f5490bfbd46bda0}{tobe16}
+\item 
+\#define \hyperlink{binn_8c_ad91df87c6c4e7b76e1c6919867edd5d0}{frombe32}~\hyperlink{binn_8c_a55ded1594d6f374d1541cf0902c07c9b}{tobe32}
+\item 
+\#define \hyperlink{binn_8c_a9f1fe72a0b8cc1e57c5f9bc825379f6f}{frombe64}~\hyperlink{binn_8c_a3351204dc5f9da6d2384572af6d7b8ff}{tobe64}
+\item 
+\#define \hyperlink{binn_8c_a4e0be90a3757e352f42612d09a7d1aa5}{stricmp}~strcasecmp
+\item 
+\#define \hyperlink{binn_8c_a16a19b1831112e876b010468ec15916f}{strnicmp}~strncasecmp
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned short \hyperlink{binn_8c_a4a2ee7cf9d4ac2f98f5490bfbd46bda0}{tobe16} (unsigned short input)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned int \hyperlink{binn_8c_a55ded1594d6f374d1541cf0902c07c9b}{tobe32} (unsigned int input)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} \hyperlink{binn_8c_a3351204dc5f9da6d2384572af6d7b8ff}{tobe64} (\hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} input)
+\item 
+void \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a32a45c9b49b2b4dcba2ed7636ed03f3b}{binn\+\_\+set\+\_\+alloc\+\_\+functions} (void $\ast$($\ast$new\+\_\+malloc)(size\+\_\+t), void $\ast$($\ast$new\+\_\+realloc)(void $\ast$, size\+\_\+t), void($\ast$new\+\_\+free)(void $\ast$))
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void \hyperlink{binn_8c_aa34aea4e3c7a3f26600bd9f886c53857}{check\+\_\+alloc\+\_\+functions} ()
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void $\ast$ \hyperlink{binn_8c_a40c7cd9f448c2751325c9aec72caeda8}{binn\+\_\+malloc} (int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void $\ast$ \hyperlink{binn_8c_a0c69d7839f5eddfbe683b46a2d5659d8}{binn\+\_\+memdup} (void $\ast$src, int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} size\+\_\+t \hyperlink{binn_8c_a8620d0670b7d4e32632adf44a6603d47}{strlen2} (char $\ast$str)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a6047ef1c8933d51c6a6bf8ff7d3ea239}{binn\+\_\+create\+\_\+type} (int storage\+\_\+type, int data\+\_\+type\+\_\+index)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_add5f2441e02e006bcc0937cdb203471b}{binn\+\_\+get\+\_\+type\+\_\+info} (int long\+\_\+type, int $\ast$pstorage\+\_\+type, int $\ast$pextra\+\_\+type)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_acbdf0e3816b3107d34264563cbe9ae35}{binn\+\_\+create} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int type, int size, void $\ast$pointer)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a59261ca6aa8efe3dbf77e1a0140ebcac}{binn\+\_\+new} (int type, int size, void $\ast$pointer)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7faa7c511783c084d616323024e2de23}{binn\+\_\+create\+\_\+list} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$list)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a1d479197f39befe9a69ce7e6d3be865b}{binn\+\_\+create\+\_\+map} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$map)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2fc6e5730199414e388f51ba331e46b6}{binn\+\_\+create\+\_\+object} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$object)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a46f4b4768132fb3ff7adc9e923e55596}{binn\+\_\+list} ()
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a486dbcb3cbfa8e212d070a676fe6e67d}{binn\+\_\+map} ()
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a0d344297230d804abf480c922c9874e0}{binn\+\_\+object} ()
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2082bb3ccc063df7f911b8e9dd6d9820}{binn\+\_\+load} (void $\ast$data, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2a70525f283cd250fab7fb2cc60ba73c}{binn\+\_\+open} (void $\ast$data)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_a10fb517a69e48b23b6453ebceafba25b}{binn\+\_\+get\+\_\+ptr\+\_\+type} (void $\ast$ptr)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ad173404a568c6faf4bb1116f91c93e9c}{binn\+\_\+is\+\_\+struct} (void $\ast$ptr)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_ac94ddf8b6348a080610a583ebfc830a7}{Calc\+Allocation} (int needed\+\_\+size, int alloc\+\_\+size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_ae89523c5340359d736cb19abab96fe18}{Check\+Allocation} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int add\+\_\+size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_a12c0c44539bcf40b5163fa12a827c344}{get\+\_\+storage\+\_\+size} (int storage\+\_\+type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char $\ast$ \hyperlink{binn_8c_a39a4525241b4f6e5b182962fcdb073fd}{Advance\+Data\+Pos} (unsigned char $\ast$p)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char $\ast$ \hyperlink{binn_8c_ac27a28ddcb978b196d52174d5c58cec7}{Search\+For\+ID} (unsigned char $\ast$p, int header\+\_\+size, int size, int numitems, int id)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char $\ast$ \hyperlink{binn_8c_ae347ffa5e71cbc1ad9984c36324c603f}{Search\+For\+Key} (unsigned char $\ast$p, int header\+\_\+size, int size, int numitems, char $\ast$key)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a36866c698effc244fe6125715386e0c5}{Add\+Value} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_aa822b8e2193f013dbfb20894185160ef}{binn\+\_\+list\+\_\+add\+\_\+raw} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a21b1d20e247bbdbf1a1840a1bb3ea964}{binn\+\_\+object\+\_\+set\+\_\+raw} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, char $\ast$key, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_acedef1911f7a332fe6d2c05916c1d0d6}{binn\+\_\+map\+\_\+set\+\_\+raw} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int id, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void $\ast$ \hyperlink{binn_8c_a2bc2f1143cce11366697ce9055b37022}{compress\+\_\+int} (int $\ast$pstorage\+\_\+type, int $\ast$ptype, void $\ast$psource)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_a4ed5a6d2f93172202e7fc41f7641efa4}{type\+\_\+family} (int type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a14454cd33688b6cf37294ad48c92b094}{binn\+\_\+save\+\_\+header} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item)
+\item 
+void \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a3d0e6d2cfd149aaab50edde0d3728292}{binn\+\_\+free} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a36382cce1d580f78c3a8525fa06c15e1}{binn\+\_\+release} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_ae3ec9b0779440746fd8944abea6ded92}{Is\+Valid\+Binn\+Header} (void $\ast$pbuf, int $\ast$ptype, int $\ast$pcount, int $\ast$psize, int $\ast$pheadersize)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_a65f000c6fee12c27c66eaed19811a3f5}{binn\+\_\+buf\+\_\+type} (void $\ast$pbuf)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_aaedb4825831bfcb7be62622864483268}{binn\+\_\+buf\+\_\+count} (void $\ast$pbuf)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_abf1ba6031d43c7d6e63a3fcbbc24fb3b}{binn\+\_\+buf\+\_\+size} (void $\ast$pbuf)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a0b0f00e7577ba8f1bd0233581a8d0f0a}{binn\+\_\+ptr} (void $\ast$ptr)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a94e985454537964a1c732776a2af0c54}{binn\+\_\+size} (void $\ast$ptr)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ad41bb71163b3883b489bb4c9d4a65a2e}{binn\+\_\+type} (void $\ast$ptr)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab2ac553739fad776de768400e3f30fdf}{binn\+\_\+count} (void $\ast$ptr)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_abe5a591099d3d91e8e62e0133cfddb83}{binn\+\_\+is\+\_\+valid} (void $\ast$ptr, int $\ast$ptype, int $\ast$pcount, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a6ed9c1873483e69c9e573cca63934228}{Get\+Value} (unsigned char $\ast$p, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void $\ast$ \hyperlink{binn_8c_ac55a2e64cd743440e7ce8a173e213995}{store\+\_\+value} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a5e2c11341d3c1c83abfee066749e68bf}{binn\+\_\+object\+\_\+get\+\_\+value} (void $\ast$ptr, char $\ast$key, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a14a5776e820e00e6618d3db3133453df}{binn\+\_\+map\+\_\+get\+\_\+value} (void $\ast$ptr, int id, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a3fe3857e02c1b759133de20331bf2798}{binn\+\_\+list\+\_\+get\+\_\+value} (void $\ast$ptr, int pos, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_abc73584dcb56d8e61fedb985e2943428}{binn\+\_\+read\+\_\+pair} (int expected\+\_\+type, void $\ast$ptr, int pos, int $\ast$pid, char $\ast$pkey, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7b00656c46ab9fcbb887fce53b0a416e}{binn\+\_\+map\+\_\+get\+\_\+pair} (void $\ast$ptr, int pos, int $\ast$pid, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ac25dab885b8e1da25c7254bd827619ad}{binn\+\_\+object\+\_\+get\+\_\+pair} (void $\ast$ptr, int pos, char $\ast$pkey, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a382932c735585fa72ac7fbede85801c3}{binn\+\_\+map\+\_\+pair} (void $\ast$map, int pos, int $\ast$pid)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a71161fb0a41fcf3333b02b55eda29a1f}{binn\+\_\+object\+\_\+pair} (void $\ast$obj, int pos, char $\ast$pkey)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab94646648ee626cd4401e7a471afe9f5}{binn\+\_\+map\+\_\+read\+\_\+pair} (void $\ast$ptr, int pos, int $\ast$pid, int $\ast$ptype, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a0581d6ceca6198948fabcc8b5546b473}{binn\+\_\+object\+\_\+read\+\_\+pair} (void $\ast$ptr, int pos, char $\ast$pkey, int $\ast$ptype, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a537af13c81b9e7c53590308721b34901}{binn\+\_\+iter\+\_\+init} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, void $\ast$ptr, int expected\+\_\+type)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_acfbe8e08d9744c18791ca7df1b52c05e}{binn\+\_\+list\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a36ea24c24d30fed83fd3398794935411}{binn\+\_\+read\+\_\+next\+\_\+pair} (int expected\+\_\+type, \hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, int $\ast$pid, char $\ast$pkey, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a4143d96821695fd2464314d0227f829d}{binn\+\_\+map\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, int $\ast$pid, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ae9b0586b7b3347cd72cc942ff6bae552}{binn\+\_\+object\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, char $\ast$pkey, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a63890b62ed15e9bbdb3042067b3a1300}{binn\+\_\+list\+\_\+next\+\_\+value} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aad3770b6af02fd8dfc80f9c578da3018}{binn\+\_\+map\+\_\+next\+\_\+value} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, int $\ast$pid)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2396fa2d97abb8862b2b94dc1029dd9f}{binn\+\_\+object\+\_\+next\+\_\+value} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, char $\ast$pkey)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa38c06cee0d2df0e8368ee25a252f764}{binn\+\_\+list\+\_\+read\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, int $\ast$ptype, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a47f8206db744a9ce309e994e97d93f44}{binn\+\_\+map\+\_\+read\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, int $\ast$pid, int $\ast$ptype, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a41792d1f32b7d7678cad75062a894fa8}{binn\+\_\+object\+\_\+read\+\_\+next} (\hyperlink{binn_8h_a55304d57010a436092cac6ab742e825c}{binn\+\_\+iter} $\ast$iter, char $\ast$pkey, int $\ast$ptype, int $\ast$psize)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab6769b6ab27565027e4be9009b21026c}{binn\+\_\+get\+\_\+write\+\_\+storage} (int type)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9470d7049b87ed710bcc8b89bb7d03bd}{binn\+\_\+get\+\_\+read\+\_\+storage} (int type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_abc4f2c875b5b2be83cc4af8f5d7a7271}{Get\+Write\+Converted\+Data} (int $\ast$ptype, void $\ast$$\ast$ppvalue, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int \hyperlink{binn_8c_ad8822ca22c60c9430b19cdb6b472f01a}{int\+\_\+type} (int type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a6a7f72b7ec58233144d5b16e5a618e4b}{copy\+\_\+raw\+\_\+value} (void $\ast$psource, void $\ast$pdest, int data\+\_\+store)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a2b723f15a73395a6b1680819d83b0369}{copy\+\_\+int\+\_\+value} (void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_ae8681cae97775877baec32f9daefe2e7}{copy\+\_\+float\+\_\+value} (void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void \hyperlink{binn_8c_a2584fd252fcefd1860d6ec79522a6f78}{zero\+\_\+value} (void $\ast$pvalue, int type)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a7752c4c9584927b07931d943d4c069af}{copy\+\_\+value} (void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type, int data\+\_\+store)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7e7046a2c830c6eb3a9c60bca4f72b5e}{binn\+\_\+list\+\_\+add} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$list, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_adcb67172992055e675cb8a22f8596a58}{binn\+\_\+map\+\_\+set} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$map, int id, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aadac5854bd1a01204dfcadc0d50a29c9}{binn\+\_\+object\+\_\+set} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$obj, char $\ast$key, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a636bee2403a8a4593cf674ae392b0175}{binn\+\_\+add\+\_\+value} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, int \hyperlink{binn_8h_ad41bb71163b3883b489bb4c9d4a65a2e}{binn\+\_\+type}, int id, char $\ast$name, int type, void $\ast$pvalue, int size)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa78510b4867044a9a9404085f541789b}{binn\+\_\+list\+\_\+add\+\_\+new} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$list, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a1cef5061742f07e33b574a691e345fb4}{binn\+\_\+map\+\_\+set\+\_\+new} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$map, int id, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9ccdc82147b2708c47176d9180607c93}{binn\+\_\+object\+\_\+set\+\_\+new} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$obj, char $\ast$key, \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a3bdc6df36f2516b4e33c560ae6f8d6c7}{binn\+\_\+list\+\_\+value} (void $\ast$ptr, int pos)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a8871e5245c1b0974258b7cf73049375f}{binn\+\_\+map\+\_\+value} (void $\ast$ptr, int id)
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a84a9105235fa42684d250c02c3c860ee}{binn\+\_\+object\+\_\+value} (void $\ast$ptr, char $\ast$key)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a09f6160eb0893f707a7abb8183dcf187}{binn\+\_\+list\+\_\+read} (void $\ast$list, int pos, int $\ast$ptype, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab7a2a3b7b56615afad150fa17bd18663}{binn\+\_\+map\+\_\+read} (void $\ast$map, int id, int $\ast$ptype, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a4b73c42b838b39e9e6f9824201aceafd}{binn\+\_\+object\+\_\+read} (void $\ast$obj, char $\ast$key, int $\ast$ptype, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a357a00e5cd4180981f96bbc261d03619}{binn\+\_\+list\+\_\+get} (void $\ast$ptr, int pos, int type, void $\ast$pvalue, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9bfedf67e836fd10f8383d043e69de4c}{binn\+\_\+map\+\_\+get} (void $\ast$ptr, int id, int type, void $\ast$pvalue, int $\ast$psize)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a24282a3250bbcdc3cab7e5fd060e7072}{binn\+\_\+object\+\_\+get} (void $\ast$ptr, char $\ast$key, int type, void $\ast$pvalue, int $\ast$psize)
+\item 
+signed char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a830c70cf349b91cb41228f70f278ac38}{binn\+\_\+list\+\_\+int8} (void $\ast$list, int pos)
+\item 
+short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7b3005b2ff2a8d424344d6496d51b3ef}{binn\+\_\+list\+\_\+int16} (void $\ast$list, int pos)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab71d494165a77be27406c73dd8ee6408}{binn\+\_\+list\+\_\+int32} (void $\ast$list, int pos)
+\item 
+\hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ae1657c953c559311fd667731b6547016}{binn\+\_\+list\+\_\+int64} (void $\ast$list, int pos)
+\item 
+unsigned char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a56ff144555403030d4fd1625cf73f730}{binn\+\_\+list\+\_\+uint8} (void $\ast$list, int pos)
+\item 
+unsigned short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ae0afa0db01da8a0d81ed104e3e70a33b}{binn\+\_\+list\+\_\+uint16} (void $\ast$list, int pos)
+\item 
+unsigned int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a10e38c45801ab287658d0160c82af333}{binn\+\_\+list\+\_\+uint32} (void $\ast$list, int pos)
+\item 
+\hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a8adba19d739deb4f7c8bb189e10e7538}{binn\+\_\+list\+\_\+uint64} (void $\ast$list, int pos)
+\item 
+float \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_afd761b2fc9f7b601591ef3ec5d5c915a}{binn\+\_\+list\+\_\+float} (void $\ast$list, int pos)
+\item 
+double \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_af9eaab8da0ea48107b32c130876a0684}{binn\+\_\+list\+\_\+double} (void $\ast$list, int pos)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa17bd93c1a8a51a0e55b48f6fc8a3837}{binn\+\_\+list\+\_\+bool} (void $\ast$list, int pos)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ada21f5157c164782a5d131f930ccd28a}{binn\+\_\+list\+\_\+null} (void $\ast$list, int pos)
+\item 
+char $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2c14bcbccc18988311cb21b88ae72bad}{binn\+\_\+list\+\_\+str} (void $\ast$list, int pos)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ab831f5eb4c17641098dc00feca266ca4}{binn\+\_\+list\+\_\+blob} (void $\ast$list, int pos, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a781b65410e4a767528ab2e98ac5079ce}{binn\+\_\+list\+\_\+list} (void $\ast$list, int pos)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a8be007ac4a375abffd241356a9bba95c}{binn\+\_\+list\+\_\+map} (void $\ast$list, int pos)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa98793df6b47ebc6cd179e86ac2c729d}{binn\+\_\+list\+\_\+object} (void $\ast$list, int pos)
+\item 
+signed char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_abc1e936c801514ac64d169f8efee0ae3}{binn\+\_\+map\+\_\+int8} (void $\ast$map, int id)
+\item 
+short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_af827cf2a01628fdd8834437fec479f05}{binn\+\_\+map\+\_\+int16} (void $\ast$map, int id)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9bc0eec6210f2aee63d65281e59c762d}{binn\+\_\+map\+\_\+int32} (void $\ast$map, int id)
+\item 
+\hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a96b1b6be8fe755a429d23b217e234059}{binn\+\_\+map\+\_\+int64} (void $\ast$map, int id)
+\item 
+unsigned char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ac9047ac0563c6dde25535c0197af38fa}{binn\+\_\+map\+\_\+uint8} (void $\ast$map, int id)
+\item 
+unsigned short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a332d8d82fe32ccd98e09689aa8626e48}{binn\+\_\+map\+\_\+uint16} (void $\ast$map, int id)
+\item 
+unsigned int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9cfa73fb8992aa73941d58761572e796}{binn\+\_\+map\+\_\+uint32} (void $\ast$map, int id)
+\item 
+\hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a478f190cc8a7dbbf0041312ae1f6c2a0}{binn\+\_\+map\+\_\+uint64} (void $\ast$map, int id)
+\item 
+float \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7b925bb450d916b03b9c58180c680ab4}{binn\+\_\+map\+\_\+float} (void $\ast$map, int id)
+\item 
+double \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_acc17f508908f13e952796546efb98506}{binn\+\_\+map\+\_\+double} (void $\ast$map, int id)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a1c5d11a31c1e27cb76713216670e2381}{binn\+\_\+map\+\_\+bool} (void $\ast$map, int id)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_abfe9c8a4f0b507aaae15b3f68847d6ef}{binn\+\_\+map\+\_\+null} (void $\ast$map, int id)
+\item 
+char $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2339525ce0e50524c0a6e60c71d8578d}{binn\+\_\+map\+\_\+str} (void $\ast$map, int id)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a6a2a4d34127f4c45b3ef95b383ac627a}{binn\+\_\+map\+\_\+blob} (void $\ast$map, int id, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ae648bf5ef23c8dec6cbe4f46de6b9a21}{binn\+\_\+map\+\_\+list} (void $\ast$map, int id)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a03c8f54b2b920ce7cdc65853b49d32a2}{binn\+\_\+map\+\_\+map} (void $\ast$map, int id)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2763619d0fd2c462f060b5c47979b92d}{binn\+\_\+map\+\_\+object} (void $\ast$map, int id)
+\item 
+signed char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_af3ef36f4e568914b3d5b7a3fa971ae7a}{binn\+\_\+object\+\_\+int8} (void $\ast$obj, char $\ast$key)
+\item 
+short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aaeb2a2791c434d7fe3c9d25ba3a3418c}{binn\+\_\+object\+\_\+int16} (void $\ast$obj, char $\ast$key)
+\item 
+int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_adb90e76b4d5f4129c4f53137e4bb5bf0}{binn\+\_\+object\+\_\+int32} (void $\ast$obj, char $\ast$key)
+\item 
+\hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7cb7b9dad6ffcd994fbb9b8e71e994a1}{binn\+\_\+object\+\_\+int64} (void $\ast$obj, char $\ast$key)
+\item 
+unsigned char \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a1756c791c696a02594ccd6d8c4867a93}{binn\+\_\+object\+\_\+uint8} (void $\ast$obj, char $\ast$key)
+\item 
+unsigned short \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ac03e730d628e18d8d91bb8f68466371e}{binn\+\_\+object\+\_\+uint16} (void $\ast$obj, char $\ast$key)
+\item 
+unsigned int \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a97bc21b71cea9f46f06f8563650ac12c}{binn\+\_\+object\+\_\+uint32} (void $\ast$obj, char $\ast$key)
+\item 
+\hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9f9d6d2978187ca5b6ebd94d322cdd0e}{binn\+\_\+object\+\_\+uint64} (void $\ast$obj, char $\ast$key)
+\item 
+float \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9f4623032ba4030b254855badd14532d}{binn\+\_\+object\+\_\+float} (void $\ast$obj, char $\ast$key)
+\item 
+double \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_add734850e28b08d29978b9f3997a4fe9}{binn\+\_\+object\+\_\+double} (void $\ast$obj, char $\ast$key)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa557e91e2908070bb7446da5f5f3a116}{binn\+\_\+object\+\_\+bool} (void $\ast$obj, char $\ast$key)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_abf93fd614aa4eb0c0bb134fda1736a8c}{binn\+\_\+object\+\_\+null} (void $\ast$obj, char $\ast$key)
+\item 
+char $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_affb03b9250423bd95140590d0b99a8e8}{binn\+\_\+object\+\_\+str} (void $\ast$obj, char $\ast$key)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a756ba2e659fa0dd00ac8f64c4997fd6a}{binn\+\_\+object\+\_\+blob} (void $\ast$obj, char $\ast$key, int $\ast$psize)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2fa486f2a89fb7aa7cd4835aff0a3d2f}{binn\+\_\+object\+\_\+list} (void $\ast$obj, char $\ast$key)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a9a4c58b0ecc33ae96d2c651cf5c2ee17}{binn\+\_\+object\+\_\+map} (void $\ast$obj, char $\ast$key)
+\item 
+void $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a0a714fc716d45e8c273c7b09c6c0dafd}{binn\+\_\+object\+\_\+object} (void $\ast$obj, char $\ast$key)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$ \hyperlink{binn_8c_a9b1c3e5380eaf376f4462580a474e3dc}{binn\+\_\+alloc\+\_\+item} ()
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a7470778c13019268d575e1a01395a8d7}{binn\+\_\+value} (int type, void $\ast$pvalue, int size, \hyperlink{binn_8h_a0a1a8d8952b9cff264203eec80e1db2b}{binn\+\_\+mem\+\_\+free} freefn)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_af9efc43f4533392f4aa1e917c21573ca}{binn\+\_\+set\+\_\+string} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, char $\ast$str, \hyperlink{binn_8h_a0a1a8d8952b9cff264203eec80e1db2b}{binn\+\_\+mem\+\_\+free} pfree)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ad009d3abcf6c575966b203cb4d468e67}{binn\+\_\+set\+\_\+blob} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item, void $\ast$ptr, int size, \hyperlink{binn_8h_a0a1a8d8952b9cff264203eec80e1db2b}{binn\+\_\+mem\+\_\+free} pfree)
+\item 
+\hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} \hyperlink{binn_8c_a1c144ef5f6ed0188c1db96fecba31ab7}{atoi64} (char $\ast$str)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_af148c6738767be9154a3d509e9d9689f}{is\+\_\+integer} (char $\ast$p)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a5647d03d57b6afbe16d93ba7a463259c}{is\+\_\+float} (char $\ast$p)
+\item 
+\hyperlink{binn_8h_a39a72cda6aff77570f0431b88ebc8965}{B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8c_a2d000c593e50d800f815ee17c583d3a9}{is\+\_\+bool\+\_\+str} (char $\ast$str, \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} $\ast$pbool)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_af0dd1d39eaa6487f962f26497b95cde6}{binn\+\_\+get\+\_\+int32} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value, int $\ast$pint)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_aa2d8dc865d9710f676946b8f5282fd90}{binn\+\_\+get\+\_\+int64} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value, \hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} $\ast$pint)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_ada3ab6852f57e4da077c80b05ec433d1}{binn\+\_\+get\+\_\+double} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value, double $\ast$pfloat)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a2981c1972dc7bd206ef0401ba25a6118}{binn\+\_\+get\+\_\+bool} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value, \hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} $\ast$pbool)
+\item 
+char $\ast$\hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a4b25b369d4fc9d858abcd65d18346b89}{binn\+\_\+get\+\_\+str} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$value)
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{binn_8h_a428a91acf2c2439dc1a257708ee1f805}{A\+P\+I\+E\+N\+T\+RY} \hyperlink{binn_8c_a366ea47e2972d23b091b4285a2932fec}{binn\+\_\+is\+\_\+container} (\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} $\ast$item)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$($\ast$ \hyperlink{binn_8c_acda7d9eb60e0c415bdb9419946f39ea0}{malloc\+\_\+fn} )(size\+\_\+t len)=0
+\item 
+void $\ast$($\ast$ \hyperlink{binn_8c_a15b44a46552230f03fb67a8dca9ad0ce}{realloc\+\_\+fn} )(void $\ast$ptr, size\+\_\+t len)=0
+\item 
+void($\ast$ \hyperlink{binn_8c_a5f2570fa66812bb59f5f0b329cadd158}{free\+\_\+fn} )(void $\ast$ptr)=0
+\item 
+\hyperlink{binn_8h_ab0a07074694dc84ac829388e90203e6e}{binn} \hyperlink{binn_8c_a7dbf50091bf7884664addfaafd0bfa43}{local\+\_\+value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{binn.\+c@{binn.\+c}!B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER@{B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}}
+\index{B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER@{B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER}{BINN_BUFFER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+I\+N\+N\+\_\+\+B\+U\+F\+F\+ER~2}\hypertarget{binn_8c_a75c88db31818bf4796687672bdf8f2fa}{}\label{binn_8c_a75c88db31818bf4796687672bdf8f2fa}
+
+
+Definition at line 23 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!B\+I\+N\+N\+\_\+\+M\+A\+G\+IC@{B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}}
+\index{B\+I\+N\+N\+\_\+\+M\+A\+G\+IC@{B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{B\+I\+N\+N\+\_\+\+M\+A\+G\+IC}{BINN_MAGIC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+I\+N\+N\+\_\+\+M\+A\+G\+IC~0x1\+F22\+B11F}\hypertarget{binn_8c_a2d75c8453258803228e4b4188454b2e3}{}\label{binn_8c_a2d75c8453258803228e4b4188454b2e3}
+
+
+Definition at line 16 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT@{B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}}
+\index{B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT@{B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT}{BINN_STRUCT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+I\+N\+N\+\_\+\+S\+T\+R\+U\+CT~1}\hypertarget{binn_8c_a2cb01438f81db68226c0d1dc2d2f400f}{}\label{binn_8c_a2cb01438f81db68226c0d1dc2d2f400f}
+
+
+Definition at line 22 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE@{C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}}
+\index{C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE@{C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}{CHUNK_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE~256}\hypertarget{binn_8c_aea3cfda4f3a9f978ec759f206cf186fe}{}\label{binn_8c_aea3cfda4f3a9f978ec759f206cf186fe}
+
+
+Definition at line 20 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!frombe16@{frombe16}}
+\index{frombe16@{frombe16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{frombe16}{frombe16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define frombe16~{\bf tobe16}}\hypertarget{binn_8c_ac05ebd4c815f0aaf2117e343fb26e005}{}\label{binn_8c_ac05ebd4c815f0aaf2117e343fb26e005}
+
+
+Definition at line 111 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!frombe32@{frombe32}}
+\index{frombe32@{frombe32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{frombe32}{frombe32}}]{\setlength{\rightskip}{0pt plus 5cm}\#define frombe32~{\bf tobe32}}\hypertarget{binn_8c_ad91df87c6c4e7b76e1c6919867edd5d0}{}\label{binn_8c_ad91df87c6c4e7b76e1c6919867edd5d0}
+
+
+Definition at line 112 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!frombe64@{frombe64}}
+\index{frombe64@{frombe64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{frombe64}{frombe64}}]{\setlength{\rightskip}{0pt plus 5cm}\#define frombe64~{\bf tobe64}}\hypertarget{binn_8c_a9f1fe72a0b8cc1e57c5f9bc825379f6f}{}\label{binn_8c_a9f1fe72a0b8cc1e57c5f9bc825379f6f}
+
+
+Definition at line 113 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER@{M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}}
+\index{M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER@{M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER}{MAX_BINN_HEADER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+B\+I\+N\+N\+\_\+\+H\+E\+A\+D\+ER~9}\hypertarget{binn_8c_a553a0f9904f5add5d006f6611b05bea6}{}\label{binn_8c_a553a0f9904f5add5d006f6611b05bea6}
+
+
+Definition at line 18 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE@{M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}}
+\index{M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE@{M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE}{MIN_BINN_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+I\+N\+\_\+\+B\+I\+N\+N\+\_\+\+S\+I\+ZE~3}\hypertarget{binn_8c_a15355a84c34158c099881f1db345f275}{}\label{binn_8c_a15355a84c34158c099881f1db345f275}
+
+
+Definition at line 19 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!round@{round}}
+\index{round@{round}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{round}{round}}]{\setlength{\rightskip}{0pt plus 5cm}\#define round(
+\begin{DoxyParamCaption}
+\item[{}]{dbl}
+\end{DoxyParamCaption}
+)~dbl $>$= 0.\+0 ? (int)(dbl + 0.\+5) \+: ((dbl -\/ (double)(int)dbl) $<$= -\/0.\+5 ? (int)dbl \+: (int)(dbl -\/ 0.\+5))}\hypertarget{binn_8c_abf58effd46f6c2c5dca025fb36c3bc08}{}\label{binn_8c_abf58effd46f6c2c5dca025fb36c3bc08}
+
+
+Definition at line 12 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!stricmp@{stricmp}}
+\index{stricmp@{stricmp}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{stricmp}{stricmp}}]{\setlength{\rightskip}{0pt plus 5cm}\#define stricmp~strcasecmp}\hypertarget{binn_8c_a4e0be90a3757e352f42612d09a7d1aa5}{}\label{binn_8c_a4e0be90a3757e352f42612d09a7d1aa5}
+
+
+Definition at line 118 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!strnicmp@{strnicmp}}
+\index{strnicmp@{strnicmp}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{strnicmp}{strnicmp}}]{\setlength{\rightskip}{0pt plus 5cm}\#define strnicmp~strncasecmp}\hypertarget{binn_8c_a16a19b1831112e876b010468ec15916f}{}\label{binn_8c_a16a19b1831112e876b010468ec15916f}
+
+
+Definition at line 119 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!U\+N\+U\+S\+ED@{U\+N\+U\+S\+ED}}
+\index{U\+N\+U\+S\+ED@{U\+N\+U\+S\+ED}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{U\+N\+U\+S\+ED}{UNUSED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+N\+U\+S\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(void)(x)}\hypertarget{binn_8c_a86d500a34c624c2cae56bc25a31b12f3}{}\label{binn_8c_a86d500a34c624c2cae56bc25a31b12f3}
+Binn\+: Binary data serialization library (\href{https://github.com/liteserver/binn}{\tt https\+://github.\+com/liteserver/binn}) 
+
+Definition at line 11 of file binn.\+c.
+
+
+
+\subsection{Function Documentation}
+\index{binn.\+c@{binn.\+c}!Add\+Value@{Add\+Value}}
+\index{Add\+Value@{Add\+Value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Add\+Value(binn $\ast$item, int type, void $\ast$pvalue, int size)}{AddValue(binn *item, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} Add\+Value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a36866c698effc244fe6125715386e0c5}{}\label{binn_8c_a36866c698effc244fe6125715386e0c5}
+
+
+Definition at line 760 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Advance\+Data\+Pos@{Advance\+Data\+Pos}}
+\index{Advance\+Data\+Pos@{Advance\+Data\+Pos}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Advance\+Data\+Pos(unsigned char $\ast$p)}{AdvanceDataPos(unsigned char *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char$\ast$ Advance\+Data\+Pos (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a39a4525241b4f6e5b182962fcdb073fd}{}\label{binn_8c_a39a4525241b4f6e5b182962fcdb073fd}
+
+
+Definition at line 455 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!atoi64@{atoi64}}
+\index{atoi64@{atoi64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{atoi64(char $\ast$str)}{atoi64(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64} atoi64 (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a1c144ef5f6ed0188c1db96fecba31ab7}{}\label{binn_8c_a1c144ef5f6ed0188c1db96fecba31ab7}
+
+
+Definition at line 2994 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+add\+\_\+value@{binn\+\_\+add\+\_\+value}}
+\index{binn\+\_\+add\+\_\+value@{binn\+\_\+add\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+add\+\_\+value(binn $\ast$item, int binn\+\_\+type, int id, char $\ast$name, int type, void $\ast$pvalue, int size)}{binn_add_value(binn *item, int binn_type, int id, char *name, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+add\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{binn\+\_\+type, }
+\item[{int}]{id, }
+\item[{char $\ast$}]{name, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a636bee2403a8a4593cf674ae392b0175}{}\label{binn_8c_a636bee2403a8a4593cf674ae392b0175}
+
+
+Definition at line 2261 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+alloc\+\_\+item@{binn\+\_\+alloc\+\_\+item}}
+\index{binn\+\_\+alloc\+\_\+item@{binn\+\_\+alloc\+\_\+item}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+alloc\+\_\+item()}{binn_alloc_item()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf binn}$\ast$ binn\+\_\+alloc\+\_\+item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9b1c3e5380eaf376f4462580a474e3dc}{}\label{binn_8c_a9b1c3e5380eaf376f4462580a474e3dc}
+
+
+Definition at line 2897 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+buf\+\_\+count@{binn\+\_\+buf\+\_\+count}}
+\index{binn\+\_\+buf\+\_\+count@{binn\+\_\+buf\+\_\+count}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+buf\+\_\+count(void $\ast$pbuf)}{binn_buf_count(void *pbuf)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int binn\+\_\+buf\+\_\+count (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pbuf}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aaedb4825831bfcb7be62622864483268}{}\label{binn_8c_aaedb4825831bfcb7be62622864483268}
+
+
+Definition at line 1108 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+buf\+\_\+size@{binn\+\_\+buf\+\_\+size}}
+\index{binn\+\_\+buf\+\_\+size@{binn\+\_\+buf\+\_\+size}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+buf\+\_\+size(void $\ast$pbuf)}{binn_buf_size(void *pbuf)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int binn\+\_\+buf\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pbuf}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abf1ba6031d43c7d6e63a3fcbbc24fb3b}{}\label{binn_8c_abf1ba6031d43c7d6e63a3fcbbc24fb3b}
+
+
+Definition at line 1119 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+buf\+\_\+type@{binn\+\_\+buf\+\_\+type}}
+\index{binn\+\_\+buf\+\_\+type@{binn\+\_\+buf\+\_\+type}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+buf\+\_\+type(void $\ast$pbuf)}{binn_buf_type(void *pbuf)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int binn\+\_\+buf\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pbuf}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a65f000c6fee12c27c66eaed19811a3f5}{}\label{binn_8c_a65f000c6fee12c27c66eaed19811a3f5}
+
+
+Definition at line 1097 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+count@{binn\+\_\+count}}
+\index{binn\+\_\+count@{binn\+\_\+count}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+count(void $\ast$ptr)}{binn_count(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+count (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab2ac553739fad776de768400e3f30fdf}{}\label{binn_8c_ab2ac553739fad776de768400e3f30fdf}
+
+
+Definition at line 1187 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+create@{binn\+\_\+create}}
+\index{binn\+\_\+create@{binn\+\_\+create}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+create(binn $\ast$item, int type, int size, void $\ast$pointer)}{binn_create(binn *item, int type, int size, void *pointer)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{type, }
+\item[{int}]{size, }
+\item[{void $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_acbdf0e3816b3107d34264563cbe9ae35}{}\label{binn_8c_acbdf0e3816b3107d34264563cbe9ae35}
+
+
+Definition at line 226 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+create\+\_\+list@{binn\+\_\+create\+\_\+list}}
+\index{binn\+\_\+create\+\_\+list@{binn\+\_\+create\+\_\+list}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+create\+\_\+list(binn $\ast$list)}{binn_create_list(binn *list)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+create\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7faa7c511783c084d616323024e2de23}{}\label{binn_8c_a7faa7c511783c084d616323024e2de23}
+
+
+Definition at line 293 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+create\+\_\+map@{binn\+\_\+create\+\_\+map}}
+\index{binn\+\_\+create\+\_\+map@{binn\+\_\+create\+\_\+map}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+create\+\_\+map(binn $\ast$map)}{binn_create_map(binn *map)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+create\+\_\+map (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{map}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a1d479197f39befe9a69ce7e6d3be865b}{}\label{binn_8c_a1d479197f39befe9a69ce7e6d3be865b}
+
+
+Definition at line 301 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+create\+\_\+object@{binn\+\_\+create\+\_\+object}}
+\index{binn\+\_\+create\+\_\+object@{binn\+\_\+create\+\_\+object}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+create\+\_\+object(binn $\ast$object)}{binn_create_object(binn *object)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+create\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{object}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2fc6e5730199414e388f51ba331e46b6}{}\label{binn_8c_a2fc6e5730199414e388f51ba331e46b6}
+
+
+Definition at line 309 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+create\+\_\+type@{binn\+\_\+create\+\_\+type}}
+\index{binn\+\_\+create\+\_\+type@{binn\+\_\+create\+\_\+type}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+create\+\_\+type(int storage\+\_\+type, int data\+\_\+type\+\_\+index)}{binn_create_type(int storage_type, int data_type_index)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+create\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{int}]{storage\+\_\+type, }
+\item[{int}]{data\+\_\+type\+\_\+index}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a6047ef1c8933d51c6a6bf8ff7d3ea239}{}\label{binn_8c_a6047ef1c8933d51c6a6bf8ff7d3ea239}
+
+
+Definition at line 173 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+free@{binn\+\_\+free}}
+\index{binn\+\_\+free@{binn\+\_\+free}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+free(binn $\ast$item)}{binn_free(binn *item)}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+free (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a3d0e6d2cfd149aaab50edde0d3728292}{}\label{binn_8c_a3d0e6d2cfd149aaab50edde0d3728292}
+
+
+Definition at line 983 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+bool@{binn\+\_\+get\+\_\+bool}}
+\index{binn\+\_\+get\+\_\+bool@{binn\+\_\+get\+\_\+bool}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+bool(binn $\ast$value, B\+O\+O\+L $\ast$pbool)}{binn_get_bool(binn *value, BOOL *pbool)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+bool (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value, }
+\item[{{\bf B\+O\+OL} $\ast$}]{pbool}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2981c1972dc7bd206ef0401ba25a6118}{}\label{binn_8c_a2981c1972dc7bd206ef0401ba25a6118}
+
+
+Definition at line 3209 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+double@{binn\+\_\+get\+\_\+double}}
+\index{binn\+\_\+get\+\_\+double@{binn\+\_\+get\+\_\+double}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+double(binn $\ast$value, double $\ast$pfloat)}{binn_get_double(binn *value, double *pfloat)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value, }
+\item[{double $\ast$}]{pfloat}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ada3ab6852f57e4da077c80b05ec433d1}{}\label{binn_8c_ada3ab6852f57e4da077c80b05ec433d1}
+
+
+Definition at line 3171 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+int32@{binn\+\_\+get\+\_\+int32}}
+\index{binn\+\_\+get\+\_\+int32@{binn\+\_\+get\+\_\+int32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+int32(binn $\ast$value, int $\ast$pint)}{binn_get_int32(binn *value, int *pint)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+int32 (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value, }
+\item[{int $\ast$}]{pint}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af0dd1d39eaa6487f962f26497b95cde6}{}\label{binn_8c_af0dd1d39eaa6487f962f26497b95cde6}
+
+
+Definition at line 3097 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+int64@{binn\+\_\+get\+\_\+int64}}
+\index{binn\+\_\+get\+\_\+int64@{binn\+\_\+get\+\_\+int64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+int64(binn $\ast$value, int64 $\ast$pint)}{binn_get_int64(binn *value, int64 *pint)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+int64 (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value, }
+\item[{{\bf int64} $\ast$}]{pint}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa2d8dc865d9710f676946b8f5282fd90}{}\label{binn_8c_aa2d8dc865d9710f676946b8f5282fd90}
+
+
+Definition at line 3134 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+ptr\+\_\+type@{binn\+\_\+get\+\_\+ptr\+\_\+type}}
+\index{binn\+\_\+get\+\_\+ptr\+\_\+type@{binn\+\_\+get\+\_\+ptr\+\_\+type}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+ptr\+\_\+type(void $\ast$ptr)}{binn_get_ptr_type(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int binn\+\_\+get\+\_\+ptr\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a10fb517a69e48b23b6453ebceafba25b}{}\label{binn_8c_a10fb517a69e48b23b6453ebceafba25b}
+
+
+Definition at line 368 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+read\+\_\+storage@{binn\+\_\+get\+\_\+read\+\_\+storage}}
+\index{binn\+\_\+get\+\_\+read\+\_\+storage@{binn\+\_\+get\+\_\+read\+\_\+storage}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+read\+\_\+storage(int type)}{binn_get_read_storage(int type)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+read\+\_\+storage (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9470d7049b87ed710bcc8b89bb7d03bd}{}\label{binn_8c_a9470d7049b87ed710bcc8b89bb7d03bd}
+
+
+Definition at line 1852 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+str@{binn\+\_\+get\+\_\+str}}
+\index{binn\+\_\+get\+\_\+str@{binn\+\_\+get\+\_\+str}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+str(binn $\ast$value)}{binn_get_str(binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a4b25b369d4fc9d858abcd65d18346b89}{}\label{binn_8c_a4b25b369d4fc9d858abcd65d18346b89}
+
+
+Definition at line 3241 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+type\+\_\+info@{binn\+\_\+get\+\_\+type\+\_\+info}}
+\index{binn\+\_\+get\+\_\+type\+\_\+info@{binn\+\_\+get\+\_\+type\+\_\+info}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+type\+\_\+info(int long\+\_\+type, int $\ast$pstorage\+\_\+type, int $\ast$pextra\+\_\+type)}{binn_get_type_info(int long_type, int *pstorage_type, int *pextra_type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+type\+\_\+info (
+\begin{DoxyParamCaption}
+\item[{int}]{long\+\_\+type, }
+\item[{int $\ast$}]{pstorage\+\_\+type, }
+\item[{int $\ast$}]{pextra\+\_\+type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_add5f2441e02e006bcc0937cdb203471b}{}\label{binn_8c_add5f2441e02e006bcc0937cdb203471b}
+
+
+Definition at line 189 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+get\+\_\+write\+\_\+storage@{binn\+\_\+get\+\_\+write\+\_\+storage}}
+\index{binn\+\_\+get\+\_\+write\+\_\+storage@{binn\+\_\+get\+\_\+write\+\_\+storage}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+get\+\_\+write\+\_\+storage(int type)}{binn_get_write_storage(int type)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+get\+\_\+write\+\_\+storage (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab6769b6ab27565027e4be9009b21026c}{}\label{binn_8c_ab6769b6ab27565027e4be9009b21026c}
+
+
+Definition at line 1832 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+is\+\_\+container@{binn\+\_\+is\+\_\+container}}
+\index{binn\+\_\+is\+\_\+container@{binn\+\_\+is\+\_\+container}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+is\+\_\+container(binn $\ast$item)}{binn_is_container(binn *item)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+is\+\_\+container (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a366ea47e2972d23b091b4285a2932fec}{}\label{binn_8c_a366ea47e2972d23b091b4285a2932fec}
+
+
+Definition at line 3286 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+is\+\_\+struct@{binn\+\_\+is\+\_\+struct}}
+\index{binn\+\_\+is\+\_\+struct@{binn\+\_\+is\+\_\+struct}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+is\+\_\+struct(void $\ast$ptr)}{binn_is_struct(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+is\+\_\+struct (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ad173404a568c6faf4bb1116f91c93e9c}{}\label{binn_8c_ad173404a568c6faf4bb1116f91c93e9c}
+
+
+Definition at line 383 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+is\+\_\+valid@{binn\+\_\+is\+\_\+valid}}
+\index{binn\+\_\+is\+\_\+valid@{binn\+\_\+is\+\_\+valid}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+is\+\_\+valid(void $\ast$ptr, int $\ast$ptype, int $\ast$pcount, int $\ast$psize)}{binn_is_valid(void *ptr, int *ptype, int *pcount, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+is\+\_\+valid (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{pcount, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abe5a591099d3d91e8e62e0133cfddb83}{}\label{binn_8c_abe5a591099d3d91e8e62e0133cfddb83}
+
+
+Definition at line 1204 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+iter\+\_\+init@{binn\+\_\+iter\+\_\+init}}
+\index{binn\+\_\+iter\+\_\+init@{binn\+\_\+iter\+\_\+init}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+iter\+\_\+init(binn\+\_\+iter $\ast$iter, void $\ast$ptr, int expected\+\_\+type)}{binn_iter_init(binn_iter *iter, void *ptr, int expected_type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+iter\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{expected\+\_\+type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a537af13c81b9e7c53590308721b34901}{}\label{binn_8c_a537af13c81b9e7c53590308721b34901}
+
+
+Definition at line 1631 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list@{binn\+\_\+list}}
+\index{binn\+\_\+list@{binn\+\_\+list}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list()}{binn_list()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a46f4b4768132fb3ff7adc9e923e55596}{}\label{binn_8c_a46f4b4768132fb3ff7adc9e923e55596}
+
+
+Definition at line 317 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+add@{binn\+\_\+list\+\_\+add}}
+\index{binn\+\_\+list\+\_\+add@{binn\+\_\+list\+\_\+add}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+add(binn $\ast$list, int type, void $\ast$pvalue, int size)}{binn_list_add(binn *list, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{list, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7e7046a2c830c6eb3a9c60bca4f72b5e}{}\label{binn_8c_a7e7046a2c830c6eb3a9c60bca4f72b5e}
+
+
+Definition at line 2230 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+add\+\_\+new@{binn\+\_\+list\+\_\+add\+\_\+new}}
+\index{binn\+\_\+list\+\_\+add\+\_\+new@{binn\+\_\+list\+\_\+add\+\_\+new}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+add\+\_\+new(binn $\ast$list, binn $\ast$value)}{binn_list_add_new(binn *list, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+add\+\_\+new (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{list, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa78510b4867044a9a9404085f541789b}{}\label{binn_8c_aa78510b4867044a9a9404085f541789b}
+
+
+Definition at line 2279 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+add\+\_\+raw@{binn\+\_\+list\+\_\+add\+\_\+raw}}
+\index{binn\+\_\+list\+\_\+add\+\_\+raw@{binn\+\_\+list\+\_\+add\+\_\+raw}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+add\+\_\+raw(binn $\ast$item, int type, void $\ast$pvalue, int size)}{binn_list_add_raw(binn *item, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+list\+\_\+add\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa822b8e2193f013dbfb20894185160ef}{}\label{binn_8c_aa822b8e2193f013dbfb20894185160ef}
+
+
+Definition at line 583 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+blob@{binn\+\_\+list\+\_\+blob}}
+\index{binn\+\_\+list\+\_\+blob@{binn\+\_\+list\+\_\+blob}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+blob(void $\ast$list, int pos, int $\ast$psize)}{binn_list_blob(void *list, int pos, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+blob (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab831f5eb4c17641098dc00feca266ca4}{}\label{binn_8c_ab831f5eb4c17641098dc00feca266ca4}
+
+
+Definition at line 2590 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+bool@{binn\+\_\+list\+\_\+bool}}
+\index{binn\+\_\+list\+\_\+bool@{binn\+\_\+list\+\_\+bool}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+bool(void $\ast$list, int pos)}{binn_list_bool(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+bool (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa17bd93c1a8a51a0e55b48f6fc8a3837}{}\label{binn_8c_aa17bd93c1a8a51a0e55b48f6fc8a3837}
+
+
+Definition at line 2568 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+double@{binn\+\_\+list\+\_\+double}}
+\index{binn\+\_\+list\+\_\+double@{binn\+\_\+list\+\_\+double}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+double(void $\ast$list, int pos)}{binn_list_double(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af9eaab8da0ea48107b32c130876a0684}{}\label{binn_8c_af9eaab8da0ea48107b32c130876a0684}
+
+
+Definition at line 2560 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+float@{binn\+\_\+list\+\_\+float}}
+\index{binn\+\_\+list\+\_\+float@{binn\+\_\+list\+\_\+float}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+float(void $\ast$list, int pos)}{binn_list_float(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+float (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_afd761b2fc9f7b601591ef3ec5d5c915a}{}\label{binn_8c_afd761b2fc9f7b601591ef3ec5d5c915a}
+
+
+Definition at line 2552 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+get@{binn\+\_\+list\+\_\+get}}
+\index{binn\+\_\+list\+\_\+get@{binn\+\_\+list\+\_\+get}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+get(void $\ast$ptr, int pos, int type, void $\ast$pvalue, int $\ast$psize)}{binn_list_get(void *ptr, int pos, int type, void *pvalue, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a357a00e5cd4180981f96bbc261d03619}{}\label{binn_8c_a357a00e5cd4180981f96bbc261d03619}
+
+
+Definition at line 2415 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+get\+\_\+value@{binn\+\_\+list\+\_\+get\+\_\+value}}
+\index{binn\+\_\+list\+\_\+get\+\_\+value@{binn\+\_\+list\+\_\+get\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+get\+\_\+value(void $\ast$ptr, int pos, binn $\ast$value)}{binn_list_get_value(void *ptr, int pos, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+get\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a3fe3857e02c1b759133de20331bf2798}{}\label{binn_8c_a3fe3857e02c1b759133de20331bf2798}
+
+
+Definition at line 1453 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+int16@{binn\+\_\+list\+\_\+int16}}
+\index{binn\+\_\+list\+\_\+int16@{binn\+\_\+list\+\_\+int16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+int16(void $\ast$list, int pos)}{binn_list_int16(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+int16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7b3005b2ff2a8d424344d6496d51b3ef}{}\label{binn_8c_a7b3005b2ff2a8d424344d6496d51b3ef}
+
+
+Definition at line 2496 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+int32@{binn\+\_\+list\+\_\+int32}}
+\index{binn\+\_\+list\+\_\+int32@{binn\+\_\+list\+\_\+int32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+int32(void $\ast$list, int pos)}{binn_list_int32(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+int32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab71d494165a77be27406c73dd8ee6408}{}\label{binn_8c_ab71d494165a77be27406c73dd8ee6408}
+
+
+Definition at line 2504 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+int64@{binn\+\_\+list\+\_\+int64}}
+\index{binn\+\_\+list\+\_\+int64@{binn\+\_\+list\+\_\+int64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+int64(void $\ast$list, int pos)}{binn_list_int64(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+int64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae1657c953c559311fd667731b6547016}{}\label{binn_8c_ae1657c953c559311fd667731b6547016}
+
+
+Definition at line 2512 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+int8@{binn\+\_\+list\+\_\+int8}}
+\index{binn\+\_\+list\+\_\+int8@{binn\+\_\+list\+\_\+int8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+int8(void $\ast$list, int pos)}{binn_list_int8(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}signed char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+int8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a830c70cf349b91cb41228f70f278ac38}{}\label{binn_8c_a830c70cf349b91cb41228f70f278ac38}
+
+
+Definition at line 2488 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+list@{binn\+\_\+list\+\_\+list}}
+\index{binn\+\_\+list\+\_\+list@{binn\+\_\+list\+\_\+list}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+list(void $\ast$list, int pos)}{binn_list_list(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a781b65410e4a767528ab2e98ac5079ce}{}\label{binn_8c_a781b65410e4a767528ab2e98ac5079ce}
+
+
+Definition at line 2598 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+map@{binn\+\_\+list\+\_\+map}}
+\index{binn\+\_\+list\+\_\+map@{binn\+\_\+list\+\_\+map}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+map(void $\ast$list, int pos)}{binn_list_map(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+map (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a8be007ac4a375abffd241356a9bba95c}{}\label{binn_8c_a8be007ac4a375abffd241356a9bba95c}
+
+
+Definition at line 2606 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+next@{binn\+\_\+list\+\_\+next}}
+\index{binn\+\_\+list\+\_\+next@{binn\+\_\+list\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+next(binn\+\_\+iter $\ast$iter, binn $\ast$value)}{binn_list_next(binn_iter *iter, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_acfbe8e08d9744c18791ca7df1b52c05e}{}\label{binn_8c_acfbe8e08d9744c18791ca7df1b52c05e}
+
+
+Definition at line 1655 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+next\+\_\+value@{binn\+\_\+list\+\_\+next\+\_\+value}}
+\index{binn\+\_\+list\+\_\+next\+\_\+value@{binn\+\_\+list\+\_\+next\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+next\+\_\+value(binn\+\_\+iter $\ast$iter)}{binn_list_next_value(binn_iter *iter)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+next\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a63890b62ed15e9bbdb3042067b3a1300}{}\label{binn_8c_a63890b62ed15e9bbdb3042067b3a1300}
+
+
+Definition at line 1729 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+null@{binn\+\_\+list\+\_\+null}}
+\index{binn\+\_\+list\+\_\+null@{binn\+\_\+list\+\_\+null}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+null(void $\ast$list, int pos)}{binn_list_null(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+null (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ada21f5157c164782a5d131f930ccd28a}{}\label{binn_8c_ada21f5157c164782a5d131f930ccd28a}
+
+
+Definition at line 2576 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+object@{binn\+\_\+list\+\_\+object}}
+\index{binn\+\_\+list\+\_\+object@{binn\+\_\+list\+\_\+object}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+object(void $\ast$list, int pos)}{binn_list_object(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa98793df6b47ebc6cd179e86ac2c729d}{}\label{binn_8c_aa98793df6b47ebc6cd179e86ac2c729d}
+
+
+Definition at line 2614 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+read@{binn\+\_\+list\+\_\+read}}
+\index{binn\+\_\+list\+\_\+read@{binn\+\_\+list\+\_\+read}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+read(void $\ast$list, int pos, int $\ast$ptype, int $\ast$psize)}{binn_list_read(void *list, int pos, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a09f6160eb0893f707a7abb8183dcf187}{}\label{binn_8c_a09f6160eb0893f707a7abb8183dcf187}
+
+
+Definition at line 2366 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+read\+\_\+next@{binn\+\_\+list\+\_\+read\+\_\+next}}
+\index{binn\+\_\+list\+\_\+read\+\_\+next@{binn\+\_\+list\+\_\+read\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+read\+\_\+next(binn\+\_\+iter $\ast$iter, int $\ast$ptype, int $\ast$psize)}{binn_list_read_next(binn_iter *iter, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+read\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa38c06cee0d2df0e8368ee25a252f764}{}\label{binn_8c_aa38c06cee0d2df0e8368ee25a252f764}
+
+
+Definition at line 1781 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+str@{binn\+\_\+list\+\_\+str}}
+\index{binn\+\_\+list\+\_\+str@{binn\+\_\+list\+\_\+str}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+str(void $\ast$list, int pos)}{binn_list_str(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2c14bcbccc18988311cb21b88ae72bad}{}\label{binn_8c_a2c14bcbccc18988311cb21b88ae72bad}
+
+
+Definition at line 2582 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+uint16@{binn\+\_\+list\+\_\+uint16}}
+\index{binn\+\_\+list\+\_\+uint16@{binn\+\_\+list\+\_\+uint16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+uint16(void $\ast$list, int pos)}{binn_list_uint16(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+uint16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae0afa0db01da8a0d81ed104e3e70a33b}{}\label{binn_8c_ae0afa0db01da8a0d81ed104e3e70a33b}
+
+
+Definition at line 2528 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+uint32@{binn\+\_\+list\+\_\+uint32}}
+\index{binn\+\_\+list\+\_\+uint32@{binn\+\_\+list\+\_\+uint32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+uint32(void $\ast$list, int pos)}{binn_list_uint32(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+uint32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a10e38c45801ab287658d0160c82af333}{}\label{binn_8c_a10e38c45801ab287658d0160c82af333}
+
+
+Definition at line 2536 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+uint64@{binn\+\_\+list\+\_\+uint64}}
+\index{binn\+\_\+list\+\_\+uint64@{binn\+\_\+list\+\_\+uint64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+uint64(void $\ast$list, int pos)}{binn_list_uint64(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+uint64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a8adba19d739deb4f7c8bb189e10e7538}{}\label{binn_8c_a8adba19d739deb4f7c8bb189e10e7538}
+
+
+Definition at line 2544 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+uint8@{binn\+\_\+list\+\_\+uint8}}
+\index{binn\+\_\+list\+\_\+uint8@{binn\+\_\+list\+\_\+uint8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+uint8(void $\ast$list, int pos)}{binn_list_uint8(void *list, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+uint8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{list, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a56ff144555403030d4fd1625cf73f730}{}\label{binn_8c_a56ff144555403030d4fd1625cf73f730}
+
+
+Definition at line 2520 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+list\+\_\+value@{binn\+\_\+list\+\_\+value}}
+\index{binn\+\_\+list\+\_\+value@{binn\+\_\+list\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+list\+\_\+value(void $\ast$ptr, int pos)}{binn_list_value(void *ptr, int pos)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+list\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a3bdc6df36f2516b4e33c560ae6f8d6c7}{}\label{binn_8c_a3bdc6df36f2516b4e33c560ae6f8d6c7}
+
+
+Definition at line 2314 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+load@{binn\+\_\+load}}
+\index{binn\+\_\+load@{binn\+\_\+load}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+load(void $\ast$data, binn $\ast$value)}{binn_load(void *data, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+load (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2082bb3ccc063df7f911b8e9dd6d9820}{}\label{binn_8c_a2082bb3ccc063df7f911b8e9dd6d9820}
+
+
+Definition at line 335 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+malloc@{binn\+\_\+malloc}}
+\index{binn\+\_\+malloc@{binn\+\_\+malloc}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+malloc(int size)}{binn_malloc(int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void$\ast$ binn\+\_\+malloc (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a40c7cd9f448c2751325c9aec72caeda8}{}\label{binn_8c_a40c7cd9f448c2751325c9aec72caeda8}
+
+
+Definition at line 144 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map@{binn\+\_\+map}}
+\index{binn\+\_\+map@{binn\+\_\+map}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map()}{binn_map()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a486dbcb3cbfa8e212d070a676fe6e67d}{}\label{binn_8c_a486dbcb3cbfa8e212d070a676fe6e67d}
+
+
+Definition at line 323 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+blob@{binn\+\_\+map\+\_\+blob}}
+\index{binn\+\_\+map\+\_\+blob@{binn\+\_\+map\+\_\+blob}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+blob(void $\ast$map, int id, int $\ast$psize)}{binn_map_blob(void *map, int id, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+blob (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a6a2a4d34127f4c45b3ef95b383ac627a}{}\label{binn_8c_a6a2a4d34127f4c45b3ef95b383ac627a}
+
+
+Definition at line 2726 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+bool@{binn\+\_\+map\+\_\+bool}}
+\index{binn\+\_\+map\+\_\+bool@{binn\+\_\+map\+\_\+bool}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+bool(void $\ast$map, int id)}{binn_map_bool(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+bool (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a1c5d11a31c1e27cb76713216670e2381}{}\label{binn_8c_a1c5d11a31c1e27cb76713216670e2381}
+
+
+Definition at line 2704 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+double@{binn\+\_\+map\+\_\+double}}
+\index{binn\+\_\+map\+\_\+double@{binn\+\_\+map\+\_\+double}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+double(void $\ast$map, int id)}{binn_map_double(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_acc17f508908f13e952796546efb98506}{}\label{binn_8c_acc17f508908f13e952796546efb98506}
+
+
+Definition at line 2696 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+float@{binn\+\_\+map\+\_\+float}}
+\index{binn\+\_\+map\+\_\+float@{binn\+\_\+map\+\_\+float}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+float(void $\ast$map, int id)}{binn_map_float(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+float (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7b925bb450d916b03b9c58180c680ab4}{}\label{binn_8c_a7b925bb450d916b03b9c58180c680ab4}
+
+
+Definition at line 2688 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+get@{binn\+\_\+map\+\_\+get}}
+\index{binn\+\_\+map\+\_\+get@{binn\+\_\+map\+\_\+get}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+get(void $\ast$ptr, int id, int type, void $\ast$pvalue, int $\ast$psize)}{binn_map_get(void *ptr, int id, int type, void *pvalue, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{id, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9bfedf67e836fd10f8383d043e69de4c}{}\label{binn_8c_a9bfedf67e836fd10f8383d043e69de4c}
+
+
+Definition at line 2436 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+get\+\_\+pair@{binn\+\_\+map\+\_\+get\+\_\+pair}}
+\index{binn\+\_\+map\+\_\+get\+\_\+pair@{binn\+\_\+map\+\_\+get\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+get\+\_\+pair(void $\ast$ptr, int pos, int $\ast$pid, binn $\ast$value)}{binn_map_get_pair(void *ptr, int pos, int *pid, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+get\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{pid, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7b00656c46ab9fcbb887fce53b0a416e}{}\label{binn_8c_a7b00656c46ab9fcbb887fce53b0a416e}
+
+
+Definition at line 1546 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+get\+\_\+value@{binn\+\_\+map\+\_\+get\+\_\+value}}
+\index{binn\+\_\+map\+\_\+get\+\_\+value@{binn\+\_\+map\+\_\+get\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+get\+\_\+value(void $\ast$ptr, int id, binn $\ast$value)}{binn_map_get_value(void *ptr, int id, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+get\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{id, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a14a5776e820e00e6618d3db3133453df}{}\label{binn_8c_a14a5776e820e00e6618d3db3133453df}
+
+
+Definition at line 1430 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+int16@{binn\+\_\+map\+\_\+int16}}
+\index{binn\+\_\+map\+\_\+int16@{binn\+\_\+map\+\_\+int16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+int16(void $\ast$map, int id)}{binn_map_int16(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+int16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af827cf2a01628fdd8834437fec479f05}{}\label{binn_8c_af827cf2a01628fdd8834437fec479f05}
+
+
+Definition at line 2632 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+int32@{binn\+\_\+map\+\_\+int32}}
+\index{binn\+\_\+map\+\_\+int32@{binn\+\_\+map\+\_\+int32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+int32(void $\ast$map, int id)}{binn_map_int32(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+int32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9bc0eec6210f2aee63d65281e59c762d}{}\label{binn_8c_a9bc0eec6210f2aee63d65281e59c762d}
+
+
+Definition at line 2640 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+int64@{binn\+\_\+map\+\_\+int64}}
+\index{binn\+\_\+map\+\_\+int64@{binn\+\_\+map\+\_\+int64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+int64(void $\ast$map, int id)}{binn_map_int64(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+int64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a96b1b6be8fe755a429d23b217e234059}{}\label{binn_8c_a96b1b6be8fe755a429d23b217e234059}
+
+
+Definition at line 2648 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+int8@{binn\+\_\+map\+\_\+int8}}
+\index{binn\+\_\+map\+\_\+int8@{binn\+\_\+map\+\_\+int8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+int8(void $\ast$map, int id)}{binn_map_int8(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}signed char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+int8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abc1e936c801514ac64d169f8efee0ae3}{}\label{binn_8c_abc1e936c801514ac64d169f8efee0ae3}
+
+
+Definition at line 2624 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+list@{binn\+\_\+map\+\_\+list}}
+\index{binn\+\_\+map\+\_\+list@{binn\+\_\+map\+\_\+list}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+list(void $\ast$map, int id)}{binn_map_list(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae648bf5ef23c8dec6cbe4f46de6b9a21}{}\label{binn_8c_ae648bf5ef23c8dec6cbe4f46de6b9a21}
+
+
+Definition at line 2734 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+map@{binn\+\_\+map\+\_\+map}}
+\index{binn\+\_\+map\+\_\+map@{binn\+\_\+map\+\_\+map}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+map(void $\ast$map, int id)}{binn_map_map(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+map (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a03c8f54b2b920ce7cdc65853b49d32a2}{}\label{binn_8c_a03c8f54b2b920ce7cdc65853b49d32a2}
+
+
+Definition at line 2742 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+next@{binn\+\_\+map\+\_\+next}}
+\index{binn\+\_\+map\+\_\+next@{binn\+\_\+map\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+next(binn\+\_\+iter $\ast$iter, int $\ast$pid, binn $\ast$value)}{binn_map_next(binn_iter *iter, int *pid, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{int $\ast$}]{pid, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a4143d96821695fd2464314d0227f829d}{}\label{binn_8c_a4143d96821695fd2464314d0227f829d}
+
+
+Definition at line 1712 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+next\+\_\+value@{binn\+\_\+map\+\_\+next\+\_\+value}}
+\index{binn\+\_\+map\+\_\+next\+\_\+value@{binn\+\_\+map\+\_\+next\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+next\+\_\+value(binn\+\_\+iter $\ast$iter, int $\ast$pid)}{binn_map_next_value(binn_iter *iter, int *pid)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+next\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{int $\ast$}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aad3770b6af02fd8dfc80f9c578da3018}{}\label{binn_8c_aad3770b6af02fd8dfc80f9c578da3018}
+
+
+Definition at line 1746 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+null@{binn\+\_\+map\+\_\+null}}
+\index{binn\+\_\+map\+\_\+null@{binn\+\_\+map\+\_\+null}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+null(void $\ast$map, int id)}{binn_map_null(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+null (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abfe9c8a4f0b507aaae15b3f68847d6ef}{}\label{binn_8c_abfe9c8a4f0b507aaae15b3f68847d6ef}
+
+
+Definition at line 2712 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+object@{binn\+\_\+map\+\_\+object}}
+\index{binn\+\_\+map\+\_\+object@{binn\+\_\+map\+\_\+object}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+object(void $\ast$map, int id)}{binn_map_object(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2763619d0fd2c462f060b5c47979b92d}{}\label{binn_8c_a2763619d0fd2c462f060b5c47979b92d}
+
+
+Definition at line 2750 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+pair@{binn\+\_\+map\+\_\+pair}}
+\index{binn\+\_\+map\+\_\+pair@{binn\+\_\+map\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+pair(void $\ast$map, int pos, int $\ast$pid)}{binn_map_pair(void *map, int pos, int *pid)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a382932c735585fa72ac7fbede85801c3}{}\label{binn_8c_a382932c735585fa72ac7fbede85801c3}
+
+
+Definition at line 1562 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+read@{binn\+\_\+map\+\_\+read}}
+\index{binn\+\_\+map\+\_\+read@{binn\+\_\+map\+\_\+read}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+read(void $\ast$map, int id, int $\ast$ptype, int $\ast$psize)}{binn_map_read(void *map, int id, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab7a2a3b7b56615afad150fa17bd18663}{}\label{binn_8c_ab7a2a3b7b56615afad150fa17bd18663}
+
+
+Definition at line 2382 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+read\+\_\+next@{binn\+\_\+map\+\_\+read\+\_\+next}}
+\index{binn\+\_\+map\+\_\+read\+\_\+next@{binn\+\_\+map\+\_\+read\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+read\+\_\+next(binn\+\_\+iter $\ast$iter, int $\ast$pid, int $\ast$ptype, int $\ast$psize)}{binn_map_read_next(binn_iter *iter, int *pid, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+read\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{int $\ast$}]{pid, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a47f8206db744a9ce309e994e97d93f44}{}\label{binn_8c_a47f8206db744a9ce309e994e97d93f44}
+
+
+Definition at line 1797 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+read\+\_\+pair@{binn\+\_\+map\+\_\+read\+\_\+pair}}
+\index{binn\+\_\+map\+\_\+read\+\_\+pair@{binn\+\_\+map\+\_\+read\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+read\+\_\+pair(void $\ast$ptr, int pos, int $\ast$pid, int $\ast$ptype, int $\ast$psize)}{binn_map_read_pair(void *ptr, int pos, int *pid, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+read\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{pid, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ab94646648ee626cd4401e7a471afe9f5}{}\label{binn_8c_ab94646648ee626cd4401e7a471afe9f5}
+
+
+Definition at line 1597 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+set@{binn\+\_\+map\+\_\+set}}
+\index{binn\+\_\+map\+\_\+set@{binn\+\_\+map\+\_\+set}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+set(binn $\ast$map, int id, int type, void $\ast$pvalue, int size)}{binn_map_set(binn *map, int id, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{map, }
+\item[{int}]{id, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_adcb67172992055e675cb8a22f8596a58}{}\label{binn_8c_adcb67172992055e675cb8a22f8596a58}
+
+
+Definition at line 2240 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+set\+\_\+new@{binn\+\_\+map\+\_\+set\+\_\+new}}
+\index{binn\+\_\+map\+\_\+set\+\_\+new@{binn\+\_\+map\+\_\+set\+\_\+new}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+set\+\_\+new(binn $\ast$map, int id, binn $\ast$value)}{binn_map_set_new(binn *map, int id, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+set\+\_\+new (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{map, }
+\item[{int}]{id, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a1cef5061742f07e33b574a691e345fb4}{}\label{binn_8c_a1cef5061742f07e33b574a691e345fb4}
+
+
+Definition at line 2290 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+set\+\_\+raw@{binn\+\_\+map\+\_\+set\+\_\+raw}}
+\index{binn\+\_\+map\+\_\+set\+\_\+raw@{binn\+\_\+map\+\_\+set\+\_\+raw}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+set\+\_\+raw(binn $\ast$item, int id, int type, void $\ast$pvalue, int size)}{binn_map_set_raw(binn *item, int id, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+map\+\_\+set\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{id, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_acedef1911f7a332fe6d2c05916c1d0d6}{}\label{binn_8c_acedef1911f7a332fe6d2c05916c1d0d6}
+
+
+Definition at line 638 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+str@{binn\+\_\+map\+\_\+str}}
+\index{binn\+\_\+map\+\_\+str@{binn\+\_\+map\+\_\+str}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+str(void $\ast$map, int id)}{binn_map_str(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2339525ce0e50524c0a6e60c71d8578d}{}\label{binn_8c_a2339525ce0e50524c0a6e60c71d8578d}
+
+
+Definition at line 2718 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+uint16@{binn\+\_\+map\+\_\+uint16}}
+\index{binn\+\_\+map\+\_\+uint16@{binn\+\_\+map\+\_\+uint16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+uint16(void $\ast$map, int id)}{binn_map_uint16(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+uint16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a332d8d82fe32ccd98e09689aa8626e48}{}\label{binn_8c_a332d8d82fe32ccd98e09689aa8626e48}
+
+
+Definition at line 2664 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+uint32@{binn\+\_\+map\+\_\+uint32}}
+\index{binn\+\_\+map\+\_\+uint32@{binn\+\_\+map\+\_\+uint32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+uint32(void $\ast$map, int id)}{binn_map_uint32(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+uint32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9cfa73fb8992aa73941d58761572e796}{}\label{binn_8c_a9cfa73fb8992aa73941d58761572e796}
+
+
+Definition at line 2672 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+uint64@{binn\+\_\+map\+\_\+uint64}}
+\index{binn\+\_\+map\+\_\+uint64@{binn\+\_\+map\+\_\+uint64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+uint64(void $\ast$map, int id)}{binn_map_uint64(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+uint64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a478f190cc8a7dbbf0041312ae1f6c2a0}{}\label{binn_8c_a478f190cc8a7dbbf0041312ae1f6c2a0}
+
+
+Definition at line 2680 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+uint8@{binn\+\_\+map\+\_\+uint8}}
+\index{binn\+\_\+map\+\_\+uint8@{binn\+\_\+map\+\_\+uint8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+uint8(void $\ast$map, int id)}{binn_map_uint8(void *map, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+uint8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{map, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac9047ac0563c6dde25535c0197af38fa}{}\label{binn_8c_ac9047ac0563c6dde25535c0197af38fa}
+
+
+Definition at line 2656 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+map\+\_\+value@{binn\+\_\+map\+\_\+value}}
+\index{binn\+\_\+map\+\_\+value@{binn\+\_\+map\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+map\+\_\+value(void $\ast$ptr, int id)}{binn_map_value(void *ptr, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+map\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a8871e5245c1b0974258b7cf73049375f}{}\label{binn_8c_a8871e5245c1b0974258b7cf73049375f}
+
+
+Definition at line 2331 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+memdup@{binn\+\_\+memdup}}
+\index{binn\+\_\+memdup@{binn\+\_\+memdup}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+memdup(void $\ast$src, int size)}{binn_memdup(void *src, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void$\ast$ binn\+\_\+memdup (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{src, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a0c69d7839f5eddfbe683b46a2d5659d8}{}\label{binn_8c_a0c69d7839f5eddfbe683b46a2d5659d8}
+
+
+Definition at line 151 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+new@{binn\+\_\+new}}
+\index{binn\+\_\+new@{binn\+\_\+new}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+new(int type, int size, void $\ast$pointer)}{binn_new(int type, int size, void *pointer)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+new (
+\begin{DoxyParamCaption}
+\item[{int}]{type, }
+\item[{int}]{size, }
+\item[{void $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a59261ca6aa8efe3dbf77e1a0140ebcac}{}\label{binn_8c_a59261ca6aa8efe3dbf77e1a0140ebcac}
+
+
+Definition at line 276 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object@{binn\+\_\+object}}
+\index{binn\+\_\+object@{binn\+\_\+object}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object()}{binn_object()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a0d344297230d804abf480c922c9874e0}{}\label{binn_8c_a0d344297230d804abf480c922c9874e0}
+
+
+Definition at line 329 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+blob@{binn\+\_\+object\+\_\+blob}}
+\index{binn\+\_\+object\+\_\+blob@{binn\+\_\+object\+\_\+blob}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+blob(void $\ast$obj, char $\ast$key, int $\ast$psize)}{binn_object_blob(void *obj, char *key, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+blob (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a756ba2e659fa0dd00ac8f64c4997fd6a}{}\label{binn_8c_a756ba2e659fa0dd00ac8f64c4997fd6a}
+
+
+Definition at line 2862 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+bool@{binn\+\_\+object\+\_\+bool}}
+\index{binn\+\_\+object\+\_\+bool@{binn\+\_\+object\+\_\+bool}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+bool(void $\ast$obj, char $\ast$key)}{binn_object_bool(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+bool (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa557e91e2908070bb7446da5f5f3a116}{}\label{binn_8c_aa557e91e2908070bb7446da5f5f3a116}
+
+
+Definition at line 2840 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+double@{binn\+\_\+object\+\_\+double}}
+\index{binn\+\_\+object\+\_\+double@{binn\+\_\+object\+\_\+double}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+double(void $\ast$obj, char $\ast$key)}{binn_object_double(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_add734850e28b08d29978b9f3997a4fe9}{}\label{binn_8c_add734850e28b08d29978b9f3997a4fe9}
+
+
+Definition at line 2832 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+float@{binn\+\_\+object\+\_\+float}}
+\index{binn\+\_\+object\+\_\+float@{binn\+\_\+object\+\_\+float}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+float(void $\ast$obj, char $\ast$key)}{binn_object_float(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+float (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9f4623032ba4030b254855badd14532d}{}\label{binn_8c_a9f4623032ba4030b254855badd14532d}
+
+
+Definition at line 2824 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+get@{binn\+\_\+object\+\_\+get}}
+\index{binn\+\_\+object\+\_\+get@{binn\+\_\+object\+\_\+get}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+get(void $\ast$ptr, char $\ast$key, int type, void $\ast$pvalue, int $\ast$psize)}{binn_object_get(void *ptr, char *key, int type, void *pvalue, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{char $\ast$}]{key, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a24282a3250bbcdc3cab7e5fd060e7072}{}\label{binn_8c_a24282a3250bbcdc3cab7e5fd060e7072}
+
+
+Definition at line 2459 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+get\+\_\+pair@{binn\+\_\+object\+\_\+get\+\_\+pair}}
+\index{binn\+\_\+object\+\_\+get\+\_\+pair@{binn\+\_\+object\+\_\+get\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+get\+\_\+pair(void $\ast$ptr, int pos, char $\ast$pkey, binn $\ast$value)}{binn_object_get_pair(void *ptr, int pos, char *pkey, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+get\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{char $\ast$}]{pkey, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac25dab885b8e1da25c7254bd827619ad}{}\label{binn_8c_ac25dab885b8e1da25c7254bd827619ad}
+
+
+Definition at line 1554 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+get\+\_\+value@{binn\+\_\+object\+\_\+get\+\_\+value}}
+\index{binn\+\_\+object\+\_\+get\+\_\+value@{binn\+\_\+object\+\_\+get\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+get\+\_\+value(void $\ast$ptr, char $\ast$key, binn $\ast$value)}{binn_object_get_value(void *ptr, char *key, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+get\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{char $\ast$}]{key, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a5e2c11341d3c1c83abfee066749e68bf}{}\label{binn_8c_a5e2c11341d3c1c83abfee066749e68bf}
+
+
+Definition at line 1407 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+int16@{binn\+\_\+object\+\_\+int16}}
+\index{binn\+\_\+object\+\_\+int16@{binn\+\_\+object\+\_\+int16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+int16(void $\ast$obj, char $\ast$key)}{binn_object_int16(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+int16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aaeb2a2791c434d7fe3c9d25ba3a3418c}{}\label{binn_8c_aaeb2a2791c434d7fe3c9d25ba3a3418c}
+
+
+Definition at line 2768 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+int32@{binn\+\_\+object\+\_\+int32}}
+\index{binn\+\_\+object\+\_\+int32@{binn\+\_\+object\+\_\+int32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+int32(void $\ast$obj, char $\ast$key)}{binn_object_int32(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+int32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_adb90e76b4d5f4129c4f53137e4bb5bf0}{}\label{binn_8c_adb90e76b4d5f4129c4f53137e4bb5bf0}
+
+
+Definition at line 2776 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+int64@{binn\+\_\+object\+\_\+int64}}
+\index{binn\+\_\+object\+\_\+int64@{binn\+\_\+object\+\_\+int64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+int64(void $\ast$obj, char $\ast$key)}{binn_object_int64(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+int64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7cb7b9dad6ffcd994fbb9b8e71e994a1}{}\label{binn_8c_a7cb7b9dad6ffcd994fbb9b8e71e994a1}
+
+
+Definition at line 2784 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+int8@{binn\+\_\+object\+\_\+int8}}
+\index{binn\+\_\+object\+\_\+int8@{binn\+\_\+object\+\_\+int8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+int8(void $\ast$obj, char $\ast$key)}{binn_object_int8(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}signed char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+int8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af3ef36f4e568914b3d5b7a3fa971ae7a}{}\label{binn_8c_af3ef36f4e568914b3d5b7a3fa971ae7a}
+
+
+Definition at line 2760 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+list@{binn\+\_\+object\+\_\+list}}
+\index{binn\+\_\+object\+\_\+list@{binn\+\_\+object\+\_\+list}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+list(void $\ast$obj, char $\ast$key)}{binn_object_list(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2fa486f2a89fb7aa7cd4835aff0a3d2f}{}\label{binn_8c_a2fa486f2a89fb7aa7cd4835aff0a3d2f}
+
+
+Definition at line 2870 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+map@{binn\+\_\+object\+\_\+map}}
+\index{binn\+\_\+object\+\_\+map@{binn\+\_\+object\+\_\+map}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+map(void $\ast$obj, char $\ast$key)}{binn_object_map(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+map (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9a4c58b0ecc33ae96d2c651cf5c2ee17}{}\label{binn_8c_a9a4c58b0ecc33ae96d2c651cf5c2ee17}
+
+
+Definition at line 2878 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+next@{binn\+\_\+object\+\_\+next}}
+\index{binn\+\_\+object\+\_\+next@{binn\+\_\+object\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+next(binn\+\_\+iter $\ast$iter, char $\ast$pkey, binn $\ast$value)}{binn_object_next(binn_iter *iter, char *pkey, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{char $\ast$}]{pkey, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae9b0586b7b3347cd72cc942ff6bae552}{}\label{binn_8c_ae9b0586b7b3347cd72cc942ff6bae552}
+
+
+Definition at line 1720 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+next\+\_\+value@{binn\+\_\+object\+\_\+next\+\_\+value}}
+\index{binn\+\_\+object\+\_\+next\+\_\+value@{binn\+\_\+object\+\_\+next\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+next\+\_\+value(binn\+\_\+iter $\ast$iter, char $\ast$pkey)}{binn_object_next_value(binn_iter *iter, char *pkey)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+next\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{char $\ast$}]{pkey}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2396fa2d97abb8862b2b94dc1029dd9f}{}\label{binn_8c_a2396fa2d97abb8862b2b94dc1029dd9f}
+
+
+Definition at line 1763 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+null@{binn\+\_\+object\+\_\+null}}
+\index{binn\+\_\+object\+\_\+null@{binn\+\_\+object\+\_\+null}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+null(void $\ast$obj, char $\ast$key)}{binn_object_null(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+null (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abf93fd614aa4eb0c0bb134fda1736a8c}{}\label{binn_8c_abf93fd614aa4eb0c0bb134fda1736a8c}
+
+
+Definition at line 2848 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+object@{binn\+\_\+object\+\_\+object}}
+\index{binn\+\_\+object\+\_\+object@{binn\+\_\+object\+\_\+object}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+object(void $\ast$obj, char $\ast$key)}{binn_object_object(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a0a714fc716d45e8c273c7b09c6c0dafd}{}\label{binn_8c_a0a714fc716d45e8c273c7b09c6c0dafd}
+
+
+Definition at line 2886 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+pair@{binn\+\_\+object\+\_\+pair}}
+\index{binn\+\_\+object\+\_\+pair@{binn\+\_\+object\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+pair(void $\ast$obj, int pos, char $\ast$pkey)}{binn_object_pair(void *obj, int pos, char *pkey)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{int}]{pos, }
+\item[{char $\ast$}]{pkey}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a71161fb0a41fcf3333b02b55eda29a1f}{}\label{binn_8c_a71161fb0a41fcf3333b02b55eda29a1f}
+
+
+Definition at line 1579 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+read@{binn\+\_\+object\+\_\+read}}
+\index{binn\+\_\+object\+\_\+read@{binn\+\_\+object\+\_\+read}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+read(void $\ast$obj, char $\ast$key, int $\ast$ptype, int $\ast$psize)}{binn_object_read(void *obj, char *key, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a4b73c42b838b39e9e6f9824201aceafd}{}\label{binn_8c_a4b73c42b838b39e9e6f9824201aceafd}
+
+
+Definition at line 2398 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+read\+\_\+next@{binn\+\_\+object\+\_\+read\+\_\+next}}
+\index{binn\+\_\+object\+\_\+read\+\_\+next@{binn\+\_\+object\+\_\+read\+\_\+next}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+read\+\_\+next(binn\+\_\+iter $\ast$iter, char $\ast$pkey, int $\ast$ptype, int $\ast$psize)}{binn_object_read_next(binn_iter *iter, char *pkey, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+read\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{char $\ast$}]{pkey, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a41792d1f32b7d7678cad75062a894fa8}{}\label{binn_8c_a41792d1f32b7d7678cad75062a894fa8}
+
+
+Definition at line 1813 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+read\+\_\+pair@{binn\+\_\+object\+\_\+read\+\_\+pair}}
+\index{binn\+\_\+object\+\_\+read\+\_\+pair@{binn\+\_\+object\+\_\+read\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+read\+\_\+pair(void $\ast$ptr, int pos, char $\ast$pkey, int $\ast$ptype, int $\ast$psize)}{binn_object_read_pair(void *ptr, int pos, char *pkey, int *ptype, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+read\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{char $\ast$}]{pkey, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a0581d6ceca6198948fabcc8b5546b473}{}\label{binn_8c_a0581d6ceca6198948fabcc8b5546b473}
+
+
+Definition at line 1613 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+set@{binn\+\_\+object\+\_\+set}}
+\index{binn\+\_\+object\+\_\+set@{binn\+\_\+object\+\_\+set}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+set(binn $\ast$obj, char $\ast$key, int type, void $\ast$pvalue, int size)}{binn_object_set(binn *obj, char *key, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+set (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{obj, }
+\item[{char $\ast$}]{key, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aadac5854bd1a01204dfcadc0d50a29c9}{}\label{binn_8c_aadac5854bd1a01204dfcadc0d50a29c9}
+
+
+Definition at line 2250 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+set\+\_\+new@{binn\+\_\+object\+\_\+set\+\_\+new}}
+\index{binn\+\_\+object\+\_\+set\+\_\+new@{binn\+\_\+object\+\_\+set\+\_\+new}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+set\+\_\+new(binn $\ast$obj, char $\ast$key, binn $\ast$value)}{binn_object_set_new(binn *obj, char *key, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+set\+\_\+new (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{obj, }
+\item[{char $\ast$}]{key, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9ccdc82147b2708c47176d9180607c93}{}\label{binn_8c_a9ccdc82147b2708c47176d9180607c93}
+
+
+Definition at line 2301 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+set\+\_\+raw@{binn\+\_\+object\+\_\+set\+\_\+raw}}
+\index{binn\+\_\+object\+\_\+set\+\_\+raw@{binn\+\_\+object\+\_\+set\+\_\+raw}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+set\+\_\+raw(binn $\ast$item, char $\ast$key, int type, void $\ast$pvalue, int size)}{binn_object_set_raw(binn *item, char *key, int type, void *pvalue, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+object\+\_\+set\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{char $\ast$}]{key, }
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a21b1d20e247bbdbf1a1840a1bb3ea964}{}\label{binn_8c_a21b1d20e247bbdbf1a1840a1bb3ea964}
+
+
+Definition at line 599 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+str@{binn\+\_\+object\+\_\+str}}
+\index{binn\+\_\+object\+\_\+str@{binn\+\_\+object\+\_\+str}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+str(void $\ast$obj, char $\ast$key)}{binn_object_str(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_affb03b9250423bd95140590d0b99a8e8}{}\label{binn_8c_affb03b9250423bd95140590d0b99a8e8}
+
+
+Definition at line 2854 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+uint16@{binn\+\_\+object\+\_\+uint16}}
+\index{binn\+\_\+object\+\_\+uint16@{binn\+\_\+object\+\_\+uint16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+uint16(void $\ast$obj, char $\ast$key)}{binn_object_uint16(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+uint16 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac03e730d628e18d8d91bb8f68466371e}{}\label{binn_8c_ac03e730d628e18d8d91bb8f68466371e}
+
+
+Definition at line 2800 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+uint32@{binn\+\_\+object\+\_\+uint32}}
+\index{binn\+\_\+object\+\_\+uint32@{binn\+\_\+object\+\_\+uint32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+uint32(void $\ast$obj, char $\ast$key)}{binn_object_uint32(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+uint32 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a97bc21b71cea9f46f06f8563650ac12c}{}\label{binn_8c_a97bc21b71cea9f46f06f8563650ac12c}
+
+
+Definition at line 2808 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+uint64@{binn\+\_\+object\+\_\+uint64}}
+\index{binn\+\_\+object\+\_\+uint64@{binn\+\_\+object\+\_\+uint64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+uint64(void $\ast$obj, char $\ast$key)}{binn_object_uint64(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+uint64 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a9f9d6d2978187ca5b6ebd94d322cdd0e}{}\label{binn_8c_a9f9d6d2978187ca5b6ebd94d322cdd0e}
+
+
+Definition at line 2816 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+uint8@{binn\+\_\+object\+\_\+uint8}}
+\index{binn\+\_\+object\+\_\+uint8@{binn\+\_\+object\+\_\+uint8}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+uint8(void $\ast$obj, char $\ast$key)}{binn_object_uint8(void *obj, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+uint8 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{obj, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a1756c791c696a02594ccd6d8c4867a93}{}\label{binn_8c_a1756c791c696a02594ccd6d8c4867a93}
+
+
+Definition at line 2792 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+object\+\_\+value@{binn\+\_\+object\+\_\+value}}
+\index{binn\+\_\+object\+\_\+value@{binn\+\_\+object\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+object\+\_\+value(void $\ast$ptr, char $\ast$key)}{binn_object_value(void *ptr, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+object\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a84a9105235fa42684d250c02c3c860ee}{}\label{binn_8c_a84a9105235fa42684d250c02c3c860ee}
+
+
+Definition at line 2348 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+open@{binn\+\_\+open}}
+\index{binn\+\_\+open@{binn\+\_\+open}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+open(void $\ast$data)}{binn_open(void *data)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2a70525f283cd250fab7fb2cc60ba73c}{}\label{binn_8c_a2a70525f283cd250fab7fb2cc60ba73c}
+
+
+Definition at line 351 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+ptr@{binn\+\_\+ptr}}
+\index{binn\+\_\+ptr@{binn\+\_\+ptr}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+ptr(void $\ast$ptr)}{binn_ptr(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+ptr (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a0b0f00e7577ba8f1bd0233581a8d0f0a}{}\label{binn_8c_a0b0f00e7577ba8f1bd0233581a8d0f0a}
+
+
+Definition at line 1130 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+read\+\_\+next\+\_\+pair@{binn\+\_\+read\+\_\+next\+\_\+pair}}
+\index{binn\+\_\+read\+\_\+next\+\_\+pair@{binn\+\_\+read\+\_\+next\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+read\+\_\+next\+\_\+pair(int expected\+\_\+type, binn\+\_\+iter $\ast$iter, int $\ast$pid, char $\ast$pkey, binn $\ast$value)}{binn_read_next_pair(int expected_type, binn_iter *iter, int *pid, char *pkey, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+read\+\_\+next\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{int}]{expected\+\_\+type, }
+\item[{{\bf binn\+\_\+iter} $\ast$}]{iter, }
+\item[{int $\ast$}]{pid, }
+\item[{char $\ast$}]{pkey, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a36ea24c24d30fed83fd3398794935411}{}\label{binn_8c_a36ea24c24d30fed83fd3398794935411}
+
+
+Definition at line 1672 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+read\+\_\+pair@{binn\+\_\+read\+\_\+pair}}
+\index{binn\+\_\+read\+\_\+pair@{binn\+\_\+read\+\_\+pair}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+read\+\_\+pair(int expected\+\_\+type, void $\ast$ptr, int pos, int $\ast$pid, char $\ast$pkey, binn $\ast$value)}{binn_read_pair(int expected_type, void *ptr, int pos, int *pid, char *pkey, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+read\+\_\+pair (
+\begin{DoxyParamCaption}
+\item[{int}]{expected\+\_\+type, }
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{pos, }
+\item[{int $\ast$}]{pid, }
+\item[{char $\ast$}]{pkey, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abc73584dcb56d8e61fedb985e2943428}{}\label{binn_8c_abc73584dcb56d8e61fedb985e2943428}
+
+
+Definition at line 1485 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+release@{binn\+\_\+release}}
+\index{binn\+\_\+release@{binn\+\_\+release}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+release(binn $\ast$item)}{binn_release(binn *item)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+release (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a36382cce1d580f78c3a8525fa06c15e1}{}\label{binn_8c_a36382cce1d580f78c3a8525fa06c15e1}
+
+
+Definition at line 1004 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+save\+\_\+header@{binn\+\_\+save\+\_\+header}}
+\index{binn\+\_\+save\+\_\+header@{binn\+\_\+save\+\_\+header}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+save\+\_\+header(binn $\ast$item)}{binn_save_header(binn *item)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} binn\+\_\+save\+\_\+header (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a14454cd33688b6cf37294ad48c92b094}{}\label{binn_8c_a14454cd33688b6cf37294ad48c92b094}
+
+
+Definition at line 909 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+set\+\_\+alloc\+\_\+functions@{binn\+\_\+set\+\_\+alloc\+\_\+functions}}
+\index{binn\+\_\+set\+\_\+alloc\+\_\+functions@{binn\+\_\+set\+\_\+alloc\+\_\+functions}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+set\+\_\+alloc\+\_\+functions(void $\ast$($\ast$new\+\_\+malloc)(size\+\_\+t), void $\ast$($\ast$new\+\_\+realloc)(void $\ast$, size\+\_\+t), void($\ast$new\+\_\+free)(void $\ast$))}{binn_set_alloc_functions(void *(*new_malloc)(size_t), void *(*new_realloc)(void *, size_t), void(*new_free)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+set\+\_\+alloc\+\_\+functions (
+\begin{DoxyParamCaption}
+\item[{void $\ast$($\ast$)(size\+\_\+t)}]{new\+\_\+malloc, }
+\item[{void $\ast$($\ast$)(void $\ast$, size\+\_\+t)}]{new\+\_\+realloc, }
+\item[{void($\ast$)(void $\ast$)}]{new\+\_\+free}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a32a45c9b49b2b4dcba2ed7636ed03f3b}{}\label{binn_8c_a32a45c9b49b2b4dcba2ed7636ed03f3b}
+
+
+Definition at line 124 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+set\+\_\+blob@{binn\+\_\+set\+\_\+blob}}
+\index{binn\+\_\+set\+\_\+blob@{binn\+\_\+set\+\_\+blob}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+set\+\_\+blob(binn $\ast$item, void $\ast$ptr, int size, binn\+\_\+mem\+\_\+free pfree)}{binn_set_blob(binn *item, void *ptr, int size, binn_mem_free pfree)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+set\+\_\+blob (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{void $\ast$}]{ptr, }
+\item[{int}]{size, }
+\item[{{\bf binn\+\_\+mem\+\_\+free}}]{pfree}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ad009d3abcf6c575966b203cb4d468e67}{}\label{binn_8c_ad009d3abcf6c575966b203cb4d468e67}
+
+
+Definition at line 2968 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+set\+\_\+string@{binn\+\_\+set\+\_\+string}}
+\index{binn\+\_\+set\+\_\+string@{binn\+\_\+set\+\_\+string}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+set\+\_\+string(binn $\ast$item, char $\ast$str, binn\+\_\+mem\+\_\+free pfree)}{binn_set_string(binn *item, char *str, binn_mem_free pfree)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+set\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{char $\ast$}]{str, }
+\item[{{\bf binn\+\_\+mem\+\_\+free}}]{pfree}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af9efc43f4533392f4aa1e917c21573ca}{}\label{binn_8c_af9efc43f4533392f4aa1e917c21573ca}
+
+
+Definition at line 2948 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+size@{binn\+\_\+size}}
+\index{binn\+\_\+size@{binn\+\_\+size}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+size(void $\ast$ptr)}{binn_size(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a94e985454537964a1c732776a2af0c54}{}\label{binn_8c_a94e985454537964a1c732776a2af0c54}
+
+
+Definition at line 1150 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+type@{binn\+\_\+type}}
+\index{binn\+\_\+type@{binn\+\_\+type}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+type(void $\ast$ptr)}{binn_type(void *ptr)}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ad41bb71163b3883b489bb4c9d4a65a2e}{}\label{binn_8c_ad41bb71163b3883b489bb4c9d4a65a2e}
+
+
+Definition at line 1170 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!binn\+\_\+value@{binn\+\_\+value}}
+\index{binn\+\_\+value@{binn\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{binn\+\_\+value(int type, void $\ast$pvalue, int size, binn\+\_\+mem\+\_\+free freefn)}{binn_value(int type, void *pvalue, int size, binn_mem_free freefn)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn}$\ast$ {\bf A\+P\+I\+E\+N\+T\+RY} binn\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{int}]{type, }
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{size, }
+\item[{{\bf binn\+\_\+mem\+\_\+free}}]{freefn}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7470778c13019268d575e1a01395a8d7}{}\label{binn_8c_a7470778c13019268d575e1a01395a8d7}
+
+
+Definition at line 2911 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Calc\+Allocation@{Calc\+Allocation}}
+\index{Calc\+Allocation@{Calc\+Allocation}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Calc\+Allocation(int needed\+\_\+size, int alloc\+\_\+size)}{CalcAllocation(int needed_size, int alloc_size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int Calc\+Allocation (
+\begin{DoxyParamCaption}
+\item[{int}]{needed\+\_\+size, }
+\item[{int}]{alloc\+\_\+size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac94ddf8b6348a080610a583ebfc830a7}{}\label{binn_8c_ac94ddf8b6348a080610a583ebfc830a7}
+
+
+Definition at line 397 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!check\+\_\+alloc\+\_\+functions@{check\+\_\+alloc\+\_\+functions}}
+\index{check\+\_\+alloc\+\_\+functions@{check\+\_\+alloc\+\_\+functions}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+alloc\+\_\+functions()}{check_alloc_functions()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void check\+\_\+alloc\+\_\+functions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_aa34aea4e3c7a3f26600bd9f886c53857}{}\label{binn_8c_aa34aea4e3c7a3f26600bd9f886c53857}
+
+
+Definition at line 134 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Check\+Allocation@{Check\+Allocation}}
+\index{Check\+Allocation@{Check\+Allocation}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Check\+Allocation(binn $\ast$item, int add\+\_\+size)}{CheckAllocation(binn *item, int add_size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} Check\+Allocation (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{item, }
+\item[{int}]{add\+\_\+size}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae89523c5340359d736cb19abab96fe18}{}\label{binn_8c_ae89523c5340359d736cb19abab96fe18}
+
+
+Definition at line 411 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!compress\+\_\+int@{compress\+\_\+int}}
+\index{compress\+\_\+int@{compress\+\_\+int}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{compress\+\_\+int(int $\ast$pstorage\+\_\+type, int $\ast$ptype, void $\ast$psource)}{compress_int(int *pstorage_type, int *ptype, void *psource)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void$\ast$ compress\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{pstorage\+\_\+type, }
+\item[{int $\ast$}]{ptype, }
+\item[{void $\ast$}]{psource}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2bc2f1143cce11366697ce9055b37022}{}\label{binn_8c_a2bc2f1143cce11366697ce9055b37022}
+
+
+Definition at line 670 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!copy\+\_\+float\+\_\+value@{copy\+\_\+float\+\_\+value}}
+\index{copy\+\_\+float\+\_\+value@{copy\+\_\+float\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{copy\+\_\+float\+\_\+value(void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type)}{copy_float_value(void *psource, void *pdest, int source_type, int dest_type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} copy\+\_\+float\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{psource, }
+\item[{void $\ast$}]{pdest, }
+\item[{int}]{source\+\_\+type, }
+\item[{int}]{dest\+\_\+type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae8681cae97775877baec32f9daefe2e7}{}\label{binn_8c_ae8681cae97775877baec32f9daefe2e7}
+
+
+Definition at line 2158 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!copy\+\_\+int\+\_\+value@{copy\+\_\+int\+\_\+value}}
+\index{copy\+\_\+int\+\_\+value@{copy\+\_\+int\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{copy\+\_\+int\+\_\+value(void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type)}{copy_int_value(void *psource, void *pdest, int source_type, int dest_type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} copy\+\_\+int\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{psource, }
+\item[{void $\ast$}]{pdest, }
+\item[{int}]{source\+\_\+type, }
+\item[{int}]{dest\+\_\+type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2b723f15a73395a6b1680819d83b0369}{}\label{binn_8c_a2b723f15a73395a6b1680819d83b0369}
+
+
+Definition at line 2069 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!copy\+\_\+raw\+\_\+value@{copy\+\_\+raw\+\_\+value}}
+\index{copy\+\_\+raw\+\_\+value@{copy\+\_\+raw\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{copy\+\_\+raw\+\_\+value(void $\ast$psource, void $\ast$pdest, int data\+\_\+store)}{copy_raw_value(void *psource, void *pdest, int data_store)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} copy\+\_\+raw\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{psource, }
+\item[{void $\ast$}]{pdest, }
+\item[{int}]{data\+\_\+store}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a6a7f72b7ec58233144d5b16e5a618e4b}{}\label{binn_8c_a6a7f72b7ec58233144d5b16e5a618e4b}
+
+
+Definition at line 2037 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!copy\+\_\+value@{copy\+\_\+value}}
+\index{copy\+\_\+value@{copy\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{copy\+\_\+value(void $\ast$psource, void $\ast$pdest, int source\+\_\+type, int dest\+\_\+type, int data\+\_\+store)}{copy_value(void *psource, void *pdest, int source_type, int dest_type, int data_store)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} copy\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{psource, }
+\item[{void $\ast$}]{pdest, }
+\item[{int}]{source\+\_\+type, }
+\item[{int}]{dest\+\_\+type, }
+\item[{int}]{data\+\_\+store}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a7752c4c9584927b07931d943d4c069af}{}\label{binn_8c_a7752c4c9584927b07931d943d4c069af}
+
+
+Definition at line 2212 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!get\+\_\+storage\+\_\+size@{get\+\_\+storage\+\_\+size}}
+\index{get\+\_\+storage\+\_\+size@{get\+\_\+storage\+\_\+size}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+storage\+\_\+size(int storage\+\_\+type)}{get_storage_size(int storage_type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int get\+\_\+storage\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{int}]{storage\+\_\+type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a12c0c44539bcf40b5163fa12a827c344}{}\label{binn_8c_a12c0c44539bcf40b5163fa12a827c344}
+
+
+Definition at line 432 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Get\+Value@{Get\+Value}}
+\index{Get\+Value@{Get\+Value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Get\+Value(unsigned char $\ast$p, binn $\ast$value)}{GetValue(unsigned char *p, binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} Get\+Value (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{p, }
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a6ed9c1873483e69c9e573cca63934228}{}\label{binn_8c_a6ed9c1873483e69c9e573cca63934228}
+
+
+Definition at line 1259 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Get\+Write\+Converted\+Data@{Get\+Write\+Converted\+Data}}
+\index{Get\+Write\+Converted\+Data@{Get\+Write\+Converted\+Data}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Get\+Write\+Converted\+Data(int $\ast$ptype, void $\ast$$\ast$ppvalue, int $\ast$psize)}{GetWriteConvertedData(int *ptype, void **ppvalue, int *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} Get\+Write\+Converted\+Data (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ptype, }
+\item[{void $\ast$$\ast$}]{ppvalue, }
+\item[{int $\ast$}]{psize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_abc4f2c875b5b2be83cc4af8f5d7a7271}{}\label{binn_8c_abc4f2c875b5b2be83cc4af8f5d7a7271}
+temporary
+
+temporary 
+
+Definition at line 1875 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!int\+\_\+type@{int\+\_\+type}}
+\index{int\+\_\+type@{int\+\_\+type}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+type(int type)}{int_type(int type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int int\+\_\+type (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ad8822ca22c60c9430b19cdb6b472f01a}{}\label{binn_8c_ad8822ca22c60c9430b19cdb6b472f01a}
+
+
+Definition at line 2014 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!is\+\_\+bool\+\_\+str@{is\+\_\+bool\+\_\+str}}
+\index{is\+\_\+bool\+\_\+str@{is\+\_\+bool\+\_\+str}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{is\+\_\+bool\+\_\+str(char $\ast$str, B\+O\+O\+L $\ast$pbool)}{is_bool_str(char *str, BOOL *pbool)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} is\+\_\+bool\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{{\bf B\+O\+OL} $\ast$}]{pbool}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2d000c593e50d800f815ee17c583d3a9}{}\label{binn_8c_a2d000c593e50d800f815ee17c583d3a9}
+
+
+Definition at line 3057 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!is\+\_\+float@{is\+\_\+float}}
+\index{is\+\_\+float@{is\+\_\+float}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{is\+\_\+float(char $\ast$p)}{is_float(char *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} is\+\_\+float (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a5647d03d57b6afbe16d93ba7a463259c}{}\label{binn_8c_a5647d03d57b6afbe16d93ba7a463259c}
+
+
+Definition at line 3033 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!is\+\_\+integer@{is\+\_\+integer}}
+\index{is\+\_\+integer@{is\+\_\+integer}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{is\+\_\+integer(char $\ast$p)}{is_integer(char *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} is\+\_\+integer (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_af148c6738767be9154a3d509e9d9689f}{}\label{binn_8c_af148c6738767be9154a3d509e9d9689f}
+
+
+Definition at line 3013 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Is\+Valid\+Binn\+Header@{Is\+Valid\+Binn\+Header}}
+\index{Is\+Valid\+Binn\+Header@{Is\+Valid\+Binn\+Header}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Is\+Valid\+Binn\+Header(void $\ast$pbuf, int $\ast$ptype, int $\ast$pcount, int $\ast$psize, int $\ast$pheadersize)}{IsValidBinnHeader(void *pbuf, int *ptype, int *pcount, int *psize, int *pheadersize)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf B\+O\+OL} Is\+Valid\+Binn\+Header (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pbuf, }
+\item[{int $\ast$}]{ptype, }
+\item[{int $\ast$}]{pcount, }
+\item[{int $\ast$}]{psize, }
+\item[{int $\ast$}]{pheadersize}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae3ec9b0779440746fd8944abea6ded92}{}\label{binn_8c_ae3ec9b0779440746fd8944abea6ded92}
+
+
+Definition at line 1029 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Search\+For\+ID@{Search\+For\+ID}}
+\index{Search\+For\+ID@{Search\+For\+ID}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Search\+For\+I\+D(unsigned char $\ast$p, int header\+\_\+size, int size, int numitems, int id)}{SearchForID(unsigned char *p, int header_size, int size, int numitems, int id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char$\ast$ Search\+For\+ID (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{p, }
+\item[{int}]{header\+\_\+size, }
+\item[{int}]{size, }
+\item[{int}]{numitems, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac27a28ddcb978b196d52174d5c58cec7}{}\label{binn_8c_ac27a28ddcb978b196d52174d5c58cec7}
+
+
+Definition at line 516 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!Search\+For\+Key@{Search\+For\+Key}}
+\index{Search\+For\+Key@{Search\+For\+Key}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{Search\+For\+Key(unsigned char $\ast$p, int header\+\_\+size, int size, int numitems, char $\ast$key)}{SearchForKey(unsigned char *p, int header_size, int size, int numitems, char *key)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned char$\ast$ Search\+For\+Key (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{p, }
+\item[{int}]{header\+\_\+size, }
+\item[{int}]{size, }
+\item[{int}]{numitems, }
+\item[{char $\ast$}]{key}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ae347ffa5e71cbc1ad9984c36324c603f}{}\label{binn_8c_ae347ffa5e71cbc1ad9984c36324c603f}
+
+
+Definition at line 541 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!store\+\_\+value@{store\+\_\+value}}
+\index{store\+\_\+value@{store\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{store\+\_\+value(binn $\ast$value)}{store_value(binn *value)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void$\ast$ store\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf binn} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_ac55a2e64cd743440e7ce8a173e213995}{}\label{binn_8c_ac55a2e64cd743440e7ce8a173e213995}
+
+
+Definition at line 1384 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!strlen2@{strlen2}}
+\index{strlen2@{strlen2}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{strlen2(char $\ast$str)}{strlen2(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} size\+\_\+t strlen2 (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a8620d0670b7d4e32632adf44a6603d47}{}\label{binn_8c_a8620d0670b7d4e32632adf44a6603d47}
+
+
+Definition at line 164 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!tobe16@{tobe16}}
+\index{tobe16@{tobe16}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{tobe16(unsigned short input)}{tobe16(unsigned short input)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned short tobe16 (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{input}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a4a2ee7cf9d4ac2f98f5490bfbd46bda0}{}\label{binn_8c_a4a2ee7cf9d4ac2f98f5490bfbd46bda0}
+
+
+Definition at line 62 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!tobe32@{tobe32}}
+\index{tobe32@{tobe32}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{tobe32(unsigned int input)}{tobe32(unsigned int input)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} unsigned int tobe32 (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{input}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a55ded1594d6f374d1541cf0902c07c9b}{}\label{binn_8c_a55ded1594d6f374d1541cf0902c07c9b}
+
+
+Definition at line 77 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!tobe64@{tobe64}}
+\index{tobe64@{tobe64}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{tobe64(uint64 input)}{tobe64(uint64 input)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} {\bf uint64} tobe64 (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64}}]{input}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a3351204dc5f9da6d2384572af6d7b8ff}{}\label{binn_8c_a3351204dc5f9da6d2384572af6d7b8ff}
+
+
+Definition at line 94 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!type\+\_\+family@{type\+\_\+family}}
+\index{type\+\_\+family@{type\+\_\+family}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{type\+\_\+family(int type)}{type_family(int type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} int type\+\_\+family (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a4ed5a6d2f93172202e7fc41f7641efa4}{}\label{binn_8c_a4ed5a6d2f93172202e7fc41f7641efa4}
+
+
+Definition at line 1951 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!zero\+\_\+value@{zero\+\_\+value}}
+\index{zero\+\_\+value@{zero\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{zero\+\_\+value(void $\ast$pvalue, int type)}{zero_value(void *pvalue, int type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+I\+N\+N\+\_\+\+P\+R\+I\+V\+A\+TE} void zero\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pvalue, }
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{binn_8c_a2584fd252fcefd1860d6ec79522a6f78}{}\label{binn_8c_a2584fd252fcefd1860d6ec79522a6f78}
+
+
+Definition at line 2177 of file binn.\+c.
+
+
+
+\subsection{Variable Documentation}
+\index{binn.\+c@{binn.\+c}!free\+\_\+fn@{free\+\_\+fn}}
+\index{free\+\_\+fn@{free\+\_\+fn}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{free\+\_\+fn}{free_fn}}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ free\+\_\+fn) (void $\ast$ptr)=0}\hypertarget{binn_8c_a5f2570fa66812bb59f5f0b329cadd158}{}\label{binn_8c_a5f2570fa66812bb59f5f0b329cadd158}
+
+
+Definition at line 27 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!local\+\_\+value@{local\+\_\+value}}
+\index{local\+\_\+value@{local\+\_\+value}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{local\+\_\+value}{local_value}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn} local\+\_\+value}\hypertarget{binn_8c_a7dbf50091bf7884664addfaafd0bfa43}{}\label{binn_8c_a7dbf50091bf7884664addfaafd0bfa43}
+
+
+Definition at line 1382 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!malloc\+\_\+fn@{malloc\+\_\+fn}}
+\index{malloc\+\_\+fn@{malloc\+\_\+fn}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{malloc\+\_\+fn}{malloc_fn}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ malloc\+\_\+fn) (size\+\_\+t len)=0}\hypertarget{binn_8c_acda7d9eb60e0c415bdb9419946f39ea0}{}\label{binn_8c_acda7d9eb60e0c415bdb9419946f39ea0}
+
+
+Definition at line 25 of file binn.\+c.
+
+\index{binn.\+c@{binn.\+c}!realloc\+\_\+fn@{realloc\+\_\+fn}}
+\index{realloc\+\_\+fn@{realloc\+\_\+fn}!binn.\+c@{binn.\+c}}
+\subsubsection[{\texorpdfstring{realloc\+\_\+fn}{realloc_fn}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$($\ast$ realloc\+\_\+fn) (void $\ast$ptr, size\+\_\+t len)=0}\hypertarget{binn_8c_a15b44a46552230f03fb67a8dca9ad0ce}{}\label{binn_8c_a15b44a46552230f03fb67a8dca9ad0ce}
+
+
+Definition at line 26 of file binn.\+c.
+

@@ -1,0 +1,136 @@
+\hypertarget{dsm__memory_8h}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+memory.h File Reference}
+\label{dsm__memory_8h}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+memory.\+h@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+memory.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdsm__page__s}{dsm\+\_\+page\+\_\+s}
+\item 
+struct \hyperlink{structdsm__memory__s}{dsm\+\_\+memory\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dsm__memory_8h_acca7af90ef2b481de42094cea5ab0c71}{R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}~4
+\item 
+\#define \hyperlink{dsm__memory_8h_ae09ab5756fcad366b48fb3d58175a9e9}{M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}~-\/8
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structdsm__page__s}{dsm\+\_\+page\+\_\+s} \hyperlink{dsm__memory_8h_a4532414cb6070e9c63306f5ca5afa152}{dsm\+\_\+page\+\_\+t}
+\item 
+typedef struct \hyperlink{structdsm__memory__s}{dsm\+\_\+memory\+\_\+s} \hyperlink{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}{dsm\+\_\+memory\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dsm__memory_8h_aa6ac7db5d1e2374858a585c2b2b17ecc}{dsm\+\_\+memory\+\_\+init} (\hyperlink{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}{dsm\+\_\+memory\+\_\+t} $\ast$dsm\+\_\+mem, size\+\_\+t pagesize, size\+\_\+t page\+\_\+count, unsigned short is\+\_\+master)
+\begin{DoxyCompactList}\small\item\em Initialisation of substructure memory. \end{DoxyCompactList}\item 
+void \hyperlink{dsm__memory_8h_a32a0f5fb91a97196859f5594d5b1b24e}{dsm\+\_\+memory\+\_\+destroy} (\hyperlink{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}{dsm\+\_\+memory\+\_\+t} $\ast$dsm\+\_\+mem)
+\begin{DoxyCompactList}\small\item\em free each page allocated then free the structure \end{DoxyCompactList}\item 
+int \hyperlink{dsm__memory_8h_a6da1e97f933721f842b3168183189238}{dsm\+\_\+add\+\_\+reader} (\hyperlink{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}{dsm\+\_\+memory\+\_\+t} $\ast$dsm\+\_\+mem, unsigned int page\+\_\+idx, int node\+\_\+fd)
+\begin{DoxyCompactList}\small\item\em add a new reader to one page \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE@{M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}}
+\index{M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE@{M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE}{MASTER_NODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+S\+T\+E\+R\+\_\+\+N\+O\+DE~-\/8}\hypertarget{dsm__memory_8h_ae09ab5756fcad366b48fb3d58175a9e9}{}\label{dsm__memory_8h_ae09ab5756fcad366b48fb3d58175a9e9}
+
+
+Definition at line 5 of file dsm\+\_\+memory.\+h.
+
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY@{R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}}
+\index{R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY@{R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY}{READERS_INITIAL_CAPACITY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+E\+R\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+C\+A\+P\+A\+C\+I\+TY~4}\hypertarget{dsm__memory_8h_acca7af90ef2b481de42094cea5ab0c71}{}\label{dsm__memory_8h_acca7af90ef2b481de42094cea5ab0c71}
+
+
+Definition at line 4 of file dsm\+\_\+memory.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!dsm\+\_\+memory\+\_\+t@{dsm\+\_\+memory\+\_\+t}}
+\index{dsm\+\_\+memory\+\_\+t@{dsm\+\_\+memory\+\_\+t}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+memory\+\_\+t}{dsm_memory_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dsm\+\_\+memory\+\_\+s}  {\bf dsm\+\_\+memory\+\_\+t}}\hypertarget{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}{}\label{dsm__memory_8h_a81f92df24b2df85528fc0fd092073bd9}
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!dsm\+\_\+page\+\_\+t@{dsm\+\_\+page\+\_\+t}}
+\index{dsm\+\_\+page\+\_\+t@{dsm\+\_\+page\+\_\+t}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+page\+\_\+t}{dsm_page_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dsm\+\_\+page\+\_\+s}  {\bf dsm\+\_\+page\+\_\+t}}\hypertarget{dsm__memory_8h_a4532414cb6070e9c63306f5ca5afa152}{}\label{dsm__memory_8h_a4532414cb6070e9c63306f5ca5afa152}
+
+
+\subsection{Function Documentation}
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!dsm\+\_\+add\+\_\+reader@{dsm\+\_\+add\+\_\+reader}}
+\index{dsm\+\_\+add\+\_\+reader@{dsm\+\_\+add\+\_\+reader}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+add\+\_\+reader(dsm\+\_\+memory\+\_\+t $\ast$dsm\+\_\+mem, unsigned int page\+\_\+idx, int node\+\_\+fd)}{dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+add\+\_\+reader (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+memory\+\_\+t} $\ast$}]{dsm\+\_\+mem, }
+\item[{unsigned int}]{page\+\_\+idx, }
+\item[{int}]{node\+\_\+fd}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__memory_8h_a6da1e97f933721f842b3168183189238}{}\label{dsm__memory_8h_a6da1e97f933721f842b3168183189238}
+
+
+add a new reader to one page 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dsm\+\_\+mem} & the structure of memory where is the page \\
+\hline
+{\em page\+\_\+idx} & the index of the page to add the reader \\
+\hline
+{\em node\+\_\+fd} & the descriptor of the reader \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 100 of file dsm\+\_\+memory.\+c.
+
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!dsm\+\_\+memory\+\_\+destroy@{dsm\+\_\+memory\+\_\+destroy}}
+\index{dsm\+\_\+memory\+\_\+destroy@{dsm\+\_\+memory\+\_\+destroy}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+memory\+\_\+destroy(dsm\+\_\+memory\+\_\+t $\ast$dsm\+\_\+mem)}{dsm_memory_destroy(dsm_memory_t *dsm_mem)}}]{\setlength{\rightskip}{0pt plus 5cm}void dsm\+\_\+memory\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+memory\+\_\+t} $\ast$}]{dsm\+\_\+mem}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__memory_8h_a32a0f5fb91a97196859f5594d5b1b24e}{}\label{dsm__memory_8h_a32a0f5fb91a97196859f5594d5b1b24e}
+
+
+free each page allocated then free the structure 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dsm\+\_\+mem} & the structure that will be destroyed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 62 of file dsm\+\_\+memory.\+c.
+
+\index{dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}!dsm\+\_\+memory\+\_\+init@{dsm\+\_\+memory\+\_\+init}}
+\index{dsm\+\_\+memory\+\_\+init@{dsm\+\_\+memory\+\_\+init}!dsm\+\_\+memory.\+h@{dsm\+\_\+memory.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+memory\+\_\+init(dsm\+\_\+memory\+\_\+t $\ast$dsm\+\_\+mem, size\+\_\+t pagesize, size\+\_\+t page\+\_\+count, unsigned short is\+\_\+master)}{dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count, unsigned short is_master)}}]{\setlength{\rightskip}{0pt plus 5cm}void dsm\+\_\+memory\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+memory\+\_\+t} $\ast$}]{dsm\+\_\+mem, }
+\item[{size\+\_\+t}]{pagesize, }
+\item[{size\+\_\+t}]{page\+\_\+count, }
+\item[{unsigned short}]{is\+\_\+master}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__memory_8h_aa6ac7db5d1e2374858a585c2b2b17ecc}{}\label{dsm__memory_8h_aa6ac7db5d1e2374858a585c2b2b17ecc}
+
+
+Initialisation of substructure memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dsm\+\_\+mem} & the structure to be initialised \\
+\hline
+{\em pagesize} & the size of a page for the system \\
+\hline
+{\em page\+\_\+count} & number of page to be allocated in local memory \\
+\hline
+{\em is\+\_\+master} & a flag to know if the structure is a master or if is only related to the master \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file dsm\+\_\+memory.\+c.
+

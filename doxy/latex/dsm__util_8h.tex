@@ -1,0 +1,80 @@
+\hypertarget{dsm__util_8h}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+util.h File Reference}
+\label{dsm__util_8h}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+util.\+h@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+util.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dsm__util_8h_a4468eef98aae318b43126195325d6c61}{V\+A\+R\+D\+E\+B\+UG}~0
+\item 
+\#define \hyperlink{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}{debug\+\_\+print}(condition,  stream, ...)
+\item 
+\#define \hyperlink{dsm__util_8h_a86ee3ff44c537d94ccbabf941a613688}{debug}(...)~\hyperlink{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}{debug\+\_\+print}(\hyperlink{dsm__util_8h_a4468eef98aae318b43126195325d6c61}{V\+A\+R\+D\+E\+B\+UG}, stdout, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{dsm__util_8h_a66726e5f1a55e7253ddd5aeec06f19c3}{log}(...)~\hyperlink{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}{debug\+\_\+print}(1, stdout, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{dsm__util_8h_a259aac00ed43fd7ac58196b770963525}{error}(...)~do \{ \hyperlink{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}{debug\+\_\+print}(1, stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+); perror(\char`\"{}\textbackslash{}t\char`\"{}); exit(E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE); \} while (0)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}!debug@{debug}}
+\index{debug@{debug}!dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}}
+\subsubsection[{\texorpdfstring{debug}{debug}}]{\setlength{\rightskip}{0pt plus 5cm}\#define debug(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf debug\+\_\+print}({\bf V\+A\+R\+D\+E\+B\+UG}, stdout, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{dsm__util_8h_a86ee3ff44c537d94ccbabf941a613688}{}\label{dsm__util_8h_a86ee3ff44c537d94ccbabf941a613688}
+
+
+Definition at line 22 of file dsm\+\_\+util.\+h.
+
+\index{dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}!debug\+\_\+print@{debug\+\_\+print}}
+\index{debug\+\_\+print@{debug\+\_\+print}!dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}}
+\subsubsection[{\texorpdfstring{debug\+\_\+print}{debug_print}}]{\setlength{\rightskip}{0pt plus 5cm}\#define debug\+\_\+print(
+\begin{DoxyParamCaption}
+\item[{}]{condition, }
+\item[{}]{stream, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}{}\label{dsm__util_8h_a81355975c456cb7accaa6df3f5cf9bfa}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \textcolor{keywordflow}{if} (condition) fprintf(stream, \textcolor{stringliteral}{"%s:%d:%s(): "}, \_\_FILE\_\_, \(\backslash\)
+                                \_\_LINE\_\_, \_\_func\_\_); \(\backslash\)
+                            fprintf(stream, \_\_VA\_ARGS\_\_); \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 17 of file dsm\+\_\+util.\+h.
+
+\index{dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}!error@{error}}
+\index{error@{error}!dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}}
+\subsubsection[{\texorpdfstring{error}{error}}]{\setlength{\rightskip}{0pt plus 5cm}\#define error(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~do \{ {\bf debug\+\_\+print}(1, stderr, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+); perror(\char`\"{}\textbackslash{}t\char`\"{}); exit(E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE); \} while (0)}\hypertarget{dsm__util_8h_a259aac00ed43fd7ac58196b770963525}{}\label{dsm__util_8h_a259aac00ed43fd7ac58196b770963525}
+
+
+Definition at line 26 of file dsm\+\_\+util.\+h.
+
+\index{dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}!log@{log}}
+\index{log@{log}!dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}}
+\subsubsection[{\texorpdfstring{log}{log}}]{\setlength{\rightskip}{0pt plus 5cm}\#define log(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf debug\+\_\+print}(1, stdout, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{dsm__util_8h_a66726e5f1a55e7253ddd5aeec06f19c3}{}\label{dsm__util_8h_a66726e5f1a55e7253ddd5aeec06f19c3}
+
+
+Definition at line 24 of file dsm\+\_\+util.\+h.
+
+\index{dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}!V\+A\+R\+D\+E\+B\+UG@{V\+A\+R\+D\+E\+B\+UG}}
+\index{V\+A\+R\+D\+E\+B\+UG@{V\+A\+R\+D\+E\+B\+UG}!dsm\+\_\+util.\+h@{dsm\+\_\+util.\+h}}
+\subsubsection[{\texorpdfstring{V\+A\+R\+D\+E\+B\+UG}{VARDEBUG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+R\+D\+E\+B\+UG~0}\hypertarget{dsm__util_8h_a4468eef98aae318b43126195325d6c61}{}\label{dsm__util_8h_a4468eef98aae318b43126195325d6c61}
+
+
+Definition at line 11 of file dsm\+\_\+util.\+h.
+

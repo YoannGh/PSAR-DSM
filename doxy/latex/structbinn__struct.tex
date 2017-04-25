@@ -1,0 +1,293 @@
+\hypertarget{structbinn__struct}{}\section{binn\+\_\+struct Struct Reference}
+\label{structbinn__struct}\index{binn\+\_\+struct@{binn\+\_\+struct}}
+
+
+{\ttfamily \#include $<$binn.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structbinn__struct_adc7ed4d9991bc47d473e178bd4fe9a49}{header}
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{structbinn__struct_aff03b6df54fff7135a4185aa7065cb7d}{allocated}
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{structbinn__struct_a73ec689e25e4a578a01fbb1dbcff0495}{writable}
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{structbinn__struct_a0d524507b6027bd4e728e12f446be5c9}{dirty}
+\item 
+void $\ast$ \hyperlink{structbinn__struct_abdefcde8a25619fc71ee548d5241cde0}{pbuf}
+\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{structbinn__struct_ab479c42c8c6ffbcbd68ee197c31332f6}{pre\+\_\+allocated}
+\item 
+int \hyperlink{structbinn__struct_a43ab546b0fdc85de9d25d62dc4564e62}{alloc\+\_\+size}
+\item 
+int \hyperlink{structbinn__struct_a9bc460fe61e5ac07e6c1534c7f6e0d6b}{used\+\_\+size}
+\item 
+int \hyperlink{structbinn__struct_ac765329451135abec74c45e1897abf26}{type}
+\item 
+void $\ast$ \hyperlink{structbinn__struct_add9af9569af79ec26dd741fb226b38ba}{ptr}
+\item 
+int \hyperlink{structbinn__struct_a439227feff9d7f55384e8780cfc2eb82}{size}
+\item 
+int \hyperlink{structbinn__struct_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}
+\item 
+\hyperlink{binn_8h_a0a1a8d8952b9cff264203eec80e1db2b}{binn\+\_\+mem\+\_\+free} \hyperlink{structbinn__struct_acf1b3cb2ec3d95daf5bf617b2e8516e6}{freefn}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>signed char \hyperlink{structbinn__struct_acaf2c9081db8297354d234495a73ef16}{vint8}\\
+\>signed short \hyperlink{structbinn__struct_a5425c19a3a87dfa922ae09e967306c92}{vint16}\\
+\>signed int \hyperlink{structbinn__struct_ae6f05ec4a6bd6b3bbfacd86c8f9d7618}{vint32}\\
+\>\hyperlink{binn_8h_afe4e545a078b427a79aafde0ed7dc948}{int64} \hyperlink{structbinn__struct_a5cc6015a1a362b566b460ed13e5da462}{vint64}\\
+\>unsigned char \hyperlink{structbinn__struct_a2ffdca20463b289153fd0ee50b19a8b9}{vuint8}\\
+\>unsigned short \hyperlink{structbinn__struct_a7e04e8ec5973e76e4b9a45aaef110cd6}{vuint16}\\
+\>unsigned int \hyperlink{structbinn__struct_a86bfe140d3324f55fb762a6b2a18f5fb}{vuint32}\\
+\>\hyperlink{binn_8h_a2834615d491c11fba337095447f25886}{uint64} \hyperlink{structbinn__struct_a418818b2a8d2f51debe61e36240a41c9}{vuint64}\\
+\>signed char \hyperlink{structbinn__struct_a1beb1e69227840e2169bc0e6061418ed}{vchar}\\
+\>unsigned char \hyperlink{structbinn__struct_addab104cb8914a50f76a78d856f9f87e}{vuchar}\\
+\>signed short \hyperlink{structbinn__struct_af9bacb6feb36a3bd39e30d569200974a}{vshort}\\
+\>unsigned short \hyperlink{structbinn__struct_a78b2ce90659fb23f558e6f1d6875b466}{vushort}\\
+\>signed int \hyperlink{structbinn__struct_afdc7f4a00956c690bfe04ac581c54446}{vint}\\
+\>unsigned int \hyperlink{structbinn__struct_a14fc676599856ed03ecee00d6750f8d3}{vuint}\\
+\>float \hyperlink{structbinn__struct_a70f320b1421f6d340ca87e382516337d}{vfloat}\\
+\>double \hyperlink{structbinn__struct_abbc2c95513d59c2d8b82bda74208d447}{vdouble}\\
+\>\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{BOOL} \hyperlink{structbinn__struct_a021b2fb8f6c7b5d31b492b79bc816e1a}{vbool}\\
+\}; \\
+
+\end{tabbing}\item 
+\hyperlink{binn_8h_a050c65e107f0c828f856a231f4b4e788}{B\+O\+OL} \hyperlink{structbinn__struct_ad2cfdcccf81f6fc27b41405c1f71ae31}{disable\+\_\+int\+\_\+compression}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 214 of file binn.\+h.
+
+
+
+\subsection{Field Documentation}
+\subsubsection[{\texorpdfstring{"@1}{@1}}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} }\hypertarget{structbinn__struct_a34fb4ebc1b24830e8b4a67535a6dac11}{}\label{structbinn__struct_a34fb4ebc1b24830e8b4a67535a6dac11}
+\index{binn\+\_\+struct@{binn\+\_\+struct}!alloc\+\_\+size@{alloc\+\_\+size}}
+\index{alloc\+\_\+size@{alloc\+\_\+size}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+size}{alloc_size}}]{\setlength{\rightskip}{0pt plus 5cm}int alloc\+\_\+size}\hypertarget{structbinn__struct_a43ab546b0fdc85de9d25d62dc4564e62}{}\label{structbinn__struct_a43ab546b0fdc85de9d25d62dc4564e62}
+
+
+Definition at line 222 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!allocated@{allocated}}
+\index{allocated@{allocated}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{allocated}{allocated}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} allocated}\hypertarget{structbinn__struct_aff03b6df54fff7135a4185aa7065cb7d}{}\label{structbinn__struct_aff03b6df54fff7135a4185aa7065cb7d}
+
+
+Definition at line 216 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!count@{count}}
+\index{count@{count}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{count}{count}}]{\setlength{\rightskip}{0pt plus 5cm}int count}\hypertarget{structbinn__struct_ad43c3812e6d13e0518d9f8b8f463ffcf}{}\label{structbinn__struct_ad43c3812e6d13e0518d9f8b8f463ffcf}
+
+
+Definition at line 228 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!dirty@{dirty}}
+\index{dirty@{dirty}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{dirty}{dirty}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} dirty}\hypertarget{structbinn__struct_a0d524507b6027bd4e728e12f446be5c9}{}\label{structbinn__struct_a0d524507b6027bd4e728e12f446be5c9}
+
+
+Definition at line 218 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!disable\+\_\+int\+\_\+compression@{disable\+\_\+int\+\_\+compression}}
+\index{disable\+\_\+int\+\_\+compression@{disable\+\_\+int\+\_\+compression}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{disable\+\_\+int\+\_\+compression}{disable_int_compression}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} disable\+\_\+int\+\_\+compression}\hypertarget{structbinn__struct_ad2cfdcccf81f6fc27b41405c1f71ae31}{}\label{structbinn__struct_ad2cfdcccf81f6fc27b41405c1f71ae31}
+
+
+Definition at line 255 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!freefn@{freefn}}
+\index{freefn@{freefn}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{freefn}{freefn}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf binn\+\_\+mem\+\_\+free} freefn}\hypertarget{structbinn__struct_acf1b3cb2ec3d95daf5bf617b2e8516e6}{}\label{structbinn__struct_acf1b3cb2ec3d95daf5bf617b2e8516e6}
+
+
+Definition at line 230 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!header@{header}}
+\index{header@{header}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{header}{header}}]{\setlength{\rightskip}{0pt plus 5cm}int header}\hypertarget{structbinn__struct_adc7ed4d9991bc47d473e178bd4fe9a49}{}\label{structbinn__struct_adc7ed4d9991bc47d473e178bd4fe9a49}
+
+
+Definition at line 215 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!pbuf@{pbuf}}
+\index{pbuf@{pbuf}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{pbuf}{pbuf}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ pbuf}\hypertarget{structbinn__struct_abdefcde8a25619fc71ee548d5241cde0}{}\label{structbinn__struct_abdefcde8a25619fc71ee548d5241cde0}
+
+
+Definition at line 220 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!pre\+\_\+allocated@{pre\+\_\+allocated}}
+\index{pre\+\_\+allocated@{pre\+\_\+allocated}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{pre\+\_\+allocated}{pre_allocated}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} pre\+\_\+allocated}\hypertarget{structbinn__struct_ab479c42c8c6ffbcbd68ee197c31332f6}{}\label{structbinn__struct_ab479c42c8c6ffbcbd68ee197c31332f6}
+
+
+Definition at line 221 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!ptr@{ptr}}
+\index{ptr@{ptr}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{ptr}{ptr}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ ptr}\hypertarget{structbinn__struct_add9af9569af79ec26dd741fb226b38ba}{}\label{structbinn__struct_add9af9569af79ec26dd741fb226b38ba}
+
+
+Definition at line 226 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!size@{size}}
+\index{size@{size}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{size}{size}}]{\setlength{\rightskip}{0pt plus 5cm}int size}\hypertarget{structbinn__struct_a439227feff9d7f55384e8780cfc2eb82}{}\label{structbinn__struct_a439227feff9d7f55384e8780cfc2eb82}
+
+
+Definition at line 227 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!type@{type}}
+\index{type@{type}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}int type}\hypertarget{structbinn__struct_ac765329451135abec74c45e1897abf26}{}\label{structbinn__struct_ac765329451135abec74c45e1897abf26}
+
+
+Definition at line 225 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!used\+\_\+size@{used\+\_\+size}}
+\index{used\+\_\+size@{used\+\_\+size}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{used\+\_\+size}{used_size}}]{\setlength{\rightskip}{0pt plus 5cm}int used\+\_\+size}\hypertarget{structbinn__struct_a9bc460fe61e5ac07e6c1534c7f6e0d6b}{}\label{structbinn__struct_a9bc460fe61e5ac07e6c1534c7f6e0d6b}
+
+
+Definition at line 223 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vbool@{vbool}}
+\index{vbool@{vbool}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vbool}{vbool}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} vbool}\hypertarget{structbinn__struct_a021b2fb8f6c7b5d31b492b79bc816e1a}{}\label{structbinn__struct_a021b2fb8f6c7b5d31b492b79bc816e1a}
+
+
+Definition at line 252 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vchar@{vchar}}
+\index{vchar@{vchar}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vchar}{vchar}}]{\setlength{\rightskip}{0pt plus 5cm}signed char vchar}\hypertarget{structbinn__struct_a1beb1e69227840e2169bc0e6061418ed}{}\label{structbinn__struct_a1beb1e69227840e2169bc0e6061418ed}
+
+
+Definition at line 242 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vdouble@{vdouble}}
+\index{vdouble@{vdouble}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vdouble}{vdouble}}]{\setlength{\rightskip}{0pt plus 5cm}double vdouble}\hypertarget{structbinn__struct_abbc2c95513d59c2d8b82bda74208d447}{}\label{structbinn__struct_abbc2c95513d59c2d8b82bda74208d447}
+
+
+Definition at line 250 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vfloat@{vfloat}}
+\index{vfloat@{vfloat}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vfloat}{vfloat}}]{\setlength{\rightskip}{0pt plus 5cm}float vfloat}\hypertarget{structbinn__struct_a70f320b1421f6d340ca87e382516337d}{}\label{structbinn__struct_a70f320b1421f6d340ca87e382516337d}
+
+
+Definition at line 249 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vint@{vint}}
+\index{vint@{vint}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vint}{vint}}]{\setlength{\rightskip}{0pt plus 5cm}signed int vint}\hypertarget{structbinn__struct_afdc7f4a00956c690bfe04ac581c54446}{}\label{structbinn__struct_afdc7f4a00956c690bfe04ac581c54446}
+
+
+Definition at line 246 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vint16@{vint16}}
+\index{vint16@{vint16}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vint16}{vint16}}]{\setlength{\rightskip}{0pt plus 5cm}signed short vint16}\hypertarget{structbinn__struct_a5425c19a3a87dfa922ae09e967306c92}{}\label{structbinn__struct_a5425c19a3a87dfa922ae09e967306c92}
+
+
+Definition at line 234 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vint32@{vint32}}
+\index{vint32@{vint32}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vint32}{vint32}}]{\setlength{\rightskip}{0pt plus 5cm}signed int vint32}\hypertarget{structbinn__struct_ae6f05ec4a6bd6b3bbfacd86c8f9d7618}{}\label{structbinn__struct_ae6f05ec4a6bd6b3bbfacd86c8f9d7618}
+
+
+Definition at line 235 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vint64@{vint64}}
+\index{vint64@{vint64}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vint64}{vint64}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64} vint64}\hypertarget{structbinn__struct_a5cc6015a1a362b566b460ed13e5da462}{}\label{structbinn__struct_a5cc6015a1a362b566b460ed13e5da462}
+
+
+Definition at line 236 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vint8@{vint8}}
+\index{vint8@{vint8}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vint8}{vint8}}]{\setlength{\rightskip}{0pt plus 5cm}signed char vint8}\hypertarget{structbinn__struct_acaf2c9081db8297354d234495a73ef16}{}\label{structbinn__struct_acaf2c9081db8297354d234495a73ef16}
+
+
+Definition at line 233 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vshort@{vshort}}
+\index{vshort@{vshort}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vshort}{vshort}}]{\setlength{\rightskip}{0pt plus 5cm}signed short vshort}\hypertarget{structbinn__struct_af9bacb6feb36a3bd39e30d569200974a}{}\label{structbinn__struct_af9bacb6feb36a3bd39e30d569200974a}
+
+
+Definition at line 244 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuchar@{vuchar}}
+\index{vuchar@{vuchar}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuchar}{vuchar}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char vuchar}\hypertarget{structbinn__struct_addab104cb8914a50f76a78d856f9f87e}{}\label{structbinn__struct_addab104cb8914a50f76a78d856f9f87e}
+
+
+Definition at line 243 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuint@{vuint}}
+\index{vuint@{vuint}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuint}{vuint}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int vuint}\hypertarget{structbinn__struct_a14fc676599856ed03ecee00d6750f8d3}{}\label{structbinn__struct_a14fc676599856ed03ecee00d6750f8d3}
+
+
+Definition at line 247 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuint16@{vuint16}}
+\index{vuint16@{vuint16}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuint16}{vuint16}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short vuint16}\hypertarget{structbinn__struct_a7e04e8ec5973e76e4b9a45aaef110cd6}{}\label{structbinn__struct_a7e04e8ec5973e76e4b9a45aaef110cd6}
+
+
+Definition at line 238 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuint32@{vuint32}}
+\index{vuint32@{vuint32}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuint32}{vuint32}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int vuint32}\hypertarget{structbinn__struct_a86bfe140d3324f55fb762a6b2a18f5fb}{}\label{structbinn__struct_a86bfe140d3324f55fb762a6b2a18f5fb}
+
+
+Definition at line 239 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuint64@{vuint64}}
+\index{vuint64@{vuint64}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuint64}{vuint64}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64} vuint64}\hypertarget{structbinn__struct_a418818b2a8d2f51debe61e36240a41c9}{}\label{structbinn__struct_a418818b2a8d2f51debe61e36240a41c9}
+
+
+Definition at line 240 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vuint8@{vuint8}}
+\index{vuint8@{vuint8}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vuint8}{vuint8}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char vuint8}\hypertarget{structbinn__struct_a2ffdca20463b289153fd0ee50b19a8b9}{}\label{structbinn__struct_a2ffdca20463b289153fd0ee50b19a8b9}
+
+
+Definition at line 237 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!vushort@{vushort}}
+\index{vushort@{vushort}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{vushort}{vushort}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short vushort}\hypertarget{structbinn__struct_a78b2ce90659fb23f558e6f1d6875b466}{}\label{structbinn__struct_a78b2ce90659fb23f558e6f1d6875b466}
+
+
+Definition at line 245 of file binn.\+h.
+
+\index{binn\+\_\+struct@{binn\+\_\+struct}!writable@{writable}}
+\index{writable@{writable}!binn\+\_\+struct@{binn\+\_\+struct}}
+\subsubsection[{\texorpdfstring{writable}{writable}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+O\+OL} writable}\hypertarget{structbinn__struct_a73ec689e25e4a578a01fbb1dbcff0495}{}\label{structbinn__struct_a73ec689e25e4a578a01fbb1dbcff0495}
+
+
+Definition at line 217 of file binn.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/\hyperlink{binn_8h}{binn.\+h}\end{DoxyCompactItemize}

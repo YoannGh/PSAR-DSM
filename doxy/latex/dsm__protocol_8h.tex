@@ -1,0 +1,202 @@
+\hypertarget{dsm__protocol_8h}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.h File Reference}
+\label{dsm__protocol_8h}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+h@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+protocol.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmsg__connect__args__s}{msg\+\_\+connect\+\_\+args\+\_\+s}
+\item 
+struct \hyperlink{structmsg__connect__ack__args__s}{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}
+\item 
+struct \hyperlink{structdsm__message__s}{dsm\+\_\+message\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dsm__protocol_8h_a513fb10b0597877b218ebd6a9d5c4a00}{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}~\char`\"{}type\char`\"{}
+\item 
+\#define \hyperlink{dsm__protocol_8h_a3c18933f27e2d49ae01b3fbb241f99ed}{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}~\char`\"{}bitness\char`\"{}
+\item 
+\#define \hyperlink{dsm__protocol_8h_a8d5016f0e84e9832b6af7c0b76c26100}{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}~\char`\"{}pagesize\char`\"{}
+\item 
+\#define \hyperlink{dsm__protocol_8h_ab3fb9c635d85c33e9bb8ad98f6f4a048}{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}~\char`\"{}pagecount\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6}{dsm\+\_\+msg\+\_\+type\+\_\+enum} \hyperlink{dsm__protocol_8h_a19505c06a6c9d61ed11250fd954454ef}{dsm\+\_\+msg\+\_\+type}
+\item 
+typedef struct \hyperlink{structmsg__connect__args__s}{msg\+\_\+connect\+\_\+args\+\_\+s} \hyperlink{dsm__protocol_8h_a4359196bd42acc7884ebc36b7375d490}{msg\+\_\+connect\+\_\+args\+\_\+t}
+\item 
+typedef struct \hyperlink{structmsg__connect__ack__args__s}{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s} \hyperlink{dsm__protocol_8h_a1ac3fc415939f27283eb5d75ba872df0}{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}
+\item 
+typedef struct \hyperlink{structdsm__message__s}{dsm\+\_\+message\+\_\+s} \hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6}{dsm\+\_\+msg\+\_\+type\+\_\+enum} \{ \\*
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a20391dd2915a0e64343d24c2f2e40b95}{C\+O\+N\+N\+E\+CT}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a4bda65ba46ce2681c23a2d8fc21e9624}{C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a8f47adb545decf232c2466fea715c70b}{G\+E\+T\+P\+A\+GE}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6adb971f7bfd0eb4ce85796906d5141d4e}{I\+N\+V\+A\+L\+I\+D\+A\+TE}, 
+\\*
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6aef10b8804992b6a16960332346c21493}{B\+A\+R\+R\+I\+ER}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a9aab2d9eae3e9a84d9fed3f0cadd7e22}{T\+E\+R\+M\+I\+N\+A\+TE}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a2fd6f336d08340583bd620a7f5694c90}{E\+R\+R\+OR}, 
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a6e074abc1ec6368da315a331ad35c00b}{E\+C\+HO}, 
+\\*
+\hyperlink{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a3cdd95de65a9bddb27667ed4ebbb8e1d}{E\+C\+H\+O\+\_\+\+R\+E\+P\+LY}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dsm__protocol_8h_a8fec54c12c1b0799b9073698948c9bfd}{dsm\+\_\+dispatch\+\_\+message} (\hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em function to sort messages by type and call good treatment \end{DoxyCompactList}\item 
+int \hyperlink{dsm__protocol_8h_a55c6cdbd0632d23fd9b4fbcc059719c1}{dsm\+\_\+receive\+\_\+msg} (int nodefd, \hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\begin{DoxyCompactList}\small\item\em treatment to get message from data received \end{DoxyCompactList}\item 
+int \hyperlink{dsm__protocol_8h_ae8eee3662200ec63a4dc9e70c0c6bcb4}{dsm\+\_\+send\+\_\+msg} (int nodefd, \hyperlink{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{dsm\+\_\+message\+\_\+t} $\ast$msg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}}
+\index{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS}{DSM_MSG_KEY_BITNESS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+B\+I\+T\+N\+E\+SS~\char`\"{}bitness\char`\"{}}\hypertarget{dsm__protocol_8h_a3c18933f27e2d49ae01b3fbb241f99ed}{}\label{dsm__protocol_8h_a3c18933f27e2d49ae01b3fbb241f99ed}
+
+
+Definition at line 5 of file dsm\+\_\+protocol.\+h.
+
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}}
+\index{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT}{DSM_MSG_KEY_PAGECOUNT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+C\+O\+U\+NT~\char`\"{}pagecount\char`\"{}}\hypertarget{dsm__protocol_8h_ab3fb9c635d85c33e9bb8ad98f6f4a048}{}\label{dsm__protocol_8h_ab3fb9c635d85c33e9bb8ad98f6f4a048}
+
+
+Definition at line 7 of file dsm\+\_\+protocol.\+h.
+
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}}
+\index{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE}{DSM_MSG_KEY_PAGESIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+P\+A\+G\+E\+S\+I\+ZE~\char`\"{}pagesize\char`\"{}}\hypertarget{dsm__protocol_8h_a8d5016f0e84e9832b6af7c0b76c26100}{}\label{dsm__protocol_8h_a8d5016f0e84e9832b6af7c0b76c26100}
+
+
+Definition at line 6 of file dsm\+\_\+protocol.\+h.
+
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}}
+\index{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE@{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE}{DSM_MSG_KEY_TYPE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+S\+M\+\_\+\+M\+S\+G\+\_\+\+K\+E\+Y\+\_\+\+T\+Y\+PE~\char`\"{}type\char`\"{}}\hypertarget{dsm__protocol_8h_a513fb10b0597877b218ebd6a9d5c4a00}{}\label{dsm__protocol_8h_a513fb10b0597877b218ebd6a9d5c4a00}
+
+
+Definition at line 4 of file dsm\+\_\+protocol.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+message\+\_\+t@{dsm\+\_\+message\+\_\+t}}
+\index{dsm\+\_\+message\+\_\+t@{dsm\+\_\+message\+\_\+t}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+message\+\_\+t}{dsm_message_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf dsm\+\_\+message\+\_\+s}  {\bf dsm\+\_\+message\+\_\+t}}\hypertarget{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}{}\label{dsm__protocol_8h_a4e65bfd7f9ce8c61b4a94caed935778e}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+msg\+\_\+type@{dsm\+\_\+msg\+\_\+type}}
+\index{dsm\+\_\+msg\+\_\+type@{dsm\+\_\+msg\+\_\+type}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+msg\+\_\+type}{dsm_msg_type}}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf dsm\+\_\+msg\+\_\+type\+\_\+enum}  {\bf dsm\+\_\+msg\+\_\+type}}\hypertarget{dsm__protocol_8h_a19505c06a6c9d61ed11250fd954454ef}{}\label{dsm__protocol_8h_a19505c06a6c9d61ed11250fd954454ef}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t@{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}}
+\index{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t@{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}{msg_connect_ack_args_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+s}  {\bf msg\+\_\+connect\+\_\+ack\+\_\+args\+\_\+t}}\hypertarget{dsm__protocol_8h_a1ac3fc415939f27283eb5d75ba872df0}{}\label{dsm__protocol_8h_a1ac3fc415939f27283eb5d75ba872df0}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!msg\+\_\+connect\+\_\+args\+\_\+t@{msg\+\_\+connect\+\_\+args\+\_\+t}}
+\index{msg\+\_\+connect\+\_\+args\+\_\+t@{msg\+\_\+connect\+\_\+args\+\_\+t}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{msg\+\_\+connect\+\_\+args\+\_\+t}{msg_connect_args_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf msg\+\_\+connect\+\_\+args\+\_\+s}  {\bf msg\+\_\+connect\+\_\+args\+\_\+t}}\hypertarget{dsm__protocol_8h_a4359196bd42acc7884ebc36b7375d490}{}\label{dsm__protocol_8h_a4359196bd42acc7884ebc36b7375d490}
+
+
+\subsection{Enumeration Type Documentation}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+msg\+\_\+type\+\_\+enum@{dsm\+\_\+msg\+\_\+type\+\_\+enum}}
+\index{dsm\+\_\+msg\+\_\+type\+\_\+enum@{dsm\+\_\+msg\+\_\+type\+\_\+enum}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+msg\+\_\+type\+\_\+enum}{dsm_msg_type_enum}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf dsm\+\_\+msg\+\_\+type\+\_\+enum}}\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+O\+N\+N\+E\+CT@{C\+O\+N\+N\+E\+CT}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!C\+O\+N\+N\+E\+CT@{C\+O\+N\+N\+E\+CT}}\item[{\em 
+C\+O\+N\+N\+E\+CT\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a20391dd2915a0e64343d24c2f2e40b95}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a20391dd2915a0e64343d24c2f2e40b95}
+}]\index{C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK@{C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK@{C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK}}\item[{\em 
+C\+O\+N\+N\+E\+C\+T\+\_\+\+A\+CK\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a4bda65ba46ce2681c23a2d8fc21e9624}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a4bda65ba46ce2681c23a2d8fc21e9624}
+}]\index{G\+E\+T\+P\+A\+GE@{G\+E\+T\+P\+A\+GE}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!G\+E\+T\+P\+A\+GE@{G\+E\+T\+P\+A\+GE}}\item[{\em 
+G\+E\+T\+P\+A\+GE\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a8f47adb545decf232c2466fea715c70b}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a8f47adb545decf232c2466fea715c70b}
+}]\index{I\+N\+V\+A\+L\+I\+D\+A\+TE@{I\+N\+V\+A\+L\+I\+D\+A\+TE}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!I\+N\+V\+A\+L\+I\+D\+A\+TE@{I\+N\+V\+A\+L\+I\+D\+A\+TE}}\item[{\em 
+I\+N\+V\+A\+L\+I\+D\+A\+TE\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6adb971f7bfd0eb4ce85796906d5141d4e}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6adb971f7bfd0eb4ce85796906d5141d4e}
+}]\index{B\+A\+R\+R\+I\+ER@{B\+A\+R\+R\+I\+ER}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!B\+A\+R\+R\+I\+ER@{B\+A\+R\+R\+I\+ER}}\item[{\em 
+B\+A\+R\+R\+I\+ER\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6aef10b8804992b6a16960332346c21493}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6aef10b8804992b6a16960332346c21493}
+}]\index{T\+E\+R\+M\+I\+N\+A\+TE@{T\+E\+R\+M\+I\+N\+A\+TE}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!T\+E\+R\+M\+I\+N\+A\+TE@{T\+E\+R\+M\+I\+N\+A\+TE}}\item[{\em 
+T\+E\+R\+M\+I\+N\+A\+TE\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a9aab2d9eae3e9a84d9fed3f0cadd7e22}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a9aab2d9eae3e9a84d9fed3f0cadd7e22}
+}]\index{E\+R\+R\+OR@{E\+R\+R\+OR}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!E\+R\+R\+OR@{E\+R\+R\+OR}}\item[{\em 
+E\+R\+R\+OR\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a2fd6f336d08340583bd620a7f5694c90}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a2fd6f336d08340583bd620a7f5694c90}
+}]\index{E\+C\+HO@{E\+C\+HO}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!E\+C\+HO@{E\+C\+HO}}\item[{\em 
+E\+C\+HO\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a6e074abc1ec6368da315a331ad35c00b}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a6e074abc1ec6368da315a331ad35c00b}
+}]\index{E\+C\+H\+O\+\_\+\+R\+E\+P\+LY@{E\+C\+H\+O\+\_\+\+R\+E\+P\+LY}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!E\+C\+H\+O\+\_\+\+R\+E\+P\+LY@{E\+C\+H\+O\+\_\+\+R\+E\+P\+LY}}\item[{\em 
+E\+C\+H\+O\+\_\+\+R\+E\+P\+LY\hypertarget{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a3cdd95de65a9bddb27667ed4ebbb8e1d}{}\label{dsm__protocol_8h_a74ba0a77bc89ecacf95ba11e02f55ad6a3cdd95de65a9bddb27667ed4ebbb8e1d}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 10 of file dsm\+\_\+protocol.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+dispatch\+\_\+message@{dsm\+\_\+dispatch\+\_\+message}}
+\index{dsm\+\_\+dispatch\+\_\+message@{dsm\+\_\+dispatch\+\_\+message}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+dispatch\+\_\+message(dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_dispatch_message(dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}void dsm\+\_\+dispatch\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8h_a8fec54c12c1b0799b9073698948c9bfd}{}\label{dsm__protocol_8h_a8fec54c12c1b0799b9073698948c9bfd}
+
+
+function to sort messages by type and call good treatment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & the message to sort \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 12 of file dsm\+\_\+protocol.\+c.
+
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+receive\+\_\+msg@{dsm\+\_\+receive\+\_\+msg}}
+\index{dsm\+\_\+receive\+\_\+msg@{dsm\+\_\+receive\+\_\+msg}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+receive\+\_\+msg(int nodefd, dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_receive_msg(int nodefd, dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+receive\+\_\+msg (
+\begin{DoxyParamCaption}
+\item[{int}]{nodefd, }
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8h_a55c6cdbd0632d23fd9b4fbcc059719c1}{}\label{dsm__protocol_8h_a55c6cdbd0632d23fd9b4fbcc059719c1}
+
+
+treatment to get message from data received 
+
+treatment to send data from message structure
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodefd} & message sender descriptor \\
+\hline
+{\em msg} & the final message received\\
+\hline
+{\em nodefd} & message destination descriptor \\
+\hline
+{\em msg} & the message to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 65 of file dsm\+\_\+protocol.\+c.
+
+\index{dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}!dsm\+\_\+send\+\_\+msg@{dsm\+\_\+send\+\_\+msg}}
+\index{dsm\+\_\+send\+\_\+msg@{dsm\+\_\+send\+\_\+msg}!dsm\+\_\+protocol.\+h@{dsm\+\_\+protocol.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+send\+\_\+msg(int nodefd, dsm\+\_\+message\+\_\+t $\ast$msg)}{dsm_send_msg(int nodefd, dsm_message_t *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+send\+\_\+msg (
+\begin{DoxyParamCaption}
+\item[{int}]{nodefd, }
+\item[{{\bf dsm\+\_\+message\+\_\+t} $\ast$}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__protocol_8h_ae8eee3662200ec63a4dc9e70c0c6bcb4}{}\label{dsm__protocol_8h_ae8eee3662200ec63a4dc9e70c0c6bcb4}
+
+
+Definition at line 106 of file dsm\+\_\+protocol.\+c.
+

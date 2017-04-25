@@ -1,0 +1,194 @@
+\hypertarget{dsm__socket_8h}{}\section{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+socket.h File Reference}
+\label{dsm__socket_8h}\index{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+socket.\+h@{/home/florian/\+Documents/\+P\+S\+A\+R-\/\+D\+S\+M/src/dsm\+\_\+socket.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dsm__socket_8h_a46130dc86f2322714bba26960b64e7bb}{B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}~256
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{dsm__socket_8h_a8cf2bb925ca9e5415556a5b6b0bf78db}{dsm\+\_\+socket\+\_\+bind\+\_\+listen} (int port, int backlog)
+\item 
+int \hyperlink{dsm__socket_8h_a684a6c5abbf5f1719f1ca2cdcbf01f23}{dsm\+\_\+socket\+\_\+connect} (const char $\ast$host, int port)
+\item 
+int \hyperlink{dsm__socket_8h_a7c1d1add9331b4aa1a3f34a2245928d6}{dsm\+\_\+send} (int sockfd, void $\ast$buffer, int size)
+\begin{DoxyCompactList}\small\item\em send data over network \end{DoxyCompactList}\item 
+int \hyperlink{dsm__socket_8h_ad9b271716dc8594749ef311ecf10f476}{dsm\+\_\+receive} (int sockfd, void $\ast$$\ast$buffer)
+\begin{DoxyCompactList}\small\item\em send data over network \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{dsm__socket_8h_ad553ea40278831dd8fb4d75f807d0515}{dsm\+\_\+daemon\+\_\+msg\+\_\+listener} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em function launched in a new thread, starting listener \end{DoxyCompactList}\item 
+int \hyperlink{dsm__socket_8h_a5f1c815d7205cab3737ff95bc79e94c9}{dsm\+\_\+socket\+\_\+shutdown} (int sockfd, int how)
+\item 
+int \hyperlink{dsm__socket_8h_a0039c0770df996c76e73b23547dfc3d9}{dsm\+\_\+socket\+\_\+close} (int sockfd)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+L\+EN@{B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+L\+EN@{B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+L\+EN}{BUFFER_LEN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+F\+F\+E\+R\+\_\+\+L\+EN~256}\hypertarget{dsm__socket_8h_a46130dc86f2322714bba26960b64e7bb}{}\label{dsm__socket_8h_a46130dc86f2322714bba26960b64e7bb}
+
+
+Definition at line 4 of file dsm\+\_\+socket.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+daemon\+\_\+msg\+\_\+listener@{dsm\+\_\+daemon\+\_\+msg\+\_\+listener}}
+\index{dsm\+\_\+daemon\+\_\+msg\+\_\+listener@{dsm\+\_\+daemon\+\_\+msg\+\_\+listener}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+daemon\+\_\+msg\+\_\+listener(void $\ast$arg)}{dsm_daemon_msg_listener(void *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ dsm\+\_\+daemon\+\_\+msg\+\_\+listener (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_ad553ea40278831dd8fb4d75f807d0515}{}\label{dsm__socket_8h_ad553ea40278831dd8fb4d75f807d0515}
+
+
+function launched in a new thread, starting listener 
+
+
+
+Definition at line 230 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+receive@{dsm\+\_\+receive}}
+\index{dsm\+\_\+receive@{dsm\+\_\+receive}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+receive(int sockfd, void $\ast$$\ast$buffer)}{dsm_receive(int sockfd, void **buffer)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+receive (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{void $\ast$$\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_ad9b271716dc8594749ef311ecf10f476}{}\label{dsm__socket_8h_ad9b271716dc8594749ef311ecf10f476}
+
+
+send data over network 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & socket descriptor to receive data \\
+\hline
+{\em buffer} & the data to be received \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+send@{dsm\+\_\+send}}
+\index{dsm\+\_\+send@{dsm\+\_\+send}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+send(int sockfd, void $\ast$buffer, int size)}{dsm_send(int sockfd, void *buffer, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+send (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{void $\ast$}]{buffer, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_a7c1d1add9331b4aa1a3f34a2245928d6}{}\label{dsm__socket_8h_a7c1d1add9331b4aa1a3f34a2245928d6}
+
+
+send data over network 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & socket descriptor to send data \\
+\hline
+{\em buffer} & the data to be sent \\
+\hline
+{\em size} & the size of the data to send \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+socket\+\_\+bind\+\_\+listen@{dsm\+\_\+socket\+\_\+bind\+\_\+listen}}
+\index{dsm\+\_\+socket\+\_\+bind\+\_\+listen@{dsm\+\_\+socket\+\_\+bind\+\_\+listen}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+socket\+\_\+bind\+\_\+listen(int port, int backlog)}{dsm_socket_bind_listen(int port, int backlog)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+socket\+\_\+bind\+\_\+listen (
+\begin{DoxyParamCaption}
+\item[{int}]{port, }
+\item[{int}]{backlog}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_a8cf2bb925ca9e5415556a5b6b0bf78db}{}\label{dsm__socket_8h_a8cf2bb925ca9e5415556a5b6b0bf78db}
+Binds and listens on {\ttfamily port} on all interfaces on the local machine allowing {\ttfamily backlog} clients to be queued
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & the port to use for the server \\
+\hline
+{\em backlog} & the limit of queued connections\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the server socket descriptor 
+\end{DoxyReturn}
+
+
+Definition at line 22 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+socket\+\_\+close@{dsm\+\_\+socket\+\_\+close}}
+\index{dsm\+\_\+socket\+\_\+close@{dsm\+\_\+socket\+\_\+close}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+socket\+\_\+close(int sockfd)}{dsm_socket_close(int sockfd)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+socket\+\_\+close (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_a0039c0770df996c76e73b23547dfc3d9}{}\label{dsm__socket_8h_a0039c0770df996c76e73b23547dfc3d9}
+Closes the {\ttfamily sockfd} file descriptor
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & the socket descriptor to be closed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, else -\/1 
+\end{DoxyReturn}
+
+
+Definition at line 262 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+socket\+\_\+connect@{dsm\+\_\+socket\+\_\+connect}}
+\index{dsm\+\_\+socket\+\_\+connect@{dsm\+\_\+socket\+\_\+connect}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+socket\+\_\+connect(const char $\ast$host, int port)}{dsm_socket_connect(const char *host, int port)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+socket\+\_\+connect (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{host, }
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_a684a6c5abbf5f1719f1ca2cdcbf01f23}{}\label{dsm__socket_8h_a684a6c5abbf5f1719f1ca2cdcbf01f23}
+Connects to {\ttfamily server} and {\ttfamily port} using {\ttfamily ai\+\_\+family} IP protocol version
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & the hostname of the server to connect to \\
+\hline
+{\em port} & the port to connect on the server machine\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the remote socket descriptor 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file dsm\+\_\+socket.\+c.
+
+\index{dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}!dsm\+\_\+socket\+\_\+shutdown@{dsm\+\_\+socket\+\_\+shutdown}}
+\index{dsm\+\_\+socket\+\_\+shutdown@{dsm\+\_\+socket\+\_\+shutdown}!dsm\+\_\+socket.\+h@{dsm\+\_\+socket.\+h}}
+\subsubsection[{\texorpdfstring{dsm\+\_\+socket\+\_\+shutdown(int sockfd, int how)}{dsm_socket_shutdown(int sockfd, int how)}}]{\setlength{\rightskip}{0pt plus 5cm}int dsm\+\_\+socket\+\_\+shutdown (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{int}]{how}
+\end{DoxyParamCaption}
+)}\hypertarget{dsm__socket_8h_a5f1c815d7205cab3737ff95bc79e94c9}{}\label{dsm__socket_8h_a5f1c815d7205cab3737ff95bc79e94c9}
+Shut downs the {\ttfamily sockfd} connection, using {\ttfamily how} parameter to behave the same way described in the shutdown(2) man page
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & the socket to be shut down \\
+\hline
+{\em how} & shutdown receptions(\+S\+H\+U\+T\+\_\+\+R\+D), emissions(\+S\+H\+U\+T\+\_\+\+W\+R) or both (S\+H\+U\+T\+\_\+\+R\+D\+WR).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, else -\/1 
+\end{DoxyReturn}
+
+
+Definition at line 250 of file dsm\+\_\+socket.\+c.
+
