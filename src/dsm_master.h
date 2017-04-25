@@ -14,6 +14,7 @@ typedef struct dsm_master_s
 	int port; /*!< port master is listening to*/
 	/* Following fields are used by non master nodes only */
 	int sockfd; /*!< socket identifer related to the master */
+	int server_sockfd; /*!< socket indentifier where master is listening*/
 } dsm_master_t;
 
 int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, unsigned short is_master);

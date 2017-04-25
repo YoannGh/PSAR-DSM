@@ -24,6 +24,14 @@ void *InitMaster(int port, size_t page_count);
 
 void *InitSlave(char *HostMaster, int port);
 
+void lock_read(void *adr);
+
+void lock_write(void *adr);
+
+void unlock_read(void *adr);
+
+void unlock_write(void *adr);
+
 void QuitDSM(void);
 
 #endif

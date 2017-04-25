@@ -17,7 +17,7 @@
 
 int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, unsigned short is_master)
 {
-	char* host_local = "0.0.0.0";
+	char* host_local = "127.0.0.1";
 	size_t len;
 		
 	if(host_master == NULL || is_master == 1) {
@@ -46,7 +46,7 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 	master->port = port_master;
 
 	if (is_master) {
-		master->sockfd = dsm_socket_bind_listen(master->port, MAX_NODES);
+		master->server_sockfd = dsm_socket_bind_listen(master->port, MAX_NODES);
 	} else {
 		master->sockfd = dsm_socket_connect(master->host, master->port);
 	}

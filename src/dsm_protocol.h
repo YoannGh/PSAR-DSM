@@ -5,22 +5,22 @@
 #define DSM_MSG_KEY_BITNESS "bitness"
 #define DSM_MSG_KEY_PAGESIZE "pagesize"
 #define DSM_MSG_KEY_PAGECOUNT "pagecount"
+#define DSM_MSG_KEY_PAGEID "pageid"
+#define DSM_MSG_KEY_RIGHTS "rights"
+#define DSM_MSG_KEY_DATA "data"
 
 /**
  * \enum dsm_msg_type_enum
  * \brief enumeration of different messages type.
  **/
-
 typedef enum dsm_msg_type_enum {
 	CONNECT,
 	CONNECT_ACK,
-	GETPAGE,
+	LOCKPAGE,
 	INVALIDATE,
-	BARRIER,
+	INVALIDATE_ACK,
+	GIVEPAGE,
 	TERMINATE,
-	ERROR,
-	ECHO,
-	ECHO_REPLY,
 } dsm_msg_type;
 
 
@@ -30,33 +30,70 @@ typedef enum dsm_msg_type_enum {
  **/
 
 typedef struct msg_connect_args_s {
-	long bitness; /*!< 32 or 64 bit s architecture*/
-	long pagesize;/*!< the size of the page for the architecture*/
+	unsigned long bitness;
+	unsigned long pagesize;
 } msg_connect_args_t;
 
 /**
  * \struct msg_connect_ack_args_s
  * \brief structure containing connect acks message arguments
  **/
-
 typedef struct msg_connect_ack_args_s {
 	unsigned short bitness_ok; /*!< flag, true if architecture match*/
-	unsigned short pagesize_ok;/*!<flage, true if page size match*/
-	long page_count; /*!< number of page on node*/
+	unsigned short pagesize_ok;/*!< flag, true if page size match*/
+	unsigned long page_count; /*!< number of page on node*/
 } msg_connect_ack_args_t;
+
+/**
+ * \struct msg_lockpage_args_s
+ * \brief structure containing lock message arguments
+ **/
+typedef struct msg_lockpage_args_s {
+	unsigned long page_id; /*!< The page identifier to lock */
+	unsigned short access_rights; /*!< The access rights requiered */
+} msg_lockpage_args_t;
+
+/**
+ * \struct msg_invalidate_args_s
+ * \brief structure containing page invalidation message arguments 
+ **/
+typedef struct msg_invalidate_args_s {
+	unsigned long page_id;/*!< The page identifier to invalidate */
+} msg_invalidate_args_t;
+
+/**
+ * \struct msg_invalidate_ack_args_s
+ * \brief structure containing page invalidation ack message arguments  
+ **/
+typedef struct msg_invalidate_ack_args_s {
+	unsigned long page_id;/*!< The page identifier who was successfully invalidate */
+} msg_invalidate_ack_args_t;
+
+/**
+ * \struct msg_givepage_args_s
+ * \brief structure containing givepage message arguments
+ **/
+typedef struct msg_givepage_args_s {
+	unsigned long page_id;/*!< The page identifier to send */
+	unsigned short access_rights;/*!< The access rights requiered */
+	void* data;/*!< The page itself */
+} msg_givepage_args_t;
 
 /**
  * \struct dsm_message_s
  * \brief structure containing message data
  **/
-
 typedef struct dsm_message_s {
 	int from_sockfd; /*!< src socket descriptor */
 	dsm_msg_type type; /*!< type of message sent */
 	union {
 		msg_connect_args_t connect_args;
 		msg_connect_ack_args_t connect_ack_args;
-	} args; /*!< union containing specific message type argument */
+		msg_lockpage_args_t lockpage_args;
+		msg_invalidate_args_t invalidate_args;
+		msg_invalidate_ack_args_t invalidate_ack_args;
+		msg_givepage_args_t givepage_args;
+	};
 	/* union all msg_args */
 } dsm_message_t;
 

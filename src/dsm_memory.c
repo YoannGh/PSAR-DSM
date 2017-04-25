@@ -1,8 +1,27 @@
 #include <stdlib.h>
 #include <sys/mman.h>
+#include <pthread.h>
 
 #include "dsm_memory.h"
+#include "dsm.h"
 #include "dsm_util.h"
+
+
+
+extern dsm_t *dsm_g;
+
+int slave_equals(void *slave1, void *slave2)
+{
+	int fd_slave1 = *(int *)slave1;
+	int fd_slave2  = *(int *)slave2;
+
+	return (fd_slave1 == fd_slave2);
+}
+
+int request_equals(void* slave1, void* slave2)
+{
+	return (slave1 == slave2);
+}
 
 /**
  * \fn void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count, unsigned short is_master)
@@ -39,16 +58,28 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 	}
 
 	for (i = 0; i < page_count; i++) {
+		dsm_mem->pages[i].page_id = i;
 		dsm_mem->pages[i].protection = prot;
+		pthread_mutex_init(&dsm_mem->pages[i].mutex_page, NULL);
+		pthread_cond_init(&dsm_mem->pages[i].cond_uptodate, NULL);
+		dsm_mem->pages[i].uptodate = 0;
 		if (is_master) {
-			dsm_mem->pages[i].write_owner = MASTER_NODE;
-			dsm_mem->pages[i].readers_count = 1;
-			dsm_mem->pages[i].readers_capacity = READERS_INITIAL_CAPACITY;
-			dsm_mem->pages[i].nodes_reading = (int *) calloc(READERS_INITIAL_CAPACITY, sizeof(int));
-			if (dsm_mem->pages[i].nodes_reading == NULL) {
-				error("Could not allocate memory (realloc)\n");
+			dsm_mem->pages[i].uptodate = 1;
+			dsm_mem->pages[i].requests_queue = (list_t *) malloc(sizeof(list_t));
+			if (dsm_mem->pages[i].requests_queue == NULL) {
+				error("Could not allocate memory (malloc)\n");
 			}
-			dsm_mem->pages[i].nodes_reading[0] = MASTER_NODE;
+
+			dsm_mem->pages[i].current_readers_queue = (list_t *) malloc(sizeof(list_t));
+			if (dsm_mem->pages[i].current_readers_queue == NULL) {
+				error("Could not allocate memory (malloc)\n");
+			}
+
+			list_init(dsm_mem->pages[i].requests_queue, sizeof(dsm_page_request_t), request_equals, NULL);
+			list_init(dsm_mem->pages[i].current_readers_queue, sizeof(int), slave_equals, NULL);
+
+			dsm_mem->pages[i].write_owner = MASTER_NODE;
+			dsm_mem->pages[i].invalidate_sent = 0;
 		}
 	}
 }
@@ -64,10 +95,14 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 	unsigned int i;
 
 	for (i = 0; i < dsm_mem->page_count; i++) {
-		free(dsm_mem->pages[i].nodes_reading);
+		list_destroy(dsm_mem->pages[i].requests_queue);
+		list_destroy(dsm_mem->pages[i].current_readers_queue);
+		free(dsm_mem->pages[i].requests_queue);
+		free(dsm_mem->pages[i].current_readers_queue);
 	}
 	
 	free(dsm_mem->pages);
+	munmap(dsm_mem->base_addr, dsm_mem->page_count*dsm_mem->pagesize);
 }
 
 /* FUNCTIONS USED BY MASTER NODE ONLY */
@@ -79,13 +114,13 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 **/
 
 static void check_readers_capacity(dsm_page_t *dsm_page)
+dsm_page_t* get_page_from_id(unsigned int page_id)
 {
-	if(dsm_page->readers_count >= dsm_page->readers_capacity) {
-		dsm_page->readers_capacity *= 2;
-		dsm_page->nodes_reading = (int *) realloc(dsm_page->nodes_reading, sizeof(int)*dsm_page->readers_capacity);
-		if (dsm_page->nodes_reading == NULL) {
-			error("Could not allocate memory (realloc)\n");
-		}
+	if(page_id > (dsm_g->mem->page_count - 1)) {
+		log("Wrong page_id: %d\n", page_id);
+		return NULL;
+	} else {
+		return &dsm_g->mem->pages[page_id];
 	}
 }
 
@@ -96,16 +131,10 @@ static void check_readers_capacity(dsm_page_t *dsm_page)
 * \param page_idx the index of the page to add the reader
 * \param node_fd the descriptor of the reader
 **/
-
 int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
+dsm_page_t* get_page_from_addr(void *addr)
 {
-	if(page_idx > (dsm_mem->page_count - 1)) {
-		log("Wrong page index\n");
-		return -1;
-	}
-	check_readers_capacity(&dsm_mem->pages[page_idx]);
-
-	dsm_mem->pages[page_idx].nodes_reading[dsm_mem->pages[page_idx].readers_count++] = node_fd;
-
-	return 0;
+	int diff = addr-(void*)(dsm_g->mem);
+	int page_id = (diff / dsm_g->mem->pagesize) + (diff%dsm_g->mem->pagesize) ? 0:1;
+	return &dsm_g->mem->pages[page_id];
 }

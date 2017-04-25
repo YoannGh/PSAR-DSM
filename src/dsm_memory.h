@@ -1,27 +1,53 @@
 #ifndef DSM_MEMORY_H
 #define DSM_MEMORY_H
 
-#define READERS_INITIAL_CAPACITY 4
+#include <pthread.h>
+
+#include "list.h"
+
 #define MASTER_NODE -8
 
-/
+
+/**
+ * \struct dsm_page_request_s
+ * \brief structure representing a request for a page access
+ **/
+typedef struct dsm_page_request_s
+{
+	int sockfd; /*!< socket descriptor of the slave requesting */
+	int rights; /*!< flag, access type */
+} dsm_page_request_t;
+
+/**
+ * \struct dsm_page_s
+ * \brief structure containing page information
+ **/
 
 typedef struct dsm_page_s
 {
-	int protection; 
+	int page_id; /*!< a unique identifier between 0 and nb_page */
+	int protection; /*!< current rights on the page */
+	pthread_mutex_t mutex_page; /*!< mutex to avoid conflicts between daemon and main thread*/
+	pthread_cond_t cond_uptodate; /*!< condition relative to previous mutex*/
+	unsigned short uptodate; /*!< flag, true if the page hasn't been invalidated*/
 	/* Following fields are used by master node only */
-	int write_owner;
-	int readers_count;
-	int readers_capacity;
-	int *nodes_reading;
+	int write_owner; /*!< sock_fd of the current writer*/
+	list_t *requests_queue; /*!< waiting list of all proccess waiting for access */
+	list_t *current_readers_queue; /*!< list of all current readers */
+	unsigned short invalidate_sent; /*!< flag, true if invalidate message has been sent already once and only one*/
 } dsm_page_t;
+
+/**
+ * \struct dsm_memory_s
+ * \brief information about current memory state settings
+ **/
 
 typedef struct dsm_memory_s
 {
-	size_t pagesize;
-	size_t page_count;
-	void* base_addr;
-	dsm_page_t *pages;
+	size_t pagesize; /*!< the page size for current architecture */
+	size_t page_count; /*!< the page number of the dsm */
+	void* base_addr; /*!< the starting adress of the dsm */
+	dsm_page_t *pages; /*!< the pages of the dsm */
 } dsm_memory_t;
 
 void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count, 
@@ -29,6 +55,10 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 
 void dsm_memory_destroy(dsm_memory_t *dsm_mem);
 
-int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd);
+//int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd);
+
+dsm_page_t* get_page_from_id(unsigned int page_id);
+
+dsm_page_t* get_page_from_addr(void *addr);
 
 #endif

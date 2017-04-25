@@ -36,10 +36,10 @@ $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 .PHONY: tests
 tests: $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME)
 
-$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_master.o
+$(TESTDIR)/$(TEST1_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_master.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
-$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_slave.o
+$(TESTDIR)/$(TEST2_NAME): $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/dsm_protocol.o $(OBJDIR)/dsm_memory.o $(OBJDIR)/dsm_master.o $(OBJDIR)/dsm.o $(OBJDIR)/test_dsm_init_slave.o $(OBJDIR)/list.o $(OBJDIR)/dsm_core.o
 	$(LINKER) $(LFLAGS) -o $@ $^
 
 .PHONY: out_directories
