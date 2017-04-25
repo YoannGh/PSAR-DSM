@@ -4,6 +4,15 @@
 #include "dsm_memory.h"
 #include "dsm_util.h"
 
+/**
+ * \fn void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count, unsigned short is_master)
+ * \brief Initialisation of substructure memory 
+ * \param dsm_mem the structure to be initialised
+ * \param pagesize the size of a page for the system
+ * \param page_count number of page to be allocated in local memory
+ * \param is_master a flag to know if the structure is a master or if is only related to the master
+ **/
+
 void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
                     unsigned short is_master)
 {
@@ -44,6 +53,12 @@ void dsm_memory_init(dsm_memory_t *dsm_mem, size_t pagesize, size_t page_count,
 	}
 }
 
+/**
+ * \fn void dsm_memory_destroy(dsm_memory_t *dsm_mem)
+ * \brief free each page allocated then free the structure
+ * \param dsm_mem the structure that will be destroyed
+ **/
+
 void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 {
 	unsigned int i;
@@ -57,6 +72,12 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 
 /* FUNCTIONS USED BY MASTER NODE ONLY */
 
+/**
+* \fn static void check_readers_capacity(dsm_page_t *dsm_page)
+* \brief check capacity of readers array and double its size if full
+* \param dsm_page the page to test capacity
+**/
+
 static void check_readers_capacity(dsm_page_t *dsm_page)
 {
 	if(dsm_page->readers_count >= dsm_page->readers_capacity) {
@@ -67,6 +88,14 @@ static void check_readers_capacity(dsm_page_t *dsm_page)
 		}
 	}
 }
+
+/**
+* \fn int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
+* \brief add a new reader to one page
+* \param dsm_mem the structure of memory where is the page
+* \param page_idx the index of the page to add the reader
+* \param node_fd the descriptor of the reader
+**/
 
 int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd)
 {

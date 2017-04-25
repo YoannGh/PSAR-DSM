@@ -12,6 +12,14 @@
 
 static dsm_t *dsm_g;
 
+/**
+ * \fn static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
+ * \brief Initialisation of main structure dsm_t for a Master
+ * \param dsm the structure dsm_t that will be initialised
+ * \param port_master the port of the master
+ * \param page_count number of page to be allocated in local memory
+ */
+
 static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 {
 	long pagesize;
@@ -47,6 +55,14 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 		error("pthread_create listener_daemon\n");
 	}
 }
+
+/**
+ * \fn static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
+ * 	\brief Initialisation of main structure dsm_t for a Slave
+ * \param dsm the structure dsm_t that will be initialised
+ * \param host_master the inet address of master
+ * \param port_master the port of the master
+ */
 
 static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 {
@@ -118,6 +134,12 @@ static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 
 }
 
+/**
+ * \fn static void dsm_destroy(dsm_t *dsm)
+ * \brief destroy a dsm by calling sub destroying functions for both memory and and master substructure and free them
+ * \param dsm the dsm_t structure to be destroyed
+ **/
+
 static void dsm_destroy(dsm_t *dsm)
 {
 	dsm_master_destroy(dsm->master);
@@ -128,6 +150,14 @@ static void dsm_destroy(dsm_t *dsm)
 }
 
 /* LIBRARY FUNCTIONS */
+
+/**
+ * \fn void *InitMaster(int port, size_t page_count)
+ * \brief allocate memory for a Master and call init on it
+ * \param port_master the port of the master
+ * \param page_count number of page to be allocated in local memory
+ * \return the base address of memory
+ **/
 
 void *InitMaster(int port, size_t page_count)
 {
@@ -144,6 +174,14 @@ void *InitMaster(int port, size_t page_count)
 	return dsm_g->mem->base_addr;
 }
 
+/**
+* \fn void *InitSlave(char *HostMaster, int port)
+* \brief allocate memory for a Slave and call init on it
+* \param host_master the inet address of master
+* \param port_master the port of the master
+* \return the base address of memory
+**/
+
 void *InitSlave(char *HostMaster, int port)
 {
 	if(dsm_g == NULL) {	
@@ -158,6 +196,11 @@ void *InitSlave(char *HostMaster, int port)
 	
 	return dsm_g->mem->base_addr;
 }
+
+/**
+* \fn void QuitDSM(void)
+* \brief destroy and free the main dsm_t structure
+**/
 
 void QuitDSM(void)
 {

@@ -3,6 +3,12 @@
 #include "dsm_util.h"
 #include "binn.h"
 
+/**
+* \fn void dsm_dispatch_message(dsm_message_t *msg)
+* \brief function to sort messages by type and call good treatment
+* \param msg the message to sort
+**/
+
 void dsm_dispatch_message(dsm_message_t *msg)
 {
 	dsm_message_t reply;
@@ -49,6 +55,13 @@ void dsm_dispatch_message(dsm_message_t *msg)
 	}
 }
 
+/**
+* \fn int dsm_receive_msg(int nodefd, dsm_message_t *msg)
+* \brief treatment to get message from data received
+* \param nodefd message sender descriptor
+* \param msg the final message received
+**/
+
 int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 {
 	binn *obj;
@@ -82,6 +95,13 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 
 	return 0;
 }
+
+/**
+* \fn int dsm_receive_msg(int nodefd, dsm_message_t *msg)
+* \brief treatment to send data from message structure
+* \param nodefd message destination descriptor
+* \param msg the message to send
+**/
 
 int dsm_send_msg(int nodefd, dsm_message_t *msg)
 {

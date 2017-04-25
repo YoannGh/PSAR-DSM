@@ -96,6 +96,14 @@ int dsm_socket_connect(const char *host, int port)
 	return sockfd;
 }
 
+/**
+* \fn int dsm_send(int sockfd, void *buffer, int size)
+* \brief send data over network
+* \param sockfd socket descriptor to send data
+* \param buffer the data to be sent
+* \param size the size of the data to send
+**/
+
 int dsm_send(int sockfd, void *buffer, int size)
 {
 	ssize_t bytessent;
@@ -118,6 +126,13 @@ int dsm_send(int sockfd, void *buffer, int size)
 
 	return 0;
 }
+
+/**
+* \fn int dsm_receive(int sockfd, void **buffer)
+* \brief send data over network
+* \param sockfd socket descriptor to receive data
+* \param buffer the data to be received
+**/
 
 int dsm_receive(int sockfd, void **buffer)
 {
@@ -143,6 +158,12 @@ int dsm_receive(int sockfd, void **buffer)
 
 	return 0;
 }
+
+/**
+* \fn static int msg_listener_start(dsm_t *dsm)
+* \brief function to lisen to messages through network
+* \param dsm structure that contains important information
+**/
 
 static int msg_listener_start(dsm_t *dsm)
 {
@@ -200,6 +221,11 @@ static int msg_listener_start(dsm_t *dsm)
 		}
 	}
 }
+
+/**
+* \fn void* dsm_daemon_msg_listener(void *arg)
+* \brief function launched in a new thread, starting listener
+**/
 
 void* dsm_daemon_msg_listener(void *arg)
 {

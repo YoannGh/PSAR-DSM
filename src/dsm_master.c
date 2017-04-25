@@ -4,6 +4,17 @@
 #include "dsm_socket.h"
 #include "dsm_util.h"
 
+/**
+ * \fn int dsm_master_init (dsm_master_t *master, char *host_master, int port_master, unsigned short is_master)
+ * \brief Initialisation of substructure dedicated to master 
+ *
+ * \param master the structure that will be initialised
+ * \param host_master the address of the master
+ * \param port_master the port of the master
+ * \param is_master a flag to know if the structure is a master or if is only related to the master
+ * \return the socket descriptor
+ */
+
 int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, unsigned short is_master)
 {
 	char* host_local = "0.0.0.0";
@@ -42,6 +53,12 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 	
 	return master->sockfd;
 }
+
+/**
+ * \fn void dsm_master_destroy(dsm_master_t *master)
+ * \brief destroy socket used by the structure and free memory
+ * \param master the structure that will be destroyed
+ **/
 
 void dsm_master_destroy(dsm_master_t *master)
 {
