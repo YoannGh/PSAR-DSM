@@ -97,3 +97,10 @@ dsm_page_t* get_page_from_id(unsigned int page_id)
 		return &dsm_g->mem->pages[page_id];
 	}
 }
+
+dsm_page_t* get_page_from_addr(void *addr)
+{
+	int diff = addr-(void*)(dsm_g->mem);
+	int page_id = (diff / dsm_g->mem->pagesize) + (diff%dsm_g->mem->pagesize) ? 0:1;
+	return &dsm_g->mem->pages[page_id];
+}

@@ -1,6 +1,8 @@
 #ifndef DSM_MEMORY_H
 #define DSM_MEMORY_H
 
+#include <pthread.h>
+
 #include "list.h"
 
 #define MASTER_NODE -8
@@ -41,5 +43,7 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem);
 //int dsm_add_reader(dsm_memory_t *dsm_mem, unsigned int page_idx, int node_fd);
 
 dsm_page_t* get_page_from_id(unsigned int page_id);
+
+dsm_page_t* get_page_from_addr(void *addr);
 
 #endif

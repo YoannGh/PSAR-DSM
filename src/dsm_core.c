@@ -11,7 +11,6 @@
 extern dsm_t *dsm_g;
 
 static void process_list_requests(dsm_page_t *page);
-static int satisfy_request(dsm_page_t *page, dsm_page_request_t *req);
 
 int handle_connect_msg(int from, msg_connect_args_t *args)
 {
@@ -123,7 +122,7 @@ int handle_terminate_msg(int from)
 	return 0;
 }
 
-static int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
+int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 {
 	dsm_message_t givepage_msg;
 	givepage_msg.type = GIVEPAGE;
