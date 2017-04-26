@@ -107,6 +107,12 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 
 /* FUNCTIONS USED BY MASTER NODE ONLY */
 
+/**
+ * \fn dsm_page_t* get_page_from_id(unsigned int page_id)
+ * \brief give the adress of a page from its ID
+ * \param page_id the page's id
+ * \return the base address of the page
+ **/
 dsm_page_t* get_page_from_id(unsigned int page_id)
 {
 	if(page_id > (dsm_g->mem->page_count - 1)) {
@@ -117,6 +123,12 @@ dsm_page_t* get_page_from_id(unsigned int page_id)
 	}
 }
 
+/**
+ * \fn dsm_page_t* get_page_from_addr(unsigned int page_id)
+ * \brief Give the page ID from its the adress
+ * \param addr the base address of the page
+ * \return the page's id
+ **/
 dsm_page_t* get_page_from_addr(void *addr)
 {
 	unsigned int page_id = ((addr - dsm_g->mem->base_addr) / dsm_g->mem->pagesize);

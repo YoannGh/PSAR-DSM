@@ -234,6 +234,12 @@ void *InitSlave(char *HostMaster, int port)
 	return dsm_g->mem->base_addr;
 }
 
+
+/**
+* \fn void lock_read(void *addr)
+* \brief request for a read access to a page
+* \param *addr the adress you want to access
+**/
 void lock_read(void *addr)
 {
 	dsm_page_t *page;
@@ -241,6 +247,11 @@ void lock_read(void *addr)
 	lock_page(page, PROT_READ);
 }
 
+/**
+* \fn void lock_write(void *addr)
+* \brief request for a write access to a page
+* \param *addr the adress you want to access
+**/
 void lock_write(void *addr)
 {
 	dsm_page_t *page;	
@@ -248,7 +259,11 @@ void lock_write(void *addr)
 	lock_page(page, PROT_READ|PROT_WRITE);
 }
 
-
+/**
+* \fn void unlock_read(void *addr)
+* \brief release lock on a page after a read access
+* \param *addr an adress of the page you want to release
+**/
 void unlock_read(void *addr)
 {
 	dsm_page_t *page;
@@ -259,7 +274,11 @@ void unlock_read(void *addr)
 	}
 }
 
-
+/**
+* \fn void unlock_write(void *addr)
+* \brief send the page to the master and release the lock after a write access 
+* \param *addr an adress of the page you want to release
+**/
 void unlock_write(void *addr)
 {
 	dsm_page_t *page;
@@ -277,6 +296,11 @@ void unlock_write(void *addr)
 	}
 }
 
+/**
+* \fn void sync_barrier(int slave_to_wait)
+* \brief barrier waiting for enough sites to call it
+* \param slave_to_wait the numbrer of slave needed to open the barrier
+**/
 void sync_barrier(int slave_to_wait)
 {
 	wait_barrier(slave_to_wait);

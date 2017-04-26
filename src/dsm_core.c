@@ -14,6 +14,7 @@ extern dsm_t *dsm_g;
 
 static void process_list_requests(dsm_page_t *page);
 
+
 int handle_connect_msg(int from, msg_connect_args_t *args)
 {
 	dsm_message_t reply;
@@ -219,6 +220,12 @@ int handle_terminate_msg(int from)
 	return 0;
 }
 
+/**
+* \fn void lock_page(dsm_page_t *page, int rights)
+* \brief send a request to the master for a page access
+* \param *page an adress of the page 
+* \param rights the rights requested 
+**/
 void lock_page(dsm_page_t *page, int rights)
 {
 
@@ -252,6 +259,13 @@ void lock_page(dsm_page_t *page, int rights)
 	}
 }
 
+/**
+* \fn int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
+* \brief send a page to a slave
+* \param *page the adress of the page to send 
+* \param *req the request (slave ID and rights)
+* \return send status 
+**/
 int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 {
 	dsm_message_t givepage_msg;
@@ -268,6 +282,11 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 	return dsm_send_msg(req->sockfd, &givepage_msg);
 }
 
+/**
+* \fn void invalidate_readers(dsm_page_t *page)
+* \brief send an invalidation request to all current readers of a page
+* \param *page the adress of the page to invalidate 
+**/
 static void invalidate_readers(dsm_page_t *page)
 {
 	listNode_t *readerNode = page->current_readers_queue->head;
@@ -294,6 +313,12 @@ static void invalidate_readers(dsm_page_t *page)
 	}
 }
 
+/**
+* \fn void giveup_localpage(dsm_page_t *page, int new_owner)
+* \brief update page status and erase rigths on it
+* \param *page the adress of the page
+* \param new_owner the new page's owner
+**/
 void giveup_localpage(dsm_page_t *page, int new_owner)
 {
 	void* page_base_addr;
@@ -308,6 +333,11 @@ void giveup_localpage(dsm_page_t *page, int new_owner)
 	}
 }
 
+/**
+* \fn void wait_barrier(int slave_to_wait)
+* \brief barrier waiting for enough sites to call it
+* \param slave_to_wait the numbrer of slave needed to open the barrier
+**/
 void wait_barrier(int slave_to_wait)
 {
 	if (pthread_mutex_lock(&dsm_g->mutex_sync_barrier) < 0) {
@@ -335,6 +365,11 @@ void wait_barrier(int slave_to_wait)
 	}
 }
 
+/**
+* \fn void process_list_requests(dsm_page_t *page)
+* \brief try to process as many request as possible for a page
+* \param *page the page to handle
+**/
 static void process_list_requests(dsm_page_t *page)
 {
 	listNode_t *reqlist = page->requests_queue->head;
@@ -388,6 +423,11 @@ static void process_list_requests(dsm_page_t *page)
 	}
 }
 
+/**
+* \fn int terminate(void) 
+* \brief Properly exiting the DSM 
+* \return 0
+**/
 int terminate(void) 
 {
 	dsm_page_t *page;
