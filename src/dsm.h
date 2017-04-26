@@ -23,6 +23,9 @@ typedef struct dsm_s
 	pthread_cond_t cond_sync_barrier; /*!< condition relative to previous mutex*/
 	/* This field is only used by master */
 	list_t *sync_barrier_waiters;
+	pthread_mutex_t mutex_client_count; /*!< mutex to avoid conflicts between daemon and main thread*/
+	pthread_cond_t cond_master_end; /*!< condition relative to previous mutex*/
+	int client_count;
 } dsm_t;
 
 void *InitMaster(int port, size_t page_count);

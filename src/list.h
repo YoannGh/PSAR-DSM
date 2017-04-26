@@ -1,10 +1,10 @@
 #ifndef LIST_H
 #define LIST_H
  
-/* a function used to test if two nodes are equals
+/* function used to test if two nodes are equals
 	must return 1 if elements are equals, 0 if not */
 typedef int (*equalsFunction)(void *, void *);
-// a function used to free a node
+/* function used to free a node */
 typedef void (*freeFunction)(void *);
  
 typedef struct listNode_s 

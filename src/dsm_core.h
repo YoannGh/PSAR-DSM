@@ -28,4 +28,6 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req);
 
 void wait_barrier(int slave_to_wait);
 
+int terminate(void);
+
 #endif

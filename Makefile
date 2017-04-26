@@ -16,7 +16,7 @@ CFLAGS   = -Wall -Wextra -Wno-unused-parameter -std=c99 -fPIC -D_GNU_SOURCE -DDE
 # linking flags here
 LFLAGS   = -I$(INCDIR) -L$(LIBDIR) -lpthread
 ARFLAGS  = -cvq
-SOFLAGS  = -shared -Wl,-soname,$(LIB_NAME).so
+SOFLAGS  = -shared -Wl,-soname,lib$(LIB_NAME).so
 
 TEST1_NAME = test_dsm_init_master
 TEST2_NAME = test_dsm_init_slave

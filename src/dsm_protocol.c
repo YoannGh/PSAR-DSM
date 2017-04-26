@@ -20,7 +20,7 @@ void dsm_dispatch_message(dsm_message_t *msg)
 			handle_connect_msg(msg->from_sockfd, &msg->connect_args);
 			break;
 		case CONNECT_ACK:
-			log("CONNECT_ACK Received, this shouldnt happen...\n");
+			log("CONNECT_ACK Received, this shouldnt after connection...\n");
 			break;
 		case LOCKPAGE:
 			debug("LOCKPAGE Received\n");
@@ -71,7 +71,7 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 	void* ptr = (void *) &buffer;
 
 	if(dsm_receive(nodefd, &ptr) < 0) {
-		debug("dsm_receive 0 byte, node disconnected?\n");
+		debug("dsm_receive 0 byte, node disconnected\n");
 		return -1;
 	}
 
@@ -112,7 +112,7 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 		case TERMINATE:
 			break;
 		default:
-        	log("Unknown Message recv type !\n");
+        	log("Unknown message type received !\n");
         	return -1;
 	}
 
@@ -167,7 +167,7 @@ int dsm_send_msg(int nodefd, dsm_message_t *msg)
 		case TERMINATE:
 			break;
 		default:
-        	log("Unknown Message sent type !\n");
+        	log("Unknown message type to send !\n");
         	return -1;
 	}
 

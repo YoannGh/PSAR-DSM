@@ -3,7 +3,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <sys/mman.h>
-
+#include <signal.h>
 
 #include "dsm.h"
 #include "dsm_core.h"
@@ -61,6 +61,10 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 		error("dsm_master_init\n");
 	}
 
+	pthread_mutex_init(&dsm->mutex_client_count, NULL);
+	pthread_cond_init(&dsm->cond_master_end, NULL);
+	dsm->client_count = 0;
+
 	if (pthread_create(&dsm->listener_daemon, NULL, &dsm_daemon_msg_listener, (void *) dsm) != 0) {
 		error("pthread_create listener_daemon\n");
 	}
@@ -70,6 +74,7 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 	for(unsigned int i = 0; i < page_count; i++) {
 		dsm->mem->pages[i].write_owner = dsm->master->sockfd;
 	}
+
 }
 
 /**
@@ -161,17 +166,23 @@ static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 
 static void dsm_destroy(dsm_t *dsm)
 {
+	if(pthread_cancel(dsm->listener_daemon) < 0) {
+		error("error terminating daemon thread\n");
+	}
+
 	dsm_master_destroy(dsm->master);
 	dsm_memory_destroy(dsm->mem);
-	/* TODO: Terminate daemon thread */
 	free(dsm->mem);
 	free(dsm->master);
 
 	if(dsm->is_master) {
 		list_destroy(dsm->sync_barrier_waiters);
 		free(dsm->sync_barrier_waiters);
+		pthread_mutex_init(&dsm->mutex_client_count, NULL);
+		pthread_cond_init(&dsm->cond_master_end, NULL);
 	} else {
-
+		pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
+		pthread_cond_init(&dsm->cond_sync_barrier, NULL);
 	}
 }
 
@@ -194,7 +205,7 @@ void *InitMaster(int port, size_t page_count)
 		}
 		dsm_m_init(dsm_g, port, page_count);
 	} else {
-		log("Tried to init master while it's already been done\n");
+		log("Warning, you tried to init master while it's already been done\n");
 	}
 	
 	return dsm_g->mem->base_addr;
@@ -217,7 +228,7 @@ void *InitSlave(char *HostMaster, int port)
 		}
 		dsm_n_init(dsm_g, HostMaster, port);
 	} else {
-		log("Tried to init master while it's already been done\n");
+		log("Warning, you tried to init slave while it's already been done\n");
 	}
 	
 	return dsm_g->mem->base_addr;
@@ -278,7 +289,8 @@ void sync_barrier(int slave_to_wait)
 
 void QuitDSM(void)
 {
-	/* TODO: Send pages owned by this node to master */
+	terminate();
 	dsm_destroy(dsm_g);
 	free(dsm_g);
+	debug("Left Distributed Shared Memory !\n");
 }

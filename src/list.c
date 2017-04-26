@@ -14,12 +14,10 @@ void list_init(list_t *l, int elementSize, equalsFunction equalsFn, freeFunction
 }
 
 void list_destroy(list_t *l) {
-
 	listNode_t *current;
 	while(l->head != NULL) {
 		current = l->head;
 		l->head = current->next;
-
 		if(l->freeFn) {
 			l->freeFn(current->data);
 		}

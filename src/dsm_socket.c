@@ -120,7 +120,7 @@ int dsm_send(int sockfd, void *buffer, int size)
 	if(bytessent < 0) {
 		error("dsm_send\n");
 	} else if(bytessent == 0) {
-		debug("dsm_send 0 byte, node disconnected?\n");
+		debug("send 0 byte, node disconnected\n");
 		return -1;
 	}
 
@@ -201,13 +201,23 @@ static int msg_listener_start(dsm_t *dsm)
 		for (i = 0; i < FD_SETSIZE; ++i) {
 			if (FD_ISSET (i, &read_fd_set)) {
 				if (dsm->is_master && i == server_sockfd) {
-					/* Connection request on original socket. */
+					/* Connection request on listening socket. */
 					int new;
 					fromlen = sizeof (clientname);
 					new = accept(server_sockfd, (struct sockaddr *) &clientname, &fromlen);
 					if (new < 0) {
 						error("accept\n");
 					}
+
+					if (pthread_mutex_lock(&dsm->mutex_client_count) < 0) {
+						error("lock mutex_client_count");
+					}
+					dsm->client_count++;
+					if (pthread_mutex_unlock(&dsm->mutex_client_count) < 0) {
+						error("unlock mutex_client_count");
+					}
+
+
 					log("Master: connect from host %s, port %hu\n",
 					    inet_ntoa (clientname.sin_addr),
 					    ntohs (clientname.sin_port));

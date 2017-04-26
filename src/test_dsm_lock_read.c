@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
 #include "dsm.h"
@@ -17,6 +18,8 @@ int main()
 	unlock_read(base_addr);
 
 	sync_barrier(3);
+
+	sleep(7);
 	QuitDSM();
 	return 0;
 }
