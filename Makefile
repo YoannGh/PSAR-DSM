@@ -22,6 +22,7 @@ TEST1_NAME = test_dsm_init_master
 TEST2_NAME = test_dsm_init_slave
 TEST3_NAME = test_dsm_lock_write
 TEST4_NAME = test_dsm_lock_read
+TEST5_NAME = test_dsm_lock_read2
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(INCDIR)/*.h)
@@ -50,7 +51,7 @@ $(LIBDIR)/lib$(LIB_NAME).so: $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/d
 	$(LINKER) $(SOFLAGS) -o $@ $^
 
 .PHONY: tests
-tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME) $(TESTDIR)/$(TEST4_NAME)
+tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME) $(TESTDIR)/$(TEST4_NAME) $(TESTDIR)/$(TEST5_NAME)
 
 $(TESTDIR)/$(TEST1_NAME): $(SRCDIR)/test_dsm_init_master.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
@@ -62,6 +63,9 @@ $(TESTDIR)/$(TEST3_NAME): $(SRCDIR)/test_dsm_lock_write.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 $(TESTDIR)/$(TEST4_NAME): $(SRCDIR)/test_dsm_lock_read.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+$(TESTDIR)/$(TEST5_NAME): $(SRCDIR)/test_dsm_lock_read2.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 .PHONY: out_directories

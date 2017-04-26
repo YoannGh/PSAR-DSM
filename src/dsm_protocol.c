@@ -38,6 +38,14 @@ void dsm_dispatch_message(dsm_message_t *msg)
 			debug("GIVEPAGE Received\n");
 			handle_givepage_msg(msg->from_sockfd, &msg->givepage_args);
 			break;
+		case SYNC_BARRIER:
+			debug("SYNC_BARRIER Received\n");
+			handle_sync_barrier_msg(msg->from_sockfd, &msg->sync_barrier_args);
+			break;
+		case BARRIER_ACK:
+			debug("BARRIER_ACK Received\n");
+			handle_barrier_ack_msg(msg->from_sockfd);
+			break;
 		case TERMINATE:
 			debug("TERMINATE Received\n");
 			handle_terminate_msg(msg->from_sockfd);
@@ -93,9 +101,13 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 			break;
 		case GIVEPAGE:
 			msg->givepage_args.page_id = binn_object_int32(obj, DSM_MSG_KEY_PAGEID);
-			msg->lockpage_args.access_rights = binn_object_int16(obj, DSM_MSG_KEY_RIGHTS);
+			msg->givepage_args.access_rights = binn_object_int16(obj, DSM_MSG_KEY_RIGHTS);
 			msg->givepage_args.data = binn_object_blob(obj, DSM_MSG_KEY_DATA, &blob_size);
-			debug("blob_size: %d\n", blob_size);
+			break;
+		case SYNC_BARRIER:
+			msg->sync_barrier_args.slave_to_wait = binn_object_int16(obj, DSM_MSG_KEY_BARRIER);
+			break;
+		case BARRIER_ACK:
 			break;
 		case TERMINATE:
 			break;
@@ -147,6 +159,10 @@ int dsm_send_msg(int nodefd, dsm_message_t *msg)
 			binn_object_set_int32(obj, DSM_MSG_KEY_PAGEID, msg->givepage_args.page_id);
 			binn_object_set_int16(obj, DSM_MSG_KEY_RIGHTS, msg->givepage_args.access_rights);
 			binn_object_set_blob(obj, DSM_MSG_KEY_DATA, msg->givepage_args.data, dsm_g->mem->pagesize);
+			break;
+		case SYNC_BARRIER:
+			binn_object_set_int16(obj, DSM_MSG_KEY_BARRIER, msg->sync_barrier_args.slave_to_wait);
+		case BARRIER_ACK:
 			break;
 		case TERMINATE:
 			break;

@@ -149,7 +149,6 @@ int dsm_receive(int sockfd, void **buffer)
 	}
 
 	msg_size = ntohl(msg_size);
-	debug("Receiving message of size: %lu\n", (unsigned long) msg_size);
 	if(msg_size > BUFFER_LEN) {
 		error("Malformed message too big, could cause buffer overflow\n");
 	}

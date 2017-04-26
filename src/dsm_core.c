@@ -38,7 +38,6 @@ int handle_connect_msg(int from, msg_connect_args_t *args)
 	return dsm_send_msg(from, &reply);
 }
 
-
 int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 {
 	dsm_page_t *page;
@@ -137,14 +136,69 @@ int handle_givepage_msg(int from, msg_givepage_args_t *args)
 	page->uptodate = 1;
 	
 	if(pthread_cond_signal(&page->cond_uptodate) < 0) {
-		error("error pthread_cond_signal\n");
+		error("error pthread_cond_signal mutex_page\n");
 	}
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
 		error("unlock mutex_page");
 	}
 
+	if(dsm_g->is_master) {
+		process_list_requests(page);
+	}
+
 	return 0;
+}
+
+int handle_sync_barrier_msg(int from, msg_sync_barrier_args_t *args)
+{
+	listNode_t *waiterNode = dsm_g->sync_barrier_waiters->head;
+	int *waiter;
+	int waiter_fd = 0;
+
+	dsm_message_t msg_barrier_ack;
+	msg_barrier_ack.type = BARRIER_ACK;
+
+	if(dsm_g->is_master) {
+
+		if((dsm_g->sync_barrier_waiters->length + 1) >= args->slave_to_wait) {
+			debug("Broadcasting BARRIER_ACK\n");
+			while (waiterNode != NULL) {
+				waiter = (int *) waiterNode->data;
+				waiter_fd = *waiter;
+
+				if(dsm_send_msg(waiter_fd, &msg_barrier_ack) < 0) {
+					log("error sending BARRIER_ACK\n");
+				}
+
+				waiterNode = waiterNode->next;
+			}
+			if(dsm_send_msg(from, &msg_barrier_ack) < 0) {
+				log("error sending BARRIER_ACK\n");
+			}
+			list_destroy(dsm_g->sync_barrier_waiters);
+		}
+		else {
+			list_add(dsm_g->sync_barrier_waiters, &from);
+		}
+	}
+
+	return 0;
+}
+
+int handle_barrier_ack_msg(int from)
+{
+	if(pthread_cond_signal(&dsm_g->cond_sync_barrier) < 0) {
+		error("error pthread_cond_signal SYNC_BARRIER\n");
+	}
+	return 0;
+}
+
+int handle_terminate_msg(int from)
+{
+	int ret;
+	ret = dsm_socket_shutdown(from, SHUT_RDWR);
+	return ret && dsm_socket_close(from);
 }
 
 void lock_page(dsm_page_t *page, int rights)
@@ -170,19 +224,14 @@ void lock_page(dsm_page_t *page, int rights)
 			error("Send LOCKPAGE\n");
 		}
 
+		debug("Sent LOCKPAGE to master for page %lu\n", page->page_id);
+
 		while(!page->uptodate) {
 			if(pthread_cond_wait(&page->cond_uptodate, &page->mutex_page) < 0) {
-				error("error pthread_cond_wait\n");
+				error("error pthread_cond_wait mutex_page\n");
 			}
 		}
 	}
-}
-
-int handle_terminate_msg(int from)
-{
-	int ret;
-	ret = dsm_socket_shutdown(from, SHUT_RDWR);
-	return ret && dsm_socket_close(from);
 }
 
 int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
@@ -197,7 +246,7 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 	};
 	givepage_msg.givepage_args = ca;
 
-	debug("Sending page %lu to %d\n", page->page_id, req->sockfd);
+	debug("Sending page %lu to %d current rights: %d\n", page->page_id, req->sockfd, page->protection);
 	return dsm_send_msg(req->sockfd, &givepage_msg);
 }
 
@@ -213,6 +262,47 @@ static int send_invalidate(dsm_page_t *page, int to)
 	msg_invalidate.invalidate_args = ia;
 
 	return dsm_send_msg(to, &msg_invalidate);
+}
+
+void giveup_localpage(dsm_page_t *page, int new_owner) 
+{
+	void* page_base_addr;
+
+	page_base_addr = dsm_g->mem->base_addr + (page->page_id * dsm_g->mem->pagesize);
+	page->uptodate = 0;
+	page->protection = PROT_NONE;
+	page->write_owner = new_owner;
+
+	if(mprotect(page_base_addr, dsm_g->mem->pagesize, PROT_NONE) < 0) {
+		error("error mprotect\n");
+	}
+}
+
+void wait_barrier(int slave_to_wait)
+{
+	if (pthread_mutex_lock(&dsm_g->mutex_sync_barrier) < 0) {
+		error("lock mutex_sync_barrier");
+	}
+
+	dsm_message_t msg_sync_barrier;
+	msg_sync_barrier.type = SYNC_BARRIER;
+
+	msg_sync_barrier_args_t sba = {
+		.slave_to_wait = slave_to_wait,
+	};
+	msg_sync_barrier.sync_barrier_args = sba;
+
+	if(dsm_send_msg(dsm_g->master->sockfd, &msg_sync_barrier) < 0) {
+		error("error sending SYNC_BARRIER message\n");
+	}
+
+	if(pthread_cond_wait(&dsm_g->cond_sync_barrier, &dsm_g->mutex_sync_barrier) < 0) {
+		error("error pthread_cond_wait SYNC_BARRIER\n");
+	}
+
+	if (pthread_mutex_unlock(&dsm_g->mutex_sync_barrier) < 0) {
+		error("unlock mutex_sync_barrier");
+	}
 }
 
 static void process_list_requests(dsm_page_t *page)
@@ -234,9 +324,9 @@ static void process_list_requests(dsm_page_t *page)
 			if(satisfy_request(page, req) < 0) {
 				log("error satisfy_request\n");
 			}
-			reqlist = reqlist->next;
 			list_add(page->current_readers_queue, &req->sockfd);
-			list_remove(page->requests_queue, &req);
+			list_remove(page->requests_queue, req);
+			reqlist = reqlist->next;
 			continue;
 		}
 		//Case it's a writer, if there is some readers we must ask them to invalidate
@@ -254,12 +344,11 @@ static void process_list_requests(dsm_page_t *page)
 			else if (page->current_readers_queue->length == 0)
 			{
 				page->invalidate_sent = 0;
-				page->write_owner = req->sockfd;
-				page->uptodate = 0;
 				if(satisfy_request(page, req) < 0) {
 					log("error satisfy_request\n");
 				}
-				list_remove(page->requests_queue, &req);
+				giveup_localpage(page, req->sockfd);
+				list_remove(page->requests_queue, req);
 				return;
 			}
 		}

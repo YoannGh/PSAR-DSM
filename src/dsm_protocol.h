@@ -8,6 +8,7 @@
 #define DSM_MSG_KEY_PAGEID "pageid"
 #define DSM_MSG_KEY_RIGHTS "rights"
 #define DSM_MSG_KEY_DATA "data"
+#define DSM_MSG_KEY_BARRIER "barrier"
 
 /**
  * \enum dsm_msg_type_enum
@@ -20,6 +21,8 @@ typedef enum dsm_msg_type_enum {
 	INVALIDATE,
 	INVALIDATE_ACK,
 	GIVEPAGE,
+	SYNC_BARRIER,
+	BARRIER_ACK,
 	TERMINATE,
 } dsm_msg_type;
 
@@ -79,6 +82,10 @@ typedef struct msg_givepage_args_s {
 	void* data;/*!< The page itself */
 } msg_givepage_args_t;
 
+typedef struct msg_sync_barrier_args_s {
+	unsigned short slave_to_wait;/*!< The access rights requiered */
+} msg_sync_barrier_args_t;
+
 /**
  * \struct dsm_message_s
  * \brief structure containing message data
@@ -93,6 +100,7 @@ typedef struct dsm_message_s {
 		msg_invalidate_args_t invalidate_args;
 		msg_invalidate_ack_args_t invalidate_ack_args;
 		msg_givepage_args_t givepage_args;
+		msg_sync_barrier_args_t sync_barrier_args;
 	};
 	/* union all msg_args */
 } dsm_message_t;

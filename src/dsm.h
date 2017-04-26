@@ -18,6 +18,11 @@ typedef struct dsm_s
 	pthread_t listener_daemon; /*!< listener daemon indentifier */
 	unsigned short is_master; /*!< flag that differentiate master node and slave node */
 	dsm_master_t *master; /*!< substructure containing information about the master itself or the master related to the slave. */
+	/* These fields are only used by slaves */
+	pthread_mutex_t mutex_sync_barrier; /*!< mutex to avoid conflicts between daemon and main thread*/
+	pthread_cond_t cond_sync_barrier; /*!< condition relative to previous mutex*/
+	/* This field is only used by master */
+	list_t *sync_barrier_waiters;
 } dsm_t;
 
 void *InitMaster(int port, size_t page_count);
@@ -31,6 +36,8 @@ void lock_write(void *addr);
 void unlock_read(void *addr);
 
 void unlock_write(void *addr);
+
+void sync_barrier(int slave_to_wait);
 
 void QuitDSM(void);
 

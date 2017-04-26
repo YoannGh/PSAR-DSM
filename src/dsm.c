@@ -11,6 +11,7 @@
 #include "dsm_master.h"
 #include "dsm_protocol.h"
 #include "dsm_socket.h"
+#include "list.h"
 #include "dsm_util.h"
 
 dsm_t *dsm_g;
@@ -45,6 +46,12 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 	if (dsm->master == NULL) {
 		error("Could not allocate memory (malloc)\n");
 	}
+
+	dsm->sync_barrier_waiters = (list_t *) malloc(sizeof(list_t));
+	if (dsm->sync_barrier_waiters == NULL) {
+		error("Could not allocate memory (malloc)\n");
+	}
+	list_init(dsm->sync_barrier_waiters, sizeof(int), slave_equals, NULL);
 
 	dsm->is_master = 1;
 
@@ -142,6 +149,8 @@ static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 		error("pthread_create listener_daemon\n");
 	}
 
+	pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
+	pthread_cond_init(&dsm->cond_sync_barrier, NULL);
 }
 
 /**
@@ -157,6 +166,13 @@ static void dsm_destroy(dsm_t *dsm)
 	/* TODO: Terminate daemon thread */
 	free(dsm->mem);
 	free(dsm->master);
+
+	if(dsm->is_master) {
+		list_destroy(dsm->sync_barrier_waiters);
+		free(dsm->sync_barrier_waiters);
+	} else {
+
+	}
 }
 
 /* LIBRARY FUNCTIONS */
@@ -239,18 +255,20 @@ void unlock_write(void *addr)
 	page = get_page_from_addr(addr);
 
 	dsm_page_request_t req;
-	req.rights = PROT_READ|PROT_WRITE;
+	req.rights = page->protection;
 	req.sockfd = dsm_g->master->sockfd;
 
-	page->uptodate = 0;
-	page->protection = PROT_NONE;
-	page->write_owner = dsm_g->master->sockfd;
-
 	satisfy_request(page, &req);
+	giveup_localpage(page, dsm_g->master->sockfd);
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
 		error("unlock mutex_page write");
 	}
+}
+
+void sync_barrier(int slave_to_wait)
+{
+	wait_barrier(slave_to_wait);
 }
 
 /**

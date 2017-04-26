@@ -56,4 +56,6 @@ dsm_page_t* get_page_from_id(unsigned int page_id);
 
 dsm_page_t* get_page_from_addr(void *addr);
 
+int slave_equals(void *slave1, void *slave2);
+
 #endif

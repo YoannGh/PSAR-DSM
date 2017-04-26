@@ -5,10 +5,10 @@
 
 int main()
 {
-	void *base_addr = InitMaster(5555, 10);
+	void *base_addr = InitSlave("127.0.0.1", 5555);
 	printf("base_addr: %lx\n", (long) base_addr);
 	sync_barrier(3);
-	
+
 	sync_barrier(3);
 	lock_read(base_addr);
 

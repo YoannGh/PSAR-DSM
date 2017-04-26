@@ -92,6 +92,8 @@ void dsm_memory_destroy(dsm_memory_t *dsm_mem)
 	unsigned int i;
 
 	for (i = 0; i < dsm_mem->page_count; i++) {
+		pthread_mutex_destroy(&dsm_mem->pages[i].mutex_page);
+		pthread_cond_destroy(&dsm_mem->pages[i].cond_uptodate);
 		list_destroy(dsm_mem->pages[i].requests_queue);
 		list_destroy(dsm_mem->pages[i].current_readers_queue);
 		free(dsm_mem->pages[i].requests_queue);

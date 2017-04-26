@@ -24,9 +24,11 @@ void list_destroy(list_t *l) {
 			l->freeFn(current->data);
 		}
 
+		l->length--;
 		free(current->data);
 		free(current);
-	}	
+	}
+	l->tail = NULL;
 }
 
 void list_add(list_t *l, void *element) {
