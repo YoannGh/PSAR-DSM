@@ -58,11 +58,13 @@ void dsm_dispatch_message(dsm_message_t *msg)
 int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 {
 	binn *obj;
+	int blob_size;
 	char buffer[BUFFER_LEN];
 	void* ptr = (void *) &buffer;
 
 	if(dsm_receive(nodefd, &ptr) < 0) {
-		error("dsm_recv_msg\n");
+		debug("dsm_receive 0 byte, node disconnected?\n");
+		return -1;
 	}
 
 	obj = binn_open(buffer);
@@ -92,7 +94,8 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 		case GIVEPAGE:
 			msg->givepage_args.page_id = binn_object_int32(obj, DSM_MSG_KEY_PAGEID);
 			msg->lockpage_args.access_rights = binn_object_int16(obj, DSM_MSG_KEY_RIGHTS);
-			msg->givepage_args.data = binn_object_str(obj, DSM_MSG_KEY_DATA);
+			msg->givepage_args.data = binn_object_blob(obj, DSM_MSG_KEY_DATA, &blob_size);
+			debug("blob_size: %d\n", blob_size);
 			break;
 		case TERMINATE:
 			break;

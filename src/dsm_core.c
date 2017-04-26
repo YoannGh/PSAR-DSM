@@ -1,10 +1,12 @@
 #include <sys/mman.h>
 #include <string.h>
+#include <sys/socket.h>
 
 #include "dsm_core.h"
 #include "dsm.h"
 #include "dsm_memory.h"
 #include "dsm_protocol.h"
+#include "dsm_socket.h"
 #include "dsm_util.h"
 #include "list.h"
 
@@ -46,11 +48,11 @@ int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 	};
 
 	if(args->access_rights & PROT_WRITE)
-		debug("Received LOCKWRITE on page %d from %d\n", args->page_id, from);
+		debug("Received LOCKWRITE on page %lu from %d\n", args->page_id, from);
 	else if(args->access_rights == PROT_READ)
-		debug("Received LOCKREAD on page %d from %d\n", args->page_id, from);
+		debug("Received LOCKREAD on page %lu from %d\n", args->page_id, from);
 	else
-		debug("Received unknown LOCK on page %d from %d\n", args->page_id, from);
+		debug("Received unknown LOCK on page %lu from %d\n", args->page_id, from);
 	 
 	page = get_page_from_id(args->page_id);
 
@@ -110,15 +112,16 @@ int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
 int handle_givepage_msg(int from, msg_givepage_args_t *args)
 {
 	dsm_page_t *page;
-	void* page_base_addr; 
+	void* page_base_addr;
 
 	page = get_page_from_id(args->page_id);
 	page_base_addr = dsm_g->mem->base_addr + (args->page_id * dsm_g->mem->pagesize);
 
+	debug("Received GIVEPAGE on page %lu from %d with rights %d\n", args->page_id, from, args->access_rights);
+
 	if (pthread_mutex_lock(&page->mutex_page) < 0) {
 		error("lock mutex_page");
 	}
-
 	if(mprotect(page_base_addr, dsm_g->mem->pagesize, PROT_READ|PROT_WRITE) < 0) {
 		error("error mprotect\n");
 	}
@@ -177,7 +180,9 @@ void lock_page(dsm_page_t *page, int rights)
 
 int handle_terminate_msg(int from)
 {
-	return 0;
+	int ret;
+	ret = dsm_socket_shutdown(from, SHUT_RDWR);
+	return ret && dsm_socket_close(from);
 }
 
 int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
@@ -192,7 +197,7 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 	};
 	givepage_msg.givepage_args = ca;
 
-	debug("Sending page %d to %d\n", page->page_id, req->sockfd);
+	debug("Sending page %lu to %d\n", page->page_id, req->sockfd);
 	return dsm_send_msg(req->sockfd, &givepage_msg);
 }
 

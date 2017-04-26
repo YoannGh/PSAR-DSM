@@ -1,7 +1,7 @@
 #ifndef DSM_SOCKET_H
 #define DSM_SOCKET_H
 
-#define BUFFER_LEN 256
+#define BUFFER_LEN 5120
 
 int dsm_socket_bind_listen(int port, int backlog);
 

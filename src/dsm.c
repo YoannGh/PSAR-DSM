@@ -228,22 +228,28 @@ void unlock_read(void *addr)
 	page = get_page_from_addr(addr);
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
-		error("unlock mutex_page");
+		error("unlock mutex_page read");
 	}
 }
 
 
 void unlock_write(void *addr)
 {
-	dsm_page_t *page;	
+	dsm_page_t *page;
 	page = get_page_from_addr(addr);
+
 	dsm_page_request_t req;
 	req.rights = PROT_READ|PROT_WRITE;
 	req.sockfd = dsm_g->master->sockfd;
+
+	page->uptodate = 0;
+	page->protection = PROT_NONE;
+	page->write_owner = dsm_g->master->sockfd;
+
 	satisfy_request(page, &req);
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
-		error("unlock mutex_page");
+		error("unlock mutex_page write");
 	}
 }
 
@@ -254,7 +260,7 @@ void unlock_write(void *addr)
 
 void QuitDSM(void)
 {
-	/* TOOD: Send pages owned by this node to master */
+	/* TODO: Send pages owned by this node to master */
 	dsm_destroy(dsm_g);
 	free(dsm_g);
 }

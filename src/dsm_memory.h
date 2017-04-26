@@ -22,7 +22,7 @@ typedef struct dsm_page_request_s
 
 typedef struct dsm_page_s
 {
-	int page_id; /*!< a unique identifier between 0 and nb_page */
+	unsigned long page_id; /*!< a unique identifier between 0 and nb_page */
 	int protection; /*!< current rights on the page */
 	pthread_mutex_t mutex_page; /*!< mutex to avoid conflicts between daemon and main thread*/
 	pthread_cond_t cond_uptodate; /*!< condition relative to previous mutex*/

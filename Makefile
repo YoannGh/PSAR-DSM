@@ -7,7 +7,7 @@ SRCDIR   = src
 INCDIR   = src
 OBJDIR   = obj
 LIBDIR   = lib
-TESTDIR	 = test
+TESTDIR	 = tests
 
 LIB_NAME = dsm-psar
 
@@ -20,12 +20,13 @@ SOFLAGS  = -shared -Wl,-soname,$(LIB_NAME).so
 
 TEST1_NAME = test_dsm_init_master
 TEST2_NAME = test_dsm_init_slave
+TEST3_NAME = test_dsm_lock_write
+TEST4_NAME = test_dsm_lock_read
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(INCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-RM        = rm -f
-RMDIR     = rmdir
+RM        = rm -rf
 MKDIR_P   = mkdir -p
 
 all: out_directories lib tests
@@ -49,12 +50,18 @@ $(LIBDIR)/lib$(LIB_NAME).so: $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/d
 	$(LINKER) $(SOFLAGS) -o $@ $^
 
 .PHONY: tests
-tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME)
+tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME) $(TESTDIR)/$(TEST4_NAME)
 
 $(TESTDIR)/$(TEST1_NAME): $(SRCDIR)/test_dsm_init_master.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 $(TESTDIR)/$(TEST2_NAME): $(SRCDIR)/test_dsm_init_slave.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+$(TESTDIR)/$(TEST3_NAME): $(SRCDIR)/test_dsm_lock_write.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+$(TESTDIR)/$(TEST4_NAME): $(SRCDIR)/test_dsm_lock_read.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 .PHONY: out_directories
@@ -63,14 +70,9 @@ out_directories:
 
 .PHONY: clean
 clean:
-	@$(RM)		$(OBJECTS)
-	@$(RMDIR)	$(OBJDIR)
+	@$(RM)	$(OBJDIR)
 
 .PHONY: remove
 remove: clean
-	@$(RM)		$(LIBDIR)/lib$(LIB_NAME).a
-	@$(RM)		$(LIBDIR)/lib$(LIB_NAME).so
-	@$(RMDIR)	$(LIBDIR)
-	@$(RM)		$(TESTDIR)/$(TEST1_NAME)
-	@$(RM)		$(TESTDIR)/$(TEST2_NAME)
-	@$(RMDIR)	$(TESTDIR)
+	@$(RM)		$(LIBDIR)
+	@$(RM)		$(TESTDIR)

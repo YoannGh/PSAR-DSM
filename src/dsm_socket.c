@@ -143,13 +143,13 @@ int dsm_receive(int sockfd, void **buffer)
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {
-		debug("dsm_receive 0 byte, node disconnected?\n");
 		return -1;
 	} else if(bytesrecv != sizeof(uint32_t)) {
 		error("Recv msg size\n");
 	}
 
 	msg_size = ntohl(msg_size);
+	debug("Receiving message of size: %lu\n", (unsigned long) msg_size);
 	if(msg_size > BUFFER_LEN) {
 		error("Malformed message too big, could cause buffer overflow\n");
 	}
@@ -158,7 +158,6 @@ int dsm_receive(int sockfd, void **buffer)
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {
-		debug("dsm_receive 0 byte, node disconnected?\n");
 		return -1;
 	}
 
@@ -216,13 +215,15 @@ static int msg_listener_start(dsm_t *dsm)
 					FD_SET (new, &active_fd_set);
 				}
 				else {
-					msg = malloc(sizeof(dsm_message_t));
+					msg = (dsm_message_t *) malloc(sizeof(dsm_message_t));
+					if (msg == NULL) {
+						error("Could not allocate memory (malloc)\n");
+					}
 					if(dsm_receive_msg(i, msg) < 0) {
 						dsm_socket_close(i);
 						free(msg);
 						FD_CLR (i, &active_fd_set);
 					} else {
-						/* Messages must be free'd by their handlers */
 						msg->from_sockfd = i;
 						dsm_dispatch_message(msg);
 						free(msg);

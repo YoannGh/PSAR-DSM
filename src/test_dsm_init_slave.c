@@ -5,7 +5,7 @@
 
 int main()
 {
-	void* base_addr = InitSlave("127.0.0.1", 5555);
+	void *base_addr = InitSlave("127.0.0.1", 5555);
 	printf("base_addr: %lx\n", (long) base_addr);
 	
 	sleep(30);
