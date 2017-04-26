@@ -14,7 +14,13 @@ extern dsm_t *dsm_g;
 
 static void process_list_requests(dsm_page_t *page);
 
-
+/**
+* \fn int handle_connect_msg(int from, msg_connect_args_t *args)
+* \brief processing a connect msg
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return the send status 
+**/
 int handle_connect_msg(int from, msg_connect_args_t *args)
 {
 	dsm_message_t reply;
@@ -39,6 +45,13 @@ int handle_connect_msg(int from, msg_connect_args_t *args)
 	return dsm_send_msg(from, &reply);
 }
 
+/**
+* \fn int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
+* \brief processing a lockpage request
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return 0
+**/
 int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 {
 	dsm_page_t *page;
@@ -62,6 +75,13 @@ int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 	return 0;
 }
 
+/**
+* \fn int handle_invalidate_msg(int from, msg_invalidate_args_t *args)
+* \brief processing a invalidation request
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return the send status 
+**/
 int handle_invalidate_msg(int from, msg_invalidate_args_t *args)
 {
 	dsm_page_t *page;
@@ -97,6 +117,13 @@ int handle_invalidate_msg(int from, msg_invalidate_args_t *args)
 	return dsm_send_msg(from, &reply);
 }
 
+/**
+* \fn int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
+* \brief processing validation ack msg
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return 0 
+**/
 int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
 {
 	dsm_page_t *page;
@@ -109,6 +136,13 @@ int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
 	return 0;
 }
 
+/**
+* \fn int handle_givepage_msg(int from, msg_givepage_args_t *args)
+* \brief processing a page reception and set the rights
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return 0
+**/
 int handle_givepage_msg(int from, msg_givepage_args_t *args)
 {
 	dsm_page_t *page;
@@ -151,6 +185,13 @@ int handle_givepage_msg(int from, msg_givepage_args_t *args)
 	return 0;
 }
 
+/**
+* \fn int handle_sync_barrier_msg(int from, msg_sync_barrier_args_t *args)
+* \brief handle the barrier, open it if the msg is from the last slave 
+* \param from the sockfd who sent the data
+* \param *args the message structure
+* \return 0
+**/
 int handle_sync_barrier_msg(int from, msg_sync_barrier_args_t *args)
 {
 	listNode_t *waiterNode = dsm_g->sync_barrier_waiters->head;
@@ -187,6 +228,12 @@ int handle_sync_barrier_msg(int from, msg_sync_barrier_args_t *args)
 	return 0;
 }
 
+/**
+* \fn int handle_barrier_ack_msg(int from)
+* \brief open berrier for the slave
+* \param from the sockfd who sent the data
+* \return 0
+**/
 int handle_barrier_ack_msg(int from)
 {
 	if (pthread_cond_signal(&dsm_g->cond_sync_barrier) < 0) {
@@ -195,6 +242,12 @@ int handle_barrier_ack_msg(int from)
 	return 0;
 }
 
+/**
+* \fn int handle_terminate_msg(int from)
+* \brief handle a slave deconnection
+* \param from the sockfd who sent the data
+* \return 0
+**/
 int handle_terminate_msg(int from)
 {
 	if(dsm_g->is_master) {
