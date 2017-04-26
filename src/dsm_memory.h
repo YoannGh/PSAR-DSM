@@ -27,8 +27,8 @@ typedef struct dsm_page_s
 	pthread_mutex_t mutex_page; /*!< mutex to avoid conflicts between daemon and main thread*/
 	pthread_cond_t cond_uptodate; /*!< condition relative to previous mutex*/
 	unsigned short uptodate; /*!< flag, true if the page hasn't been invalidated*/
-	/* Following fields are used by master node only */
 	int write_owner; /*!< sock_fd of the current writer*/
+	/* Following fields are used by master node only */
 	list_t *requests_queue; /*!< waiting list of all proccess waiting for access */
 	list_t *current_readers_queue; /*!< list of all current readers */
 	unsigned short invalidate_sent; /*!< flag, true if invalidate message has been sent already once and only one*/

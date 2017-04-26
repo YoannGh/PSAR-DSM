@@ -45,6 +45,13 @@ int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 		.rights = args->access_rights
 	};
 
+	if(args->access_rights & PROT_WRITE)
+		debug("Received LOCKWRITE on page %d from %d\n", args->page_id, from);
+	else if(args->access_rights == PROT_READ)
+		debug("Received LOCKREAD on page %d from %d\n", args->page_id, from);
+	else
+		debug("Received unknown LOCK on page %d from %d\n", args->page_id, from);
+	 
 	page = get_page_from_id(args->page_id);
 
 	list_add(page->requests_queue, &new_req);
@@ -117,15 +124,18 @@ int handle_givepage_msg(int from, msg_givepage_args_t *args)
 	}
 
 	memcpy(page_base_addr, args->data, dsm_g->mem->pagesize);
-	page->protection = args->access_rights;
-	page->write_owner = dsm_g->master->sockfd;
 
 	if(mprotect(page_base_addr, dsm_g->mem->pagesize, args->access_rights) < 0) {
 		error("error mprotect\n");
 	}
 
+	page->protection = args->access_rights;
+	page->write_owner = dsm_g->master->sockfd;
 	page->uptodate = 1;
-	pthread_cond_signal(&page->cond_uptodate);
+	
+	if(pthread_cond_signal(&page->cond_uptodate) < 0) {
+		error("error pthread_cond_signal\n");
+	}
 
 	if (pthread_mutex_unlock(&page->mutex_page) < 0) {
 		error("unlock mutex_page");
@@ -182,6 +192,7 @@ int satisfy_request(dsm_page_t *page, dsm_page_request_t *req)
 	};
 	givepage_msg.givepage_args = ca;
 
+	debug("Sending page %d to %d\n", page->page_id, req->sockfd);
 	return dsm_send_msg(req->sockfd, &givepage_msg);
 }
 
@@ -205,17 +216,19 @@ static void process_list_requests(dsm_page_t *page)
 	dsm_page_request_t *req;
 
 	//If their's a write_owner, we must wait for the write_unlock
-	if (page->write_owner != 0)
+	if (!page->uptodate)
 		return;
 
 	while (reqlist != NULL)
 	{
-		req = (dsm_page_request_t *)reqlist->data;
+		req = (dsm_page_request_t *) reqlist->data;
 		//Case it's a reader, juste have to check the page isn't lock in write.
 		//if not, just send the page, update both queues and process new head element
 		if (req->rights == PROT_READ)
 		{
-			satisfy_request(page, req);
+			if(satisfy_request(page, req) < 0) {
+				log("error satisfy_request\n");
+			}
 			reqlist = reqlist->next;
 			list_add(page->current_readers_queue, &req->sockfd);
 			list_remove(page->requests_queue, &req);
@@ -226,16 +239,21 @@ static void process_list_requests(dsm_page_t *page)
 		//file is dirty)
 		else if (req->rights & PROT_WRITE)
 		{
-			if (!page->invalidate_sent)
+			if (!page->invalidate_sent && page->current_readers_queue->length > 0)
 			{
-				send_invalidate(page, req->sockfd);
+				if(send_invalidate(page, req->sockfd) < 0) {
+					log("error send_invalidate\n");
+				}
 				page->invalidate_sent = 1;
 			}
 			else if (page->current_readers_queue->length == 0)
 			{
 				page->invalidate_sent = 0;
 				page->write_owner = req->sockfd;
-				satisfy_request(page, req);
+				page->uptodate = 0;
+				if(satisfy_request(page, req) < 0) {
+					log("error satisfy_request\n");
+				}
 				list_remove(page->requests_queue, &req);
 				return;
 			}
