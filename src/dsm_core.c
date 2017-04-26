@@ -398,14 +398,16 @@ int terminate(void)
 	req.rights = PROT_READ|PROT_WRITE;
 	req.sockfd = dsm_g->master->sockfd;
 
-	debug("Leaving system: giving all my write pages to master\n");
-	for(unsigned int i = 0; i < dsm_g->mem->page_count; i++) {
-		page = &dsm_g->mem->pages[i];
-		if(page->protection & PROT_WRITE) {
-			if(satisfy_request(page, &req) < 0) {
-				error("error sending GIVEPAGE for terminaison\n");
+	if(!dsm_g->is_master) {
+		debug("Leaving system: giving all my write pages to master\n");
+		for(unsigned int i = 0; i < dsm_g->mem->page_count; i++) {
+			page = &dsm_g->mem->pages[i];
+			if(page->protection & PROT_WRITE) {
+				if(satisfy_request(page, &req) < 0) {
+					error("error sending GIVEPAGE for terminaison\n");
+				}
+				giveup_localpage(page, dsm_g->master->sockfd);
 			}
-			giveup_localpage(page, dsm_g->master->sockfd);
 		}
 	}
 

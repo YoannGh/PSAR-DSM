@@ -18,7 +18,6 @@ int main()
 
 	unlock_write(base_addr);
 
-	sync_barrier(3);
 	QuitDSM();
 	return 0;
 }
