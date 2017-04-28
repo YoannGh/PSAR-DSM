@@ -1,4 +1,5 @@
 /**
+ * Copyright 2017 LiteServer Binn
  * Binn: Binary data serialization library (https://github.com/liteserver/binn)
 */
 #include <stdio.h>

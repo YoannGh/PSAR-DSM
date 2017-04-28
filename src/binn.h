@@ -1,7 +1,7 @@
 /**
+ * Copyright 2017 LiteServer Binn
  * Binn: Binary data serialization library (https://github.com/liteserver/binn)
 */
-
 // TO ENABLE INLINE FUNCTIONS:
 //   ON MSVC: enable the 'Inline Function Expansion' (/Ob2) compiler option, and maybe the
 //            'Whole Program Optimitazion' (/GL), that requires the
