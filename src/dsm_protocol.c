@@ -70,6 +70,8 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 	char buffer[BUFFER_LEN];
 	void* ptr = (void *) &buffer;
 
+	debug("SENDER:%d\n", nodefd);
+
 	if(dsm_receive(nodefd, &ptr) < 0) {
 		debug("dsm_receive 0 byte, node disconnected\n");
 		return -1;

@@ -313,7 +313,9 @@ void sync_barrier(int slave_to_wait)
 
 void QuitDSM(void)
 {
+	debug("AVANT TERMNATE\n");
 	terminate();
+	debug("APRES TERMNATE\n");
 	dsm_destroy(dsm_g);
 	free(dsm_g);
 	debug("Left Distributed Shared Memory !\n");

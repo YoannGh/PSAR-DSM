@@ -496,6 +496,7 @@ int terminate(void)
 		for(unsigned int i = 0; i < dsm_g->mem->page_count; i++) {
 			page = &dsm_g->mem->pages[i];
 			if(page->protection & PROT_WRITE) {
+				debug("IF\n");
 				if(satisfy_request(page, &req) < 0) {
 					error("error sending GIVEPAGE for terminaison\n");
 				}
@@ -503,10 +504,14 @@ int terminate(void)
 			}
 		}
 	}
+	debug("B\n");
 
 	if(dsm_send_msg(dsm_g->master->sockfd, &msg_terminate) < 0) {
 		error("error sending TERMINATE\n");
 	}
+	debug("C\n");
+
+	debug("SENT TERMINATE TO MASTER: %d\n", dsm_g->master->sockfd);
 
 	if(dsm_g->is_master) {
 		if (pthread_mutex_lock(&dsm_g->mutex_client_count) < 0) {

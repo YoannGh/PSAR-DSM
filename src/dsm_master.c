@@ -1,4 +1,6 @@
 #include <string.h>
+#include <sys/socket.h>
+
 
 #include "dsm_master.h"
 #include "dsm_socket.h"
@@ -62,6 +64,6 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 
 void dsm_master_destroy(dsm_master_t *master)
 {
-	dsm_socket_close(master->sockfd);
+	dsm_socket_shutdown(master->sockfd, SHUT_RD);
 	free(master->host);
 }
