@@ -199,6 +199,9 @@ static int msg_listener_start(dsm_t *dsm)
 
 	while (1)
 	{
+		FD_CLR (dsm->master->sockfd, &active_fd_set);
+		FD_SET (dsm->master->sockfd, &active_fd_set);
+		
 		/* Block until input arrives on one or more active sockets. */
 		read_fd_set = active_fd_set;
 		if (select (FD_SETSIZE, &read_fd_set, NULL, NULL, NULL) < 0) {
