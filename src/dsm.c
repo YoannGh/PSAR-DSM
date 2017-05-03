@@ -65,6 +65,9 @@ static void dsm_m_init(dsm_t *dsm, int port_master, size_t page_count)
 	pthread_cond_init(&dsm->cond_master_end, NULL);
 	dsm->client_count = 0;
 
+	pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
+	pthread_cond_init(&dsm->cond_sync_barrier, NULL);
+
 	if (pthread_create(&dsm->listener_daemon, NULL, &dsm_daemon_msg_listener, (void *) dsm) != 0) {
 		error("pthread_create listener_daemon\n");
 	}
@@ -120,7 +123,6 @@ static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 	if (dsm_send_msg(dsm->master->sockfd, &msg_connect) < 0) {
 		error("Send CONNECT\n");
 	}
-
 	if (dsm_receive_msg(dsm->master->sockfd, &msg_connect_ack) < 0) {
 		error("Receive CONNECT_ACK\n");
 	}
@@ -150,12 +152,12 @@ static void dsm_n_init(dsm_t *dsm, char *host_master, int port_master)
 
 	dsm_memory_init(dsm->mem, pagesize, msg_connect_ack.connect_ack_args.page_count, dsm->is_master);
 
+	pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
+	pthread_cond_init(&dsm->cond_sync_barrier, NULL);
+
 	if (pthread_create(&dsm->listener_daemon, NULL, &dsm_daemon_msg_listener, (void *) dsm) != 0) {
 		error("pthread_create listener_daemon\n");
 	}
-
-	pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
-	pthread_cond_init(&dsm->cond_sync_barrier, NULL);
 }
 
 /**
@@ -175,14 +177,14 @@ static void dsm_destroy(dsm_t *dsm)
 	free(dsm->mem);
 	free(dsm->master);
 
+	pthread_mutex_destroy(&dsm->mutex_sync_barrier);
+	pthread_cond_destroy(&dsm->cond_sync_barrier);
+
 	if(dsm->is_master) {
 		list_destroy(dsm->sync_barrier_waiters);
 		free(dsm->sync_barrier_waiters);
-		pthread_mutex_init(&dsm->mutex_client_count, NULL);
-		pthread_cond_init(&dsm->cond_master_end, NULL);
-	} else {
-		pthread_mutex_init(&dsm->mutex_sync_barrier, NULL);
-		pthread_cond_init(&dsm->cond_sync_barrier, NULL);
+		pthread_mutex_destroy(&dsm->mutex_client_count);
+		pthread_cond_destroy(&dsm->cond_master_end);
 	}
 }
 
@@ -313,9 +315,7 @@ void sync_barrier(int slave_to_wait)
 
 void QuitDSM(void)
 {
-	debug("AVANT TERMNATE\n");
 	terminate();
-	debug("APRES TERMNATE\n");
 	dsm_destroy(dsm_g);
 	free(dsm_g);
 	debug("Left Distributed Shared Memory !\n");

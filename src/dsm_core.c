@@ -409,6 +409,7 @@ void wait_barrier(int slave_to_wait)
 		error("error sending SYNC_BARRIER message\n");
 	}
 
+	debug("Waiting for BARRIER_ACK message\n");
 	if (pthread_cond_wait(&dsm_g->cond_sync_barrier, &dsm_g->mutex_sync_barrier) < 0) {
 		error("error pthread_cond_wait SYNC_BARRIER\n");
 	}
@@ -496,7 +497,6 @@ int terminate(void)
 		for(unsigned int i = 0; i < dsm_g->mem->page_count; i++) {
 			page = &dsm_g->mem->pages[i];
 			if(page->protection & PROT_WRITE) {
-				debug("IF\n");
 				if(satisfy_request(page, &req) < 0) {
 					error("error sending GIVEPAGE for terminaison\n");
 				}
@@ -504,14 +504,10 @@ int terminate(void)
 			}
 		}
 	}
-	debug("B\n");
 
 	if(dsm_send_msg(dsm_g->master->sockfd, &msg_terminate) < 0) {
 		error("error sending TERMINATE\n");
 	}
-	debug("C\n");
-
-	debug("SENT TERMINATE TO MASTER: %d\n", dsm_g->master->sockfd);
 
 	if(dsm_g->is_master) {
 		if (pthread_mutex_lock(&dsm_g->mutex_client_count) < 0) {

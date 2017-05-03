@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "dsm.h"
 #include "dsm_protocol.h"
 #include "dsm_socket.h"
@@ -67,12 +69,23 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 {
 	binn *obj;
 	int blob_size;
-	char buffer[BUFFER_LEN];
-	void* ptr = (void *) &buffer;
+	void* buffer;
+	int buffersize;
+	//char buffer[BUFFER_LEN];
+	//void* ptr = (void *) &buffer;
+	if(dsm_g->mem == NULL) {
+		buffersize = MIN_BUFFERSIZE;
+	} else {
+		buffersize = MIN_BUFFERSIZE + dsm_g->mem->pagesize;
+	}
+	/* We cant receive a page if the mem struct isn't yet initialized anyway */
 
-	debug("SENDER:%d\n", nodefd);
+	buffer = malloc(buffersize);
+	if (buffer == NULL) {
+		error("Could not allocate memory (malloc)\n");
+	}
 
-	if(dsm_receive(nodefd, &ptr) < 0) {
+	if(dsm_receive(nodefd, buffer) < 0) {
 		debug("dsm_receive 0 byte, node disconnected\n");
 		return -1;
 	}
@@ -119,6 +132,7 @@ int dsm_receive_msg(int nodefd, dsm_message_t *msg)
 	}
 
 	binn_free(obj);
+	free(buffer);
 
 	return 0;
 }

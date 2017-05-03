@@ -10,6 +10,8 @@
 #include "dsm_protocol.h"
 #include "dsm_util.h"
 
+extern dsm_t *dsm_g;
+
 /**
  * Binds and listens on `port` on all interfaces on the local machine
  * allowing `backlog` clients to be queued
@@ -134,29 +136,35 @@ int dsm_send(int sockfd, void *buffer, int size)
 * \param buffer the data to be received
 **/
 
-int dsm_receive(int sockfd, void **buffer)
+int dsm_receive(int sockfd, void *buffer)
 {
 	ssize_t bytesrecv;
 	uint32_t msg_size;
 
-	bytesrecv = recv(sockfd, &msg_size, sizeof(uint32_t), 0);
+	bytesrecv = recv(sockfd, &msg_size, sizeof(uint32_t), MSG_WAITALL);
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {
 		return -1;
 	} else if(bytesrecv != sizeof(uint32_t)) {
-		error("Recv msg size\n");
+		return -1;
 	}
 
 	msg_size = ntohl(msg_size);
-	if(msg_size > BUFFER_LEN) {
-		error("Malformed message too big, could cause buffer overflow\n");
+
+	if((dsm_g->mem == NULL) && (msg_size > MIN_BUFFERSIZE)) {
+		error("Received malformed message too big, could cause buffer overflow\n");
+	} 
+	else if((dsm_g->mem != NULL) && (msg_size > dsm_g->mem->pagesize + MIN_BUFFERSIZE)) {
+		error("Received malformed message too big, could cause buffer overflow\n");
 	}
 
-	bytesrecv = recv(sockfd, *buffer, msg_size, 0);
+	bytesrecv = recv(sockfd, buffer, msg_size, MSG_WAITALL);
 	if(bytesrecv < 0) {
 		error("dsm_receive\n");
 	} else if(bytesrecv == 0) {
+		return -1;
+	} else if(bytesrecv != msg_size) {
 		return -1;
 	}
 
@@ -178,7 +186,7 @@ static int msg_listener_start(dsm_t *dsm)
 	socklen_t fromlen;
 	dsm_message_t *msg;
 
-	/* Retrieve the already initualized socket */
+	/* Retrieve the already initialized socket */
 	sock = dsm->master->sockfd;
 
 	/* Initialize the set of active sockets. */

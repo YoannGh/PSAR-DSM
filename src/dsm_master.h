@@ -1,7 +1,7 @@
 #ifndef DSM_MASTER_H
 #define DSM_MASTER_H
 
-#define MAX_NODES 512
+#define MAX_WAITING_NODES 512
 
 /**
  * \struct dsm_master_s
@@ -12,8 +12,8 @@ typedef struct dsm_master_s
 {
 	char* host; /*!< a string representing the master inet address */
 	int port; /*!< port master is listening to*/
-	/* Following fields are used by non master nodes only */
 	int sockfd; /*!< socket identifer related to the master */
+	/* Following field is used by master node only */
 	int server_sockfd; /*!< socket indentifier where master is listening*/
 } dsm_master_t;
 

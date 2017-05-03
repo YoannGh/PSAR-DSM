@@ -48,7 +48,7 @@ int dsm_master_init(dsm_master_t *master, char *host_master, int port_master, un
 	master->port = port_master;
 
 	if (is_master) {
-		master->server_sockfd = dsm_socket_bind_listen(master->port, MAX_NODES);
+		master->server_sockfd = dsm_socket_bind_listen(master->port, MAX_WAITING_NODES);
 	} else {
 		master->sockfd = dsm_socket_connect(master->host, master->port);
 	}
