@@ -13,7 +13,7 @@ int main()
 
 	lock_read(base_addr);
 
-	printf("read at base_addr: %s\n", (char *) base_addr);
+	printf("\tReading: %s\n", (char *) base_addr);
 
 	unlock_read(base_addr);
 

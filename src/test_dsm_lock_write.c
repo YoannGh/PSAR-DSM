@@ -15,7 +15,7 @@ int main()
 	sync_barrier(3);
 
 	strcpy(base_addr, hello);
-	printf("Write: %s\n", (char *) base_addr);
+	printf("\tWrite: %s\n", (char *) base_addr);
 
 	unlock_write(base_addr);
 
