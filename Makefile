@@ -12,7 +12,7 @@ TESTDIR	 = tests
 LIB_NAME = dsm-psar
 
 # compiling flags here
-CFLAGS   = -Wall -Wextra -Wno-unused-parameter -std=c99 -fPIC -D_GNU_SOURCE -DDEBUG
+CFLAGS   = -Wall -Wextra -Wno-unused-parameter -std=c99 -fPIC -D_GNU_SOURCE
 # linking flags here
 LFLAGS   = -std=c99 -I$(INCDIR) -L$(LIBDIR) -lpthread
 ARFLAGS  = -cvq

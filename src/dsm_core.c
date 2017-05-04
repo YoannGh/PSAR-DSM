@@ -61,9 +61,9 @@ int handle_lockpage_msg(int from, msg_lockpage_args_t *args)
 	};
 
 	if (args->access_rights & PROT_WRITE)
-		debug("Received LOCKWRITE on page %lu from %d\n", args->page_id, from);
+		log("Received LOCKWRITE on page %lu from %d\n", args->page_id, from);
 	else if (args->access_rights == PROT_READ)
-		debug("Received LOCKREAD on page %lu from %d\n", args->page_id, from);
+		log("Received LOCKREAD on page %lu from %d\n", args->page_id, from);
 	else
 		debug("Received unknown LOCK on page %lu from %d\n", args->page_id, from);
 
@@ -90,6 +90,7 @@ int handle_invalidate_msg(int from, msg_invalidate_args_t *args)
 	page = get_page_from_id(args->page_id);
 	page_base_addr = dsm_g->mem->base_addr + (args->page_id * dsm_g->mem->pagesize);
 
+	log("Received INVALIDATE for page %d from %d\n", args->page_id, from);
 	if (pthread_mutex_lock(&page->mutex_page) < 0) {
 		error("lock mutex_page");
 	}
@@ -129,6 +130,7 @@ int handle_invalidate_ack_msg(int from, msg_invalidate_ack_args_t *args)
 	dsm_page_t *page;
 
 	page = get_page_from_id(args->page_id);
+	log("Received INVALIDATE_ACK for page %d from %d\n", args->page_id, from);
 
 	list_remove(page->current_readers_queue, &from);
 	process_list_requests(page);
