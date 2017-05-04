@@ -7,7 +7,6 @@
 int main()
 {
 	char *hello = "Hello world!";
-	int i;
 	void *base_addr = InitSlave("132.227.112.195", 5555);
 
 	printf("base_addr: %lx\n", (long) base_addr);
@@ -17,16 +16,6 @@ int main()
 
 	strcpy(base_addr, hello);
 	printf("Write: %s\n", (char *) base_addr);
-
-	/*printf("R/W, reading: %d\n", *(int *)base_addr);
-	i = *(int *)base_addr;
-	if(i > 10)
-		i = 0;
-	else
-		i++;
-
-	memcpy(base_addr, &i, sizeof(int));
-	printf("write at base_addr: %d\n", *(int *)base_addr);*/
 
 	unlock_write(base_addr);
 
