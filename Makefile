@@ -14,7 +14,7 @@ LIB_NAME = dsm-psar
 # compiling flags here
 CFLAGS   = -Wall -Wextra -Wno-unused-parameter -std=c99 -fPIC -D_GNU_SOURCE -DDEBUG
 # linking flags here
-LFLAGS   = -I$(INCDIR) -L$(LIBDIR) -lpthread
+LFLAGS   = -std=c99 -I$(INCDIR) -L$(LIBDIR) -lpthread
 ARFLAGS  = -cvq
 SOFLAGS  = -shared -Wl,-soname,lib$(LIB_NAME).so
 
@@ -24,13 +24,17 @@ TEST3_NAME = test_dsm_lock_write
 TEST4_NAME = test_dsm_lock_read
 TEST5_NAME = test_dsm_lock_read2
 
+DEMO1_NAME = demo_master_writer
+DEMO2_NAME = demo_slave_writer_reader
+DEMO3_NAME = demo_slave_reader
+
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(INCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 RM        = rm -rf
 MKDIR_P   = mkdir -p
 
-all: out_directories lib tests
+all: out_directories lib tests demo
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
@@ -53,6 +57,9 @@ $(LIBDIR)/lib$(LIB_NAME).so: $(OBJDIR)/binn.o $(OBJDIR)/dsm_socket.o $(OBJDIR)/d
 .PHONY: tests
 tests: out_directories libstatic $(TESTDIR)/$(TEST1_NAME) $(TESTDIR)/$(TEST2_NAME) $(TESTDIR)/$(TEST3_NAME) $(TESTDIR)/$(TEST4_NAME) $(TESTDIR)/$(TEST5_NAME)
 
+.PHONY: demo
+demo: out_directories libstatic $(TESTDIR)/$(DEMO1_NAME) $(TESTDIR)/$(DEMO2_NAME) $(TESTDIR)/$(DEMO3_NAME)
+
 $(TESTDIR)/$(TEST1_NAME): $(SRCDIR)/test_dsm_init_master.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
@@ -66,6 +73,16 @@ $(TESTDIR)/$(TEST4_NAME): $(SRCDIR)/test_dsm_lock_read.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 $(TESTDIR)/$(TEST5_NAME): $(SRCDIR)/test_dsm_lock_read2.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+
+$(TESTDIR)/$(DEMO1_NAME): $(SRCDIR)/demo_master_writer.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+$(TESTDIR)/$(DEMO2_NAME): $(SRCDIR)/demo_slave_writer_reader.c
+	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
+
+$(TESTDIR)/$(DEMO3_NAME): $(SRCDIR)/demo_slave_reader.c
 	$(LINKER) -o $@ $(LFLAGS) $^ $(LIBDIR)/lib$(LIB_NAME).a
 
 .PHONY: out_directories
