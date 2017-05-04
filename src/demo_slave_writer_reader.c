@@ -1,46 +1,28 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "dsm.h"
 
 int main()
 {
-	unsigned int nb_proc = 3;
-	unsigned int nb_decrement = 100;
+	int nb_proc = 3;
+	char *hello = "Hello world!";
+	void *base_addr = InitSlave("132.227.112.195", 5555);
 
-	void *base_addr;
-	int *entier1;
-	int *entier2;
-	int *entier3;
+	printf("base_addr: %lx\n", (long) base_addr);
 
-	base_addr = InitSlave("132.227.112.195", 5555);
-
-	entier1 = base_addr;
-	entier2 = base_addr + 13337;
-	entier3 = base_addr + 33333;
-
-	sync_barrier(nb_proc);
-	for(unsigned int i = 0; i < nb_decrement; i++) {
-		lock_write(entier2);
-		(*entier2)--;
-		unlock_write(entier2);
-		lock_write(entier3);
-		(*entier3)--;
-		unlock_write(entier3);
-		lock_write(entier1);
-		(*entier1)--;
-		unlock_write(entier1);
-	}
+	lock_write(base_addr);
 	sync_barrier(nb_proc);
 
-	lock_read(entier1);
-	printf("entier1 = %d\n", (*entier1));
-	unlock_read(entier1);
-	lock_read(entier2);
-	printf("entier2 = %d\n", (*entier2));
-	unlock_read(entier2);
-	lock_read(entier3);
-	printf("entier3 = %d\n", (*entier3));
-	unlock_read(entier3);
+	strcpy(base_addr+sizeof(int), hello);
+	printf("\tWrite: %s\n", (char *) base_addr+sizeof(int));
+
+	unlock_write(base_addr);
+
+	sync_barrier(nb_proc);
+	/*lock_read(base_addr);
+	printf("\tRead: %d\n",  *((int*) (base_addr)));
+	unlock_read(base_addr); */
 
 	QuitDSM();
 	return 0;

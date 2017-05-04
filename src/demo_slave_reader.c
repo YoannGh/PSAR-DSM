@@ -5,33 +5,22 @@
 int main()
 {
 	unsigned int nb_proc = 3;
-	unsigned int nb_lecture = 200;
+	unsigned int nb_lecture = 10;
 
-	void *base_addr;
-	int *entier1;
-	int *entier2;
-	int *entier3;
-
-	base_addr = InitSlave("132.227.112.195", 5555);
-
-	entier1 = base_addr;
-	entier2 = base_addr + 13337;
-	entier3 = base_addr + 33333;
+	void *base_addr = InitSlave("132.227.112.195", 5555);
+	printf("base_addr: %lx\n", (long) base_addr);
 
 	sync_barrier(nb_proc);
+	lock_read(base_addr);
+
 	for(unsigned int i = 0; i < nb_lecture; i++) {
-		lock_read(entier1);
-		printf("entier1 = %d\n", (*entier1));
-		unlock_read(entier1);
-		lock_read(entier2);
-		printf("entier2 = %d\n", (*entier2));
-		unlock_read(entier2);
-		lock_read(entier3);
-		printf("entier3 = %d\n", (*entier3));
-		unlock_read(entier3);
+		lock_read(base_addr);
+		printf("entier = %d\n", *((int*) (base_addr)));
+		printf("chaine = %s\n", base_addr + sizeof(int));
+		unlock_read(base_addr);
 	}
-	sync_barrier(nb_proc);
 
+	sync_barrier(nb_proc);
 	QuitDSM();
 	return 0;
 }
