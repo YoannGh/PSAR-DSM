@@ -12,7 +12,7 @@ int main()
 	int *entier2;
 	int *entier3;
 
-	base_addr = InitSlave("127.0.0.1", 5555);
+	base_addr = InitSlave("132.227.112.195", 5555);
 
 	entier1 = base_addr;
 	entier2 = base_addr + 13337;
