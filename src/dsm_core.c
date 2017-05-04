@@ -284,11 +284,13 @@ int handle_terminate_msg(int from)
 void lock_page(dsm_page_t *page, int rights)
 {
 
+	debug("Avant lockpage\n");
 	if (pthread_mutex_lock(&page->mutex_page) < 0) {
 		error("lock mutex_page");
 	}
 
 	if (!page->uptodate) {
+		debug("AAAAA dans not uptodate\n");
 
 		dsm_message_t msg_lockpage;
 		msg_lockpage.type = LOCKPAGE;
@@ -311,6 +313,7 @@ void lock_page(dsm_page_t *page, int rights)
 				error("error pthread_cond_wait mutex_page\n");
 			}
 		}
+		debug("Now uptodate!\n");
 	}
 }
 

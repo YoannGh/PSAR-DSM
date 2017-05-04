@@ -189,13 +189,16 @@ static int msg_listener_start(dsm_t *dsm)
 	/* Retrieve the already initialized socket */
 	sock = dsm->master->sockfd;
 
-	/* Initialize the set of active sockets. */
 	FD_ZERO (&active_fd_set);
-	FD_SET (sock, &active_fd_set);
+
 	if(dsm->is_master) {
 		server_sockfd = dsm->master->server_sockfd;
+		sock = MASTER_SOCKET;
 		FD_SET (server_sockfd, &active_fd_set);
 	}
+
+	/* Initialize the set of active sockets. */
+	FD_SET (sock, &active_fd_set);
 
 	while (1)
 	{

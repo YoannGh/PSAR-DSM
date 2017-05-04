@@ -2,6 +2,7 @@
 #define DSM_SOCKET_H
 
 #define MIN_BUFFERSIZE 512
+#define MASTER_SOCKET 4
 
 int dsm_socket_bind_listen(int port, int backlog);
 
